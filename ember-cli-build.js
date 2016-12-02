@@ -1,10 +1,25 @@
 /*jshint node:true*/
 /* global require, module */
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+var Funnel = require('broccoli-funnel');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     // Add options here
+
+    // TODO specific app options for sassBuild
+    sassOptions: {
+      includePaths: [
+        'node_modules/bootstrap-sass/assets/stylesheets',
+        'node_modules/calcite-bootstrap/dist/sass',
+      ]
+    },
+  });
+
+  var extraAssets = new Funnel('./node_modules/bootstrap-sass/assets/fonts/bootstrap', {
+    srcDir: '/',
+    include: ['**.*'],
+    destDir: '/assets/fonts',
   });
 
   // Use `app.import` to add additional libraries to the generated
@@ -20,5 +35,5 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
-  return app.toTree();
+  return app.toTree(extraAssets);
 };
