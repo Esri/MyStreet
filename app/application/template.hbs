@@ -1,4 +1,48 @@
-{{t 'test'}}
-<br>
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar">1</span>
+        <span class="icon-bar">2</span>
+        <span class="icon-bar">3</span>
+      </button>
+      <img class="navbar-logo pull-left" id="site-logo"/>
+      {{!link-to "Your Street" "search" id="site-title" class="navbar-brand site-link"}}
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      test
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          content
+        </li>
+        <li>
+          {{t 'test'}}
+        </li>
+        {{!#each model.sites as |site| }}
+        <li>
+          a
+          b
+          {{!link-to site.name "search.view" site.id (query-params theme=site.theme) }}
+        </li>
+        {{!/each}}
+        <li><a href="http://opendata.arcgis.com/about">Learn More</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!-- /.container -->
+</nav>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>open-streets</h1>
+      <!-- TODO update this writeup -->
+      <p>This project contains an <a href="" target="_blank">Ember Engine</a> that will support Item Search and View user experience. Unlike other types of Ember Addons, in addition to components, and services, Engines contain routes and controllers. They essentially encapsulate a set of routes into an Addon. Consuming applications can the "mount" an engine at route of their choosing.</p>
+      <p>The Esri DC Team is developing this addon for use in the Open Data and Hub Administration applications, but since it is an Ember Addon, it can be dropped into any other Ember application.</p>
+      <p>We will be making many changes to the application as we move forward, including providing a means to "configure" the search criteria so the consuming application has more control over the search.</p>
+    </div>
+  </div>
+</div>
 
 {{outlet}}

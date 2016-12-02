@@ -1,0 +1,399 @@
+//============================
+// arcgist-items-engine
+//============================//============================//============================
+
+/* The addon's css should be included in vendor */
+//@import 'bootstrap/mixins/_bidirectional';
+/* set the output folder for fonts */
+$icon-font-path: '../assets/fonts/';
+
+// Calcite Fast Fonts Imports
+@import url('https://fast.fonts.net/cssapi/9431e9a5-7a6d-4b5f-82be-4d935972de5a.css');
+
+// Set variable to change the primary typeface in the font stack
+$primary-font-sanserif:  'Avenir Next W01', 'Avenir Next', 'Avenir';
+$primary-font-serif: 'Kepler W01';
+
+$primary-headings-weight: 300;
+
+@import 'calcite/colors-default';
+
+@import 'calcite/variables';
+@import 'bootstrap/_variables';
+//
+// // Custom Calcite Components
+@import 'calcite/components'; // This loads the custom calcite css
+
+//NOTE: SOMEWHERE IN CALCITE_BOOTSTRAP THE FONT PATH IS SET WITHOUT !default
+$icon-font-path: '../assets/fonts/';
+/**
+* Bootstrap Components
+*/
+// Core variables and mixins
+@import 'bootstrap/mixins';
+
+// Reset and dependencies
+@import 'bootstrap/normalize';
+//@import 'bootstrap/print';
+@import 'bootstrap/glyphicons';
+
+// Core CSS
+@import 'bootstrap/scaffolding';
+@import 'bootstrap/type';
+@import 'bootstrap/code';
+@import 'bootstrap/grid';
+@import 'bootstrap/tables';
+@import 'bootstrap/forms';
+@import 'bootstrap/buttons';
+
+// Components
+@import 'bootstrap/component-animations';
+@import 'bootstrap/dropdowns';
+@import 'bootstrap/button-groups';
+@import 'bootstrap/input-groups';
+@import 'bootstrap/navs';
+@import 'bootstrap/navbar';
+@import 'bootstrap/breadcrumbs';
+@import 'bootstrap/pagination';
+@import 'bootstrap/pager';
+@import 'bootstrap/labels';
+@import 'bootstrap/badges';
+@import 'bootstrap/jumbotron';
+@import 'bootstrap/thumbnails';
+@import 'bootstrap/alerts';
+@import 'bootstrap/progress-bars';
+@import 'bootstrap/media';
+@import 'bootstrap/list-group';
+@import 'bootstrap/panels';
+@import 'bootstrap/responsive-embed';
+@import 'bootstrap/wells';
+@import 'bootstrap/close';
+
+// Components w/ JavaScript
+@import 'bootstrap/modals';
+@import 'bootstrap/tooltip';
+@import 'bootstrap/popovers';
+//@import 'bootstrap/carousel';
+
+// Utility classes
+@import 'bootstrap/utilities';
+@import 'bootstrap/responsive-utilities';
+
+
+
+
+
+
+
+
+
+
+
+
+// //============================//============================//============================
+// //============================//============================//============================
+// //============================//============================//============================
+// //============================//============================//============================
+// //============================
+// // your-street
+// //============================
+// //============================//============================//============================
+// /**
+//   * General Settings
+//   */
+// /* set the output folder for fonts */
+// $icon-font-path: '../assets/fonts/';
+//
+// //============================
+// //DEFAULTS for the theme variables
+// //Despite sending a hash that looks like
+// //{theme: {foo:'#00FF00'}}
+// //the variables injected into the sass do
+// //not have a `$theme-` prefix. In this example
+// //the variable would be `$foo:#00FFFF;`
+// //============================
+// $brand-primary: #136fbf;
+// $brand-secondary: #a9a9a9;
+// $body-bg:#f8f8f8;
+// $text-color:#4c4c4c;
+// $brand-gray:#4c4c4c;
+// $navbar-height:55px;
+// $footer-height:60px;
+// $flags-iframeheader: false;
+// $flags-umbrella:false;
+//
+// //============================
+// // Themes
+// //============================
+// // start sass variable injection
+//
+// // the generate_css service will
+// // remove this, and inject the
+// // passed in variables here.
+// // @import 'themes/umbrella';
+//
+// // end sass variable injection
+// //============================
+// // map the theme vars to the vars used
+// // through the sass code
+// //============================
+// //only needed for vars that don't already match up to
+// //the bootstrap variables
+//
+// /**
+// * Expansions
+// * These includes use sass functions to 'expand'
+// * the theme variables into the necessary set of variables
+// * used in the components.
+// */
+// // @import 'themes/bootstrap-expansion';
+// // @import 'themes/s-bootstrap-expansion';
+//
+// /**
+// * Bootstrap default variables
+// */
+// //
+// @import 'bootstrap/_variables';
+//
+// /**
+//  * calcite bootstrap components
+//  */
+// // MJ: it seems to me this should be included after all of bootstrap since it overrides more than just variables
+// //     but that breaks stuff...\
+//
+// // TODO bring this component back in?
+// @import 'components/calcite-bootstrap';
+//
+// //NOTE: SOMEWHERE IN CALCITE_BOOTSTRAP THE FONT PATH IS SET WITHOUT !default
+// $icon-font-path: '../assets/fonts/';
+//
+// /**
+// * Bootstrap Components
+// */
+// // Core variables and mixins
+// @import 'bootstrap/mixins';
+//
+// // Reset and dependencies
+// @import 'bootstrap/normalize';
+// //@import 'bootstrap/print';
+// @import 'bootstrap/glyphicons';
+//
+// // Core CSS
+// @import 'bootstrap/scaffolding';
+// @import 'bootstrap/type';
+// @import 'bootstrap/code';
+// @import 'bootstrap/grid';
+// @import 'bootstrap/tables';
+// @import 'bootstrap/forms';
+// @import 'bootstrap/buttons';
+//
+// // Components
+// @import 'bootstrap/component-animations';
+// @import 'bootstrap/dropdowns';
+// @import 'bootstrap/button-groups';
+// @import 'bootstrap/input-groups';
+// @import 'bootstrap/navs';
+// @import 'bootstrap/navbar';
+// @import 'bootstrap/breadcrumbs';
+// @import 'bootstrap/pagination';
+// @import 'bootstrap/pager';
+// @import 'bootstrap/labels';
+// @import 'bootstrap/badges';
+// @import 'bootstrap/jumbotron';
+// @import 'bootstrap/thumbnails';
+// @import 'bootstrap/alerts';
+// @import 'bootstrap/progress-bars';
+// @import 'bootstrap/media';
+// @import 'bootstrap/list-group';
+// @import 'bootstrap/panels';
+// @import 'bootstrap/responsive-embed';
+// @import 'bootstrap/wells';
+// @import 'bootstrap/close';
+//
+// // Components w/ JavaScript
+// @import 'bootstrap/modals';
+// @import 'bootstrap/tooltip';
+// @import 'bootstrap/popovers';
+// //@import 'bootstrap/carousel';
+//
+// // Utility classes
+// @import 'bootstrap/utilities';
+// @import 'bootstrap/responsive-utilities';
+//
+// /**
+// * Open Data Components
+// */
+// // @import 'components/navbar';
+// // @import 'components/home';
+// // @import 'components/od-api-inspector';
+// // @import 'components/od-search';
+// // @import 'components/featured-orgs';
+// // @import 'components/newest-data';
+// // @import 'components/noteworthy-data';
+// // @import 'components/od-hero';
+// // @import 'components/od-autocomplete';
+// // @import 'components/od-location-search';
+// // @import 'components/od-stats';
+// // @import 'components/od-map';
+// // @import 'components/od-map-message';
+// // @import 'components/od-hover-window';
+// // @import 'components/od-geohash-legend';
+// // @import 'components/od-search-results';
+// // @import 'components/od-facets';
+// // @import 'components/dataset-table';
+// // @import 'components/dataset-filter';
+// // @import 'components/dataset-summary';
+// // @import 'components/dataset-header';
+// // @import 'components/dataset-license';
+// // @import 'components/od-header-search';
+// // @import 'components/od-download-activities';
+// // @import 'components/my-data';
+// // @import 'components/od-favorites';
+// // @import 'components/add-favorite-form';
+// // @import 'components/od-download-button';
+// // @import 'components/od-api-button';
+// // @import 'components/od-sidebar';
+// // @import 'components/od-sign-in-modal';
+// // @import 'components/od-sign-up-modal';
+// // @import 'components/dataset-sites';
+// // @import 'components/dataset-attributes';
+// // @import 'components/skip-navigation';
+// // @import 'components/od-user-dropdown';
+// // @import 'components/connected-content';
+// // @import 'components/404';
+// //
+// // @import 'components/layout';
+// // @import 'components/geoservice-query-url';
+// // @import 'components/map-card';
+// // @import 'components/ui-slider';
+// // @import 'components/dataset-storymap';
+//
+// /* ember-cli-opendata-pages */
+// // @import 'components/card-list';
+// // @import 'components/category-icon';
+// // @import 'components/category-card-editor';
+// // @import 'components/jumbotron-card';
+// // @import 'components/markdown-card';
+// // @import 'components/page-save-controls';
+//
+// /* ember-arcgis-page-layout */
+// // @import 'components/bs-drawer';
+// // @import 'components/bs-accordion-panel';
+// // @import 'components/settings-editor-container';
+// // @import 'components/layout-section-editor';
+// // @import 'components/bs-row-editor';
+// // @import 'components/bs-cards-editor';
+// // @import 'components/dock-panel';
+// // @import 'components/card-resizer';
+// // @import 'components/card-controls';
+// // @import 'components/card-swatch';
+// // @import 'components/drop-preview';
+// // @import 'components/section-controls';
+// // @import 'components/card-drop-targets';
+// // @import 'components/row-drop-targets';
+// // @import 'components/empty-section-drop-target';
+// // @import 'components/layout-section-editor';
+// // @import 'components/page-layout-editor';
+//
+// /*routes/page template rules*/
+// // @import 'routes/people';
+//
+//
+//
+// /*mundi*/
+// // @import 'components/od-draw-options';
+// // @import 'components/od-quick-themes';
+// // @import 'components/od-range-slider';
+// // @import 'components/od-transform';
+//
+//
+// /* Pages */
+// // @import 'components/dataset-page';
+// // @import 'components/datasets-page';
+// // // @import 'components/mundi';
+// // @import 'components/pages-page';
+//
+//
+// #od-header-search-form {
+//   display: none;
+// }
+// // @import 'components/opendata-ui-custom';
+//
+// /* Overrides
+//   These are rules that need to be applied AFTER all the other
+//   things has run, or they would be overwritten...
+//  */
+//
+//
+//
+// body {
+//   -ms-overflow-style: none;
+//   overflow-x: hidden;
+//   overflow-y: auto;
+//   padding-top: 0;
+// }
+//
+// .navbar-right {
+//  float: right !important;
+//  margin-right: -41px;
+// }
+//
+// /** UMBRELLA ONLY OVERRIDES **/
+// @if $flags-umbrella {
+//   .navbar {
+//     border: none;
+//     border-bottom: 1px solid $Calcite_Gray_300;
+//    }
+//    #main-region {
+//     margin-bottom: 80px;
+//    }
+// }
+// @else {
+//   .row {
+//     margin-top: 20px;
+//     margin-bottom: 20px;
+//   }
+//   .no-margin {
+//     margin-top: 0px;
+//     margin-bottom: 0px;
+//   }
+// }
+//
+// #main-region {
+//  padding: 0;
+// }
+//
+// .text-muted {
+//  color: $Calcite_Gray_550;
+// }
+//
+// #loading-container {
+//  padding-top:50px;
+// }
+//
+// /* TODO - I(?) think calcite bootstrap busted this */
+// .has-error {
+//   select.form-control {
+//    outline-color: $Calcite_Red_a150;
+//   }
+// }
+//
+// .hero-unit {
+//   background-image: -webkit-linear-gradient(bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.25)),url('/assets/images/header-bg.jpg');
+//   background-image: -o-linear-gradient(bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.25)),url('/assets/images/header-bg.jpg');
+//   background-image: linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.25)),url('/assets/images/header-bg.jpg');
+//   background-size: cover;
+//   background-color: #EEEEEE;
+//   height: 300px;
+// }
+// .hero-unit h1 {
+//   color: #FFFFFF;
+//   font-size: 60px;
+//   letter-spacing: -1px;
+//   line-height: 1;
+//   margin-bottom: 0;
+// }
+// .hero-unit h2 {
+//   font-size: 25px;
+//   color: #FFFFFF;
+// }
