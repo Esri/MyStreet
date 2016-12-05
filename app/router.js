@@ -7,7 +7,6 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  // this.authenticatedRoute('items', function () {
   this.route('items', function () {
     this.route('item', {path: ':id'}, function () {
       this.route('index', {path: '/'});
@@ -18,14 +17,10 @@ Router.map(function() {
   this.route('search', function() {
     this.route('view', {path:':id'});
   });
-  // });
-  // this.authenticatedRoute('groups');
-  // this.route('signin');
-  //
-  // this.route('groups', function() {
-  //   this.route('new');
-  // });
-  // this.route('portal');
+  this.route('home', function() {
+  });
+  this.route('about', function() {
+  });
 });
 
 export default Router;

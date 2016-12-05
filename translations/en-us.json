@@ -1,5 +1,10 @@
 {
   "test": "contact",
+  "title": "Open Streets",
+  "home": "Home",
+  "items": "Items",
+  "search": "Search",
+  "about": "Learn More",
   "noteworthy": {
     "title": "Noteworthy Data"
   },

@@ -8,31 +8,25 @@
         <span class="icon-bar">3</span>
       </button>
       <img class="navbar-logo pull-left" id="site-logo"/>
-      {{!link-to "Your Street" "search" id="site-title" class="navbar-brand site-link"}}
     </div>
     <div id="navbar" class="navbar-collapse collapse">
-      test
       <ul class="nav navbar-nav navbar-right">
-        {{#active-link}}{{link-to "Home" "index"}}{{/active-link}}
-        {{#active-link}}{{link-to "Items" "items"}}{{/active-link}}
-        {{#active-link}}{{link-to "Search" "search"}}{{/active-link}}
-
-        <li>
-          {{t 'test'}}
-        </li>
-
-        {{!#each model.sites as |site| }}
-        <li>
-          {{!link-to site.name "search.view" site.id (query-params theme=site.theme) }}
-        </li>
-        {{!/each}}
-        <li><a href="http://opendata.arcgis.com/about">Learn More</a></li>
+        {{#active-link}}{{link-to (t 'home') "home"}}{{/active-link}}
+        {{#active-link}}{{link-to (t 'items') "items"}}{{/active-link}}
+        {{#active-link}}{{link-to (t 'search') "search"}}{{/active-link}}
+        <li><a href="http://opendata.arcgis.com/about">{{t 'about'}}</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!-- /.container -->
 </nav>
 
-{{outlet}}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      {{outlet}}
+    </div>
+  </div>
+</div>
 
 <div class="container">
   <div class="row">

@@ -8,6 +8,9 @@ export default Ember.Route.extend({
   },
 
   itemsService: Ember.inject.service('items-service'),
+  featureService: Ember.inject.service('feature-service'),
+
+  // TODO your street adjustment. most of this file looks like i'ts properly implementing the itemsService addon
 
   getLocation (address, extent) {
     let bbox = [extent[0][0], extent[0][1], extent[1][0], extent[1][1]];
