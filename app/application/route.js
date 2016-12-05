@@ -3,11 +3,12 @@ import ENV from '../config/environment';
 
 export default Ember.Route.extend({
   intl: Ember.inject.service(),
-  portalService: Ember.inject.service(),
+  itemsService: Ember.inject.service('items-service'),
+  featureService: Ember.inject.service('feature-service'),
 
   model (params) {
     console.log(params);
-    return this.get('portalService').getById(params.id);
+    return this.get('itemsService').getById;
   },
 
   beforeModel: function () {
@@ -20,10 +21,19 @@ export default Ember.Route.extend({
     let params = {'id': '5'};
     this.model(params);
 
-    // console.log(this.get('portalService').portalRestUrl);
-    console.log(this.get('portalService').portalUrl);
-    console.log(this.get('portalService').request('opendata.arcgis.com'));
-    console.log(this.get('portalService').getById('100'));
+    let itemsService = this.get('itemsService')
+    let featureService = this.get('featureService')
+
+    console.log('itemsService', itemsService);
+    console.log('featureService', featureService);
+
+    // return both item and its data, based on request of guid/route id
+      // abstract into open-streets service, to get the app config and xhr requests for the data/item
+      // ^established in sites-service for opendata-ui
+
+
+
+    // console.log('function', this.get('itemsService').getById);
 
 
   },

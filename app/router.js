@@ -7,14 +7,16 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  // TODO map out these routes. below are pulled from portal-services dummy app
   // this.authenticatedRoute('items', function () {
-  this.authenticatedRoute('items', function () {
+  this.route('items', function () {
     this.route('item', {path: ':id'}, function () {
       this.route('index', {path: '/'});
       this.route('edit');
     });
     this.route('new');
+  });
+  this.route('search', function() {
+    this.route('view', {path:':id'});
   });
   // });
   // this.authenticatedRoute('groups');

@@ -15,16 +15,13 @@
       <ul class="nav navbar-nav navbar-right">
         {{#active-link}}{{link-to "Home" "index"}}{{/active-link}}
         {{#active-link}}{{link-to "Items" "items"}}{{/active-link}}
-        <li>
-          content
-        </li>
+
         <li>
           {{t 'test'}}
         </li>
+
         {{!#each model.sites as |site| }}
         <li>
-          a
-          b
           {{!link-to site.name "search.view" site.id (query-params theme=site.theme) }}
         </li>
         {{!/each}}
