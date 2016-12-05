@@ -15,6 +15,7 @@
       <ul class="nav navbar-nav navbar-right">
         {{#active-link}}{{link-to "Home" "index"}}{{/active-link}}
         {{#active-link}}{{link-to "Items" "items"}}{{/active-link}}
+        {{#active-link}}{{link-to "Search" "search"}}{{/active-link}}
 
         <li>
           {{t 'test'}}
@@ -31,6 +32,7 @@
   </div><!-- /.container -->
 </nav>
 
+{{outlet}}
 
 <div class="container">
   <div class="row">
@@ -43,5 +45,3 @@
     </div>
   </div>
 </div>
-
-{{outlet}}
