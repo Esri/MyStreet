@@ -6,11 +6,6 @@ export default Ember.Route.extend({
   itemsService: Ember.inject.service('items-service'),
   featureService: Ember.inject.service('feature-service'),
 
-  model (params) {
-    console.log(params);
-    return this.get('itemsService').getById;
-  },
-
   beforeModel: function () {
     // set base language to english, will need TODO build out alternative options
     const intl = this.get('intl');
@@ -18,25 +13,44 @@ export default Ember.Route.extend({
     intl.setLocale(defaultLocale);
     // let translationKey = this._calculateTranslationKey(defaultLocale);
 
-    let params = {'id': '5'};
-    this.model(params);
+    console.log('itemsService', this.get('itemsService'));
+    console.log('featureService', this.get('featureService'));
+  },
 
-    let itemsService = this.get('itemsService')
-    let featureService = this.get('featureService')
-
-    console.log('itemsService', itemsService);
-    console.log('featureService', featureService);
-
-    // return both item and its data, based on request of guid/route id
-      // abstract into open-streets service, to get the app config and xhr requests for the data/item
-      // ^established in sites-service for opendata-ui
-
-
-
-    // console.log('function', this.get('itemsService').getById);
-
+  ///////////////////////////////////////
+ // TODO your street to be cleaned up below//
+ ///////////////////////////////////////
+  items: {
+    qaext: [
+      {name:"DC", id:"ca186b7fc3e94eb7a8145bb758ba896a", theme:'13861'},
+      {name:"LA", id:"489ea56b3c694e7ca9448298ce2c900d", theme:'10863'}
+    ],
+    www: [
+      {name:"DC", id:"39b2d247f702476e8575d02c0e05d0a9", theme:'DCTHEMEPROD'},
+      {name:"LA", id:"f7db9632c193454dacbec9b1436211a6", theme:'LATHEMEPROD'}
+    ]
 
   },
+
+  // model(params) {
+  //   // get the site from the opendata api... we will work with raw json-api json to keep this simpler
+  //   if(params.theme){
+  //
+  //     return Ember.RSVP.hash({
+  //       sites: this.get('items')[ENV.APP.arcgisPortal.env],
+  //       theme: this.get('themeService').getById(params.theme)
+  //     });
+  //   }else{
+  //     return Ember.RSVP.hash({
+  //       sites: this.get('items')[ENV.APP.arcgisPortal.env]
+  //     });
+  //   }
+  // },
+
+  ///////////////////////////////////////
+ // TODO your street to be cleaned up above//
+ ///////////////////////////////////////
+
   actions: {
     accessDenied: function () {
       // this.transitionTo('signin');

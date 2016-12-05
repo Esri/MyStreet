@@ -23,8 +23,8 @@ module.exports = function(environment) {
       providers: {
         'arcgis-oauth-bearer': {
           // TODO insert torii info here
-          apiKey: 'APP CLIENT ID GOES HERE',
-          portalUrl: 'https://someportal.com' //optional - defaults to https://arcgis.com
+          apiKey: 'J87zpPnTLsEthjDx', //QA App for Open Data Pages
+          portalUrl: 'https://www.arcgis.com'
         }
       }
     }
