@@ -16,6 +16,17 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    torii: {
+      sessionServiceName: 'session',
+      providers: {
+        'arcgis-oauth-bearer': {
+          // TODO insert torii info here
+          apiKey: 'APP CLIENT ID GOES HERE',
+          portalUrl: 'https://someportal.com' //optional - defaults to https://arcgis.com
+        }
+      }
     }
   };
 
@@ -39,7 +50,9 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    // brought in from torii
+    ENV.locationType = 'hash';
+    ENV.rootURL = '/your-repo-name/';
   }
 
   return ENV;

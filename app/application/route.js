@@ -9,5 +9,8 @@ export default Ember.Route.extend({
     let defaultLocale = 'en-us';
     intl.setLocale(defaultLocale);
     // let translationKey = this._calculateTranslationKey(defaultLocale);
-  }
+
+    console.log("in app");
+
+  },
 });
