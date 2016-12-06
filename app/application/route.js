@@ -5,6 +5,21 @@ export default Ember.Route.extend({
   intl: Ember.inject.service(),
   itemsService: Ember.inject.service('items-service'),
   featureService: Ember.inject.service('feature-service'),
+  siteLookup: Ember.inject.service('site-lookup'),
+
+  initializeSite () {
+    Ember.debug('appSettings Service::init...');
+    return this.get('siteLookup').getSite()
+      .then((siteModel) => {
+        // check if server has injected site settings (i.e. a custom site)
+        this.set('site', siteModel);
+        if (siteModel.data.values.capabilities) {
+
+          this.mergeCapabilities(siteModel.data.values.capabilities);
+        }
+        return {success:true};
+      })
+  },
 
   beforeModel: function () {
     // set base language to english, will need TODO build out alternative options
@@ -13,8 +28,8 @@ export default Ember.Route.extend({
     intl.setLocale(defaultLocale);
     // let translationKey = this._calculateTranslationKey(defaultLocale);
 
-    console.log('itemsService', this.get('itemsService'));
-    console.log('featureService', this.get('featureService'));
+    this.initializeSite();
+
   },
 
   ///////////////////////////////////////
@@ -29,7 +44,6 @@ export default Ember.Route.extend({
       {name:"DC", id:"39b2d247f702476e8575d02c0e05d0a9", theme:'DCTHEMEPROD'},
       {name:"LA", id:"f7db9632c193454dacbec9b1436211a6", theme:'LATHEMEPROD'}
     ]
-
   },
 
   // model(params) {
