@@ -22,11 +22,6 @@
     "broccoli-asset-rev": "^2.4.2",
     "calcite-bootstrap": "^0.3.3",
     "ember-ajax": "^2.0.1",
-    "ember-arcgis-layout-cards": "*",
-    "ember-arcgis-layout-components": "*",
-    "ember-arcgis-layout-services": "*",
-    "ember-arcgis-opendata-components": "*",
-    "ember-arcgis-opendata-services": "*",
     "ember-arcgis-portal-services": "0.8.1",
     "ember-arcgis-server-services": "0.1.1",
     "ember-cli": "2.8.0",
@@ -59,9 +54,5 @@
     "loader.js": "^4.0.1",
     "torii": "0.8.1",
     "torii-provider-arcgis": "0.4.1"
-  },
-  "dependencies": {
-    "ember-arcgis-portal-services": "^0.8.1",
-    "ember-cli-sass": "^5.6.0"
   }
 }
