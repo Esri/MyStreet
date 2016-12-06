@@ -1,15 +1,6 @@
 {
-  "test": "contact",
   "title": "Open Streets",
   "home": "Home",
-  "items": "Items",
-  "search": "Search",
-  "about": "Learn More",
-  "noteworthy": {
-    "title": "Noteworthy Data"
-  },
-  "newest": {
-    "title": "Newest Data",
-    "explore_more": "Explore More Datasets"
-  }
+  "index": "Index",
+  "about": "Learn More"
 }
