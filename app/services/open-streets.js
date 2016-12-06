@@ -8,7 +8,7 @@ export default Ember.Service.extend({
 
   // Webmap: 39b2d247f702476e8575d02c0e05d0a9
   testFunc () {
-    console.log('**Test Function**');
+    Ember.debug('**Test Function from open-streets service**');
   },
 
   beforeModel: function () {

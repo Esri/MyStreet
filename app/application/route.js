@@ -3,12 +3,8 @@ import ENV from '../config/environment';
 
 export default Ember.Route.extend({
   intl: Ember.inject.service(),
-  openStreets: Ember.inject.service('open-streets'),
 
   beforeModel: function () {
-    Ember.debug('applicationRoute::beforeModel...');
-
-    this.get('openStreets').testFunc();
 
     // set base language to english, will need TODO build out alternative options
     const intl = this.get('intl');
