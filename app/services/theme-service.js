@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import serviceMixin from '../mixins/service-mixin';
+import serviceMixin from '../helpers/mixins/service-mixin';
 
 export default Ember.Service.extend(serviceMixin, {
 

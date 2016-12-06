@@ -127,6 +127,7 @@ export default Ember.Service.extend({
     return this.get('siteLookup').getSite()
       .then((siteModel) => {
         // check if server has injected site settings (i.e. a custom site)
+        console.log('siteModel', siteModel);
         this.set('site', siteModel);
         if (siteModel.data.values.capabilities) {
 

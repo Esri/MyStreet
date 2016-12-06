@@ -3,20 +3,13 @@ import ENV from '../config/environment';
 
 export default Ember.Route.extend({
   intl: Ember.inject.service(),
-  appSettings: Ember.inject.service(),
-  itemsService: Ember.inject.service('items-service'),
-  featureService: Ember.inject.service('feature-service'),
-  siteLookup: Ember.inject.service('site-lookup'),
+  openStreets: Ember.inject.service('open-streets'),
 
   beforeModel: function () {
     Ember.debug('applicationRoute::beforeModel...');
-    // kick off two things
-    // - i18n initialization
-    // - session
-    let initializationPromises = {
-      // i18nStatus: this._initI18n(),
-      // sessionStatus: this._initSession()
-    }
+
+    this.get('openStreets').testFunc();
+    this.get('openStreets').query();
 
     // set base language to english, will need TODO build out alternative options
     const intl = this.get('intl');
@@ -24,27 +17,6 @@ export default Ember.Route.extend({
     intl.setLocale(defaultLocale);
     // let translationKey = this._calculateTranslationKey(defaultLocale);
 
-
-    return Ember.RSVP.hashSettled(initializationPromises)
-    .then((/*results*/) => {
-      // now we fire off the site fetch (this needed)
-      return this.get('appSettings').initializeSite();
-    })
-    .then(() => {
-      this._addSiteLinksJson();
-      return;
-    })
-    .catch((err) => {
-      Ember.debug('Error occured initializing the app ' + JSON.stringify(err));
-    });
-
-
-  },
-
-  model () {
-  // we do this so we have the Site as the model in renderTemplate
-    console.log('111appsettings', this.get('appSettings').get('site'));
-    return this.get('appSettings').get('site');
   },
 
 
