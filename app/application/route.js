@@ -3,34 +3,50 @@ import ENV from '../config/environment';
 
 export default Ember.Route.extend({
   intl: Ember.inject.service(),
+  appSettings: Ember.inject.service(),
   itemsService: Ember.inject.service('items-service'),
   featureService: Ember.inject.service('feature-service'),
   siteLookup: Ember.inject.service('site-lookup'),
 
-  initializeSite () {
-    Ember.debug('appSettings Service::init...');
-    return this.get('siteLookup').getSite()
-      .then((siteModel) => {
-        // check if server has injected site settings (i.e. a custom site)
-        this.set('site', siteModel);
-        if (siteModel.data.values.capabilities) {
-
-          this.mergeCapabilities(siteModel.data.values.capabilities);
-        }
-        return {success:true};
-      })
-  },
-
   beforeModel: function () {
+    Ember.debug('applicationRoute::beforeModel...');
+    // kick off two things
+    // - i18n initialization
+    // - session
+    let initializationPromises = {
+      // i18nStatus: this._initI18n(),
+      // sessionStatus: this._initSession()
+    }
+
     // set base language to english, will need TODO build out alternative options
     const intl = this.get('intl');
     let defaultLocale = 'en-us';
     intl.setLocale(defaultLocale);
     // let translationKey = this._calculateTranslationKey(defaultLocale);
 
-    this.initializeSite();
+
+    return Ember.RSVP.hashSettled(initializationPromises)
+    .then((/*results*/) => {
+      // now we fire off the site fetch (this needed)
+      return this.get('appSettings').initializeSite();
+    })
+    .then(() => {
+      this._addSiteLinksJson();
+      return;
+    })
+    .catch((err) => {
+      Ember.debug('Error occured initializing the app ' + JSON.stringify(err));
+    });
+
 
   },
+
+  model () {
+  // we do this so we have the Site as the model in renderTemplate
+    console.log('111appsettings', this.get('appSettings').get('site'));
+    return this.get('appSettings').get('site');
+  },
+
 
   ///////////////////////////////////////
  // TODO your street to be cleaned up below//

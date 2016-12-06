@@ -4,7 +4,7 @@ import ENV from '../config/environment';
 export default Ember.Service.extend({
   itemsService: Ember.inject.service('items-service'),
   // TODO Q - why is site-service not lookupable
-  // siteService: Ember.inject.service('site-service'),
+  siteService: Ember.inject.service('site-service'),
   session: Ember.inject.service('session'),
   featureService: Ember.inject.service('feature-service'),
   fastboot: Ember.inject.service(),
