@@ -3,19 +3,22 @@ import ENV from '../config/environment';
 
 export default Ember.Route.extend({
   intl: Ember.inject.service(),
-  itemsService: Ember.inject.service('items-service'),
-  featureService: Ember.inject.service('feature-service'),
+  openStreets: Ember.inject.service('open-streets'),
 
   beforeModel: function () {
+    Ember.debug('applicationRoute::beforeModel...');
+
+    this.get('openStreets').testFunc();
+    this.get('openStreets').query();
+
     // set base language to english, will need TODO build out alternative options
     const intl = this.get('intl');
     let defaultLocale = 'en-us';
     intl.setLocale(defaultLocale);
     // let translationKey = this._calculateTranslationKey(defaultLocale);
 
-    console.log('itemsService', this.get('itemsService'));
-    console.log('featureService', this.get('featureService'));
   },
+
 
   ///////////////////////////////////////
  // TODO your street to be cleaned up below//
@@ -29,7 +32,6 @@ export default Ember.Route.extend({
       {name:"DC", id:"39b2d247f702476e8575d02c0e05d0a9", theme:'DCTHEMEPROD'},
       {name:"LA", id:"f7db9632c193454dacbec9b1436211a6", theme:'LATHEMEPROD'}
     ]
-
   },
 
   // model(params) {
