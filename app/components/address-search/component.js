@@ -7,14 +7,7 @@ export default Ember.Component.extend({
   init () {
     this._super.apply(this, arguments);
     // console.log(model);
-    console.log('appSettings from address-search component', this.get('appSettings').get('settings'));
-
+    // console.log('appSettings from address-search component', this.get('appSettings').get('settings'));
   },
-
-  // actions: {
-  //   setAddress (value) {
-  //     this.get('openStreets').findLocationAddress(value);
-  //   }
-  // }
 
 });

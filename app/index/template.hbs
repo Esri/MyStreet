@@ -1,5 +1,14 @@
-{{address-search onAddressChange=(action 'onAddressChanged')}}
+{{address-search setAddress=(action 'onAddressChanged') address=address}}
 
 -
-<h3> {{address}} </h3>
+<h3> {{returnedAddress}} </h3>
 -
+
+{{#each webmap.operationalLayers as |layer|}}
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{layer.title}}</h3>
+  </div>
+  {{!topic-feature layer=layer location=model.location.feature.geometry}}
+</div>
+{{/each}}

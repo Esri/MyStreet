@@ -24,7 +24,7 @@ module.exports = function(environment) {
         'arcgis-oauth-bearer': {
           // TODO insert torii info here
           apiKey: 'J87zpPnTLsEthjDx', //QA App for Open Data Pages
-          portalUrl: 'https://www.arcgis.com'
+          portalUrl: 'https://qaext.arcgis.com'
         }
       }
     }

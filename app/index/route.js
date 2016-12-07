@@ -18,9 +18,14 @@ export default Ember.Route.extend({
       data: this.get('itemsService').getDataById(params.id),
     })
     .then((results) => {
-      // store in appSettings
       console.log('results from index route item call', results);
       this.get('appSettings').set('settings', results);
+      return this.get('itemsService').getDataById(results.data.values.webmap)
+    })
+    .then((webmap) => {
+      // store in appSettings
+      Ember.debug('webmap from index route item call' + JSON.stringify(webmap))
+      this.get('appSettings').set('settings.webmap', webmap);
     })
     .catch((err) => {
       Ember.debug('Error occured fetching the item: ' + JSON.stringify(err));

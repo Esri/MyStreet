@@ -7,13 +7,19 @@ export default Ember.Service.extend({
   featureService: Ember.inject.service(),
   geocodeService: Ember.inject.service(),
 
-  // Webmap: 39b2d247f702476e8575d02c0e05d0a9
-  testFunc () {
-    Ember.debug('**Test Function from open-streets service**');
-  },
-
+  /**
+   * Promisified call to geocode-service to find an address
+   */
   findLocationAddress (inputString) {
-    this.get('geocodeService').findLocationAddress(inputString);
+    return this.get('geocodeService').findLocationAddress(inputString)
+      // TODO
+      // .then((results) => {
+        // manipulate raw response into what is needed in open-streets
+
+      // })
+      // handling of empty response object
+
+      // .catch(err)
   }
 
 });

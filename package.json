@@ -45,6 +45,7 @@
     "ember-intl": "^2.15.1",
     "ember-load-initializers": "^0.5.1",
     "ember-network": "0.3.0",
+    "ember-one-way-controls": "1.1.2",
     "ember-resolver": "^2.0.3",
     "eslint-config-semistandard": "~7.0.0",
     "eslint-config-standard": "~6.0.0",

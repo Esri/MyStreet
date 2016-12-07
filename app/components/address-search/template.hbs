@@ -1,10 +1,8 @@
 <div class="container">
   <h2>{{t 'index.prompt'}}</h2>
   <div class="col-md-4"><!-- "col-md-offset-4" -->
-    <input type="text" oninput={{action 'setAddress' value="target.value"}} placeholder="123 Main St." class="form-control">
+    {{input key-up=setAddress placeholder="123 Main St." class="form-control" value=address}}
   </div>
 </div>
-
-{{address}}
 
 {{yield}}
