@@ -9,5 +9,11 @@ export default Ember.Component.extend({
     console.log('appSettings from address-search component', this.get('appSettings').get('settings'));
 
   },
-  
+
+  actions: {
+    setAddress (value) {
+      console.log(value);
+    }
+  }
+
 });
