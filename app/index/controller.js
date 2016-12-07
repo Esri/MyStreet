@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
   init () {
     this._super.apply(this, arguments);
     // console.log(model);
-    console.log(this.get('appSettings'));
+    console.log('appSettings from index controller', this.get('appSettings').get('settings'));
 
   },
 

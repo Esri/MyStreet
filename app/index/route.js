@@ -10,7 +10,8 @@ export default Ember.Route.extend({
   },
 
   model (params) {
-    // TODO Eventually, check if params.id === null, then make a this.get('itemService').search(...) call to locate all the App Config Items for Open Street.
+    // TODO Eventually, check if params.id === null, then make a
+    // this.get('itemService').search(...) call to locate all the App Config Items for Open Street.
 
     return Ember.RSVP.hash({
       item: this.get('itemsService').getById(params.id),
@@ -21,6 +22,9 @@ export default Ember.Route.extend({
       console.log('results', results);
       this.get('appSettings').set('settings', results);
     })
+    .catch((err) => {
+      Ember.debug('Error occured fetching the item: ' + JSON.stringify(err));
+    });
 
   }
 });

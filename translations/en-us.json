@@ -1,6 +1,11 @@
 {
-  "title": "Open Streets",
-  "home": "Home",
-  "index": "Index",
-  "about": "Learn More"
+  "general": {
+    "title": "Open Streets",
+    "home": "Home",
+    "index": "Index",
+    "about": "Learn More"
+  },
+  "index": {
+    "prompt": "Explore an Address"
+  }
 }
