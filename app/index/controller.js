@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  appSettings: Ember.inject.service('app-settings'),
-  openStreets: Ember.inject.service('open-streets'),
+  appSettings: Ember.inject.service(),
+  openStreets: Ember.inject.service(),
   address: "",
 
   init () {
@@ -19,7 +19,7 @@ export default Ember.Controller.extend({
 
   actions: {
     onAddressChanged (address) {
-      console.log(address);
+      console.log('onAddressChanged', address);
       // do work
       // return promise
       // call service

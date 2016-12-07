@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  itemsService: Ember.inject.service('items-service'),
-  appSettings: Ember.inject.service('app-settings'),
+  itemsService: Ember.inject.service(),
+  appSettings: Ember.inject.service(),
 
   beforeModel () {
     Ember.debug('indexRoute::beforeModel');
@@ -19,7 +19,7 @@ export default Ember.Route.extend({
     })
     .then((results) => {
       // store in appSettings
-      console.log('results', results);
+      console.log('results from index route item call', results);
       this.get('appSettings').set('settings', results);
     })
     .catch((err) => {

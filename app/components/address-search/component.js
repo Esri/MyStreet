@@ -1,7 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  appSettings: Ember.inject.service('app-settings'),
+  appSettings: Ember.inject.service(),
+  openStreets: Ember.inject.service(),
 
   init () {
     this._super.apply(this, arguments);
@@ -10,10 +11,10 @@ export default Ember.Component.extend({
 
   },
 
-  actions: {
-    setAddress (value) {
-      console.log(value);
-    }
-  }
+  // actions: {
+  //   setAddress (value) {
+  //     this.get('openStreets').findLocationAddress(value);
+  //   }
+  // }
 
 });
