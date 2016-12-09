@@ -22,7 +22,7 @@
     "broccoli-asset-rev": "^2.4.2",
     "calcite-bootstrap": "^0.3.3",
     "ember-ajax": "^2.0.1",
-    "ember-arcgis-portal-services": "^0.8.1",
+    "ember-arcgis-portal-services": "^0.8.4",
     "ember-arcgis-server-services": "0.1.1",
     "ember-cli": "2.8.0",
     "ember-cli-active-link-wrapper": "0.3.2",

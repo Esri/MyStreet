@@ -6,7 +6,6 @@ export default Ember.Route.extend({
 
   beforeModel () {
     Ember.debug('indexRoute::beforeModel');
-
   },
 
   model (params) {

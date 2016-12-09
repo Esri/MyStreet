@@ -7,6 +7,8 @@
   <div class="panel-heading">
     <h3 class="panel-title">{{layer.title}}</h3>
   </div>
-  {{topic-feature layer=layer location=model.location.feature.geometry}}
+  <div class="panel-body">
+    {{topic-feature layer=layer location=model.location.feature.geometry}}
+  </div>
 </div>
 {{/each}}
