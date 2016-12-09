@@ -1,0 +1,20 @@
+[topic-layers]
+{{#each features as |feature|}}
+  <li class="list-group-item">
+    <h4 class="list-group-item-heading">{{feature.title}}</h4>
+    <p class="list-group-item-text">
+      {{{feature.description}}}
+      {{feature.description}}
+    </p>
+  </li>
+{{/each}}
+
+{{#each layers as |layer|}}
+  <li class="list-group-item">
+    <h4 class="list-group-item-heading">{{layer.title}}</h4>
+    <p class="list-group-item-text">
+      {{{layer.description}}}
+      {{layer.description}}
+    </p>
+  </li>
+{{/each}}

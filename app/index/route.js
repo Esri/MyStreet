@@ -24,7 +24,7 @@ export default Ember.Route.extend({
     })
     .then((webmap) => {
       // store in appSettings
-      Ember.debug('webmap from index route item call' + JSON.stringify(webmap))
+      Ember.debug('webmap from index route item call'/* + JSON.stringify(webmap)*/);
       this.get('appSettings').set('settings.webmap', webmap);
     })
     .catch((err) => {
