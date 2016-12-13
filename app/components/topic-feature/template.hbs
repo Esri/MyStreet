@@ -1,19 +1,11 @@
-{{location}}
-{{#if hasData}}
-  {{#each features as |feature|}}
-    <!-- TODO insert a topic-feature comp, rename this one to topic list -->
-      <!-- string interpolation based on popupList and data massaging -->
-    <li class="list-group-item">
-      <h4 class="list-group-item-heading">
-        {{feature.title}}
-        {{!feature.attributes.ZONING_LABEL}}
-      </h4>
-      <p class="list-group-item-text">
-        {{feature.description}}
-        {{!feature.attributes.ZONE_DESCRIPTION}}
-      </p>
-    </li>
-  {{/each}}
-  {{else}}
-  <p>No data found for this address.</p>
-{{/if}}
+<!-- string interpolation based on popupList and data massaging -->
+{{feature}}
+{{layer.title}}
+<li class="list-group-item">
+  <h4 class="list-group-item-heading">
+    {{feature.title}}
+  </h4>
+  <p class="list-group-item-text">
+    {{feature.description}}
+  </p>
+</li>
