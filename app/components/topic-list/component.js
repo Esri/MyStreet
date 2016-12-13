@@ -20,13 +20,24 @@ export default Ember.Component.extend({
     this._super.apply(this, arguments);
   },
 
+  getValue: function(data, key, fields) {
+    if(data.hasOwnProperty(key)) {
+      return this.coerceAttributeValue(data,key,fields);
+    } else {
+      return "";
+    }
+  },
+
+  coerceAttributeValue: function(data, key, fields) {
+    switch (fields[key].type) {
+      case "esriFieldTypeDate":
+        return new Date(data[key]);
+      default:
+        return data[key];
+    }
+  },
+
   fSQuery (url, location) {
-
-
-    console.log('layerTitle', layerTitle);
-    let layerTitle = this.get('layer.title');
-    console.log('layerTitle', layerTitle);
-
     let options = {
       "outFields": "*",
       "geometryType": "esriGeometryPoint",
@@ -34,6 +45,12 @@ export default Ember.Component.extend({
       "inSR": 4326,
     }
 
+    let layerTitle = this.get('layer.title');
+    let featureTitle = this.get('layer.popupInfo.title');
+    let featureDescription = this.get('layer.popupInfo.description');
+
+    console.log('featureTitle', featureTitle);
+    console.log('featureDescription', featureDescription);
 
     if(layerTitle.indexOf('Nearby') !== -1) {
       let match = layerTitle.match(/Nearby (\d+)/);
@@ -52,7 +69,39 @@ export default Ember.Component.extend({
     return this.get('featureService').query(url, options)
       .then((results) => {
         console.log('results call from t-f comp::', results);
+
+
+        let fields = {};
+        results.fields.forEach((field) => {
+          fields[field.name] = field;
+        });
+
         this.set('features', results.features);
+        this.set('features.info', {featureTitle, featureDescription})
+
+        results.features.forEach((feature) => {
+          let data = feature.attributes;
+          // Template replace `{POP00001}` -> feature['POP00001']
+          var featureTitleInterpolated = featureTitle.replace(/\{(\w*)\}/g, (m,key) => {
+            return this.getValue(data, key, fields);
+          });
+          var featureDescriptionInterpolated = featureDescription.replace(/\{(\w*)\}/g,(m,key) =>{
+            return this.getValue(data, key, fields);
+          });
+          this.set('features.info.featureTitleInterpolated', featureTitleInterpolated)
+          this.set('features.info.featureDescriptionInterpolated', featureDescriptionInterpolated)
+        });
+
+
+        //     model.features.push({title: featureTitle, description: featureDescription})
+        //   })
+        // }
+
+
+
+
+
+
 
         // model.features.push({title: results.featureTitle, description: featureDescription})
         return results;
