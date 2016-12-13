@@ -36,9 +36,11 @@ export default Ember.Service.extend({
       }
     }
 
+    console.log('options1', options);
+
     return this.get('geocodeService').findLocationAddress(inputString, options)
       .catch((err) => {
-        console.log(err);
+        console.log('geoCodeSerivce:error::', err);
       })
       // TODO
       // .then((results) => {

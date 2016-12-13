@@ -2,13 +2,13 @@
 
 <h3> {{returnedAddress}} </h3>
 
-{{#each webmap.operationalLayers as |layer|}}
+{{#each layers as |layer|}}
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">{{layer.title}}</h3>
   </div>
   <div class="panel-body">
-    {{topic-feature layer=layer location=model.location.feature.geometry}}
+    {{topic-feature layer=layer location=geocodedLocation}}
   </div>
 </div>
 {{/each}}

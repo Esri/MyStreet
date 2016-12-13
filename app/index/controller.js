@@ -5,6 +5,10 @@ export default Ember.Controller.extend({
   openStreets: Ember.inject.service(),
   address: "",
   returnedAddress: "",
+  geocodedLocation: [],
+  layers: Ember.computed('appSettings.settings.webmap.operationalLayers', function() {
+    return this.get('appSettings.settings.webmap.operationalLayers')
+  }),
   webmap: Ember.computed('appSettings.settings.webmap', function() {
     return this.get('appSettings.settings.webmap')
   }),
@@ -14,26 +18,21 @@ export default Ember.Controller.extend({
 
   init () {
     this._super.apply(this, arguments);
-    // console.log(model);
-    // console.log('appSettings from index controller', this.get('appSettings').get('settings'));
-    console.log('indexcontroller :: webmap', this.get('webmap'));
-    console.log('indexcontroller :: appSettings', this.get('appSettings'));
-    console.log('indexcontroller :: bbox', this.get('bbox'));
   },
 
   searchAddress () {
-    console.log(this.get('bbox'));
     return this.get('openStreets').findLocationAddress(this.get('address'), {'bbox': this.get('bbox')})
       .then((results) => {
-        console.log('results from index controller search address function:', results);
-        this.set('returnedAddress', results.locations[0].name);
+        console.log('results from index controller search address:', results);
+        this.set('returnedAddress', results.candidates[0].address);
+        this.set('geocodedLocation', [results.candidates[0].location.x, results.candidates[0].location.y])
+        console.log('geocodedLocation in index controller:: ', this.get('geocodedLocation'));
         return results;
       })
       .catch((err) => {
+        // TODO why is this error returning, even with successful results
         Ember.debug('Error occured fetching the searched address: ' + JSON.stringify(err));
       });
-
-    // TODO - bbox will come from the app config - for v0.0, leave it out to get the component working...
   },
 
   actions: {

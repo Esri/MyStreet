@@ -5,7 +5,6 @@ export default Ember.Route.extend({
   appSettings: Ember.inject.service(),
 
   beforeModel () {
-    Ember.debug('indexRoute::beforeModel');
   },
 
   model (params) {
@@ -17,13 +16,13 @@ export default Ember.Route.extend({
       data: this.get('itemsService').getDataById(params.id),
     })
     .then((results) => {
-      console.log('results from index route item call', results);
+      console.log('results from index route item call:', results);
       this.get('appSettings').set('settings', results);
       return this.get('itemsService').getDataById(results.data.values.webmap)
     })
     .then((webmap) => {
       // store in appSettings
-      Ember.debug('webmap from index route item call'/* + JSON.stringify(webmap)*/);
+      console.log('webmap from index route item call:', webmap);
       this.get('appSettings').set('settings.webmap', webmap);
     })
     .catch((err) => {
