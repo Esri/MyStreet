@@ -1,6 +1,6 @@
 {{#if hasData}}
-  {{#each features as |feature|}}
-    {{topic-feature features=features}}
+  {{#each featureInfos as |featureInfo|}}
+    {{topic-feature model=featureInfo}}
   {{/each}}
   {{else}}
   <p>No data found for this address.</p>

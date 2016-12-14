@@ -23,7 +23,6 @@ export default Ember.Controller.extend({
   searchAddress () {
     return this.get('openStreets').findLocationAddress(this.get('address'), {'bbox': this.get('bbox')})
       .then((results) => {
-        console.log('results from index controller search address:', results);
         this.set('returnedAddress', results.candidates[0].address);
         this.set('geocodedLocation', [results.candidates[0].location.x, results.candidates[0].location.y])
         return results;

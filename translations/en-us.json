@@ -6,6 +6,8 @@
     "about": "Learn More"
   },
   "index": {
-    "prompt": "Explore an Address"
+    "prompt": "Explore an Address",
+    "DC": "D.C.",
+    "LA": "L.A."
   }
 }

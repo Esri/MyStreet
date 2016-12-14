@@ -3,16 +3,20 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   featureService: Ember.inject.service(),
   location: [],
-  features: [],
+  featureInfos: [],
 
   onAddressChanged: Ember.observer('location', function() {
     let url = this.get('layer.url');
     let location = this.get('location');
-    this.queryFeature(url, location);
+    this.queryFeature(url, location)
+      .then((result) => {
+        this.set('featureInfos', result);
+      })
+      // TODO .catch;
   }),
 
-  hasData: Ember.computed('features', function(){
-    return (this.get('features.length') > 0);
+  hasData: Ember.computed('featureInfos', function(){
+    return (this.get('featureInfos.length') > 0);
   }),
 
   didInsertElement () {
@@ -65,13 +69,12 @@ export default Ember.Component.extend({
     return this.get('featureService').query(url, options)
       .then((results) => {
         let fields = {};
-
+        // console.log('results from t-f', results);
         results.fields.forEach((field) => {
           fields[field.name] = field;
         });
 
-        this.set('features', results.features);
-        this.set('features.info', {featureTitle, featureDescription})
+        let featureInfos = [];
 
         results.features.forEach((feature) => {
           let data = feature.attributes;
@@ -82,11 +85,11 @@ export default Ember.Component.extend({
           var featureDescriptionInterpolated = featureDescription.replace(/\{(\w*)\}/g,(m,key) =>{
             return this.getValue(data, key, fields);
           });
-          this.set('features.info.featureTitleInterpolated', featureTitleInterpolated)
-          this.set('features.info.featureDescriptionInterpolated', featureDescriptionInterpolated)
+          let featureInfo = {"title": featureTitleInterpolated, "description": featureDescriptionInterpolated};
+          featureInfos.pushObject(featureInfo);
         });
 
-        return results;
+        return featureInfos;
       });
   }
 });

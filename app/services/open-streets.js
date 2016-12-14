@@ -11,21 +11,6 @@ export default Ember.Service.extend({
    * Promisified call to geocode-service to find an address
    */
   findLocationAddress (inputString, options) {
-    // let options = {
-    //   // Cali coordinates in object form
-    //   bbox:{
-    //     "xmin": -118.9138,
-    //     "ymin": 33.7148,
-    //     "xmax": -117.5735,
-    //     "ymax": 34.3895,
-    //     "spatialReference": {
-    //       "wkid": 3395
-    //     }
-    //   }
-      // Cali coordinates in string form
-      // bbox: "-118.9138,33.7148,-117.5735,34.3895"
-    // }
-
     // if passed in extent is an array, turn it into an object that geocode-service will be able to read
     if (options.bbox[0]) {
       options.bbox = {
@@ -35,8 +20,6 @@ export default Ember.Service.extend({
         "ymax": options.bbox[1][1],
       }
     }
-
-    console.log('options1', options);
 
     return this.get('geocodeService').findLocationAddress(inputString, options)
       .catch((err) => {
