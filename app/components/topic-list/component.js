@@ -8,8 +8,7 @@ export default Ember.Component.extend({
   onAddressChanged: Ember.observer('location', function() {
     let url = this.get('layer.url');
     let location = this.get('location');
-    this.fSQuery(url, location);
-    // TODO put in loop to skip if no location - this may already have been achieved
+    this.queryFeature(url, location);
   }),
 
   hasData: Ember.computed('features', function(){
@@ -37,20 +36,17 @@ export default Ember.Component.extend({
     }
   },
 
-  fSQuery (url, location) {
+  queryFeature (url, location) {
+    let layerTitle = this.get('layer.title');
+    let featureTitle = this.get('layer.popupInfo.title');
+    let featureDescription = this.get('layer.popupInfo.description');
+
     let options = {
       "outFields": "*",
       "geometryType": "esriGeometryPoint",
       "geometry": [],
       "inSR": 4326,
     }
-
-    let layerTitle = this.get('layer.title');
-    let featureTitle = this.get('layer.popupInfo.title');
-    let featureDescription = this.get('layer.popupInfo.description');
-
-    console.log('featureTitle', featureTitle);
-    console.log('featureDescription', featureDescription);
 
     if(layerTitle.indexOf('Nearby') !== -1) {
       let match = layerTitle.match(/Nearby (\d+)/);
@@ -68,10 +64,8 @@ export default Ember.Component.extend({
 
     return this.get('featureService').query(url, options)
       .then((results) => {
-        console.log('results call from t-f comp::', results);
-
-
         let fields = {};
+
         results.fields.forEach((field) => {
           fields[field.name] = field;
         });
@@ -92,18 +86,6 @@ export default Ember.Component.extend({
           this.set('features.info.featureDescriptionInterpolated', featureDescriptionInterpolated)
         });
 
-
-        //     model.features.push({title: featureTitle, description: featureDescription})
-        //   })
-        // }
-
-
-
-
-
-
-
-        // model.features.push({title: results.featureTitle, description: featureDescription})
         return results;
       });
   }

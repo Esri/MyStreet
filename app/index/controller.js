@@ -26,7 +26,6 @@ export default Ember.Controller.extend({
         console.log('results from index controller search address:', results);
         this.set('returnedAddress', results.candidates[0].address);
         this.set('geocodedLocation', [results.candidates[0].location.x, results.candidates[0].location.y])
-        console.log('geocodedLocation in index controller:: ', this.get('geocodedLocation'));
         return results;
       })
       .catch((err) => {
