@@ -4,7 +4,26 @@ export default Ember.Route.extend({
   itemsService: Ember.inject.service(),
   appSettings: Ember.inject.service(),
 
-  beforeModel () {
+  renderTemplate (controller, model) {
+    // TODO need to pass in model above?
+    Ember.debug('IndexRoute::renderTemplate fired...');
+    let errStatus = this.get('appSettings.errStatus');
+
+    if (!errStatus) {
+      this.render();
+    } else {
+      if (errStatus === 500) {
+        // TODO fix model pass in below
+        this.render('gateway.error', {model: {status: errStatus}});
+      } else {
+        if (errStatus === 403) {
+          this.render('gateway.403');
+        }
+        if (errStatus === 404 || errStatus === 400) {
+          this.render('gateway.404');
+        }
+      }
+    }
   },
 
   model (params) {
@@ -26,8 +45,9 @@ export default Ember.Route.extend({
       this.get('appSettings').set('settings.webmap', webmap);
     })
     .catch((err) => {
+      this.get('appSettings').set('errStatus', err.code || 500);
       Ember.debug('Error occured fetching the item: ' + JSON.stringify(err));
     });
+  },
 
-  }
 });

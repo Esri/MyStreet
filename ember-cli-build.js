@@ -7,7 +7,6 @@ module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     // Add options here
 
-    // TODO specific app options for sassBuild
     sassOptions: {
       includePaths: [
         'node_modules/bootstrap-sass/assets/stylesheets',
