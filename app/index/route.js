@@ -3,8 +3,9 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   itemsService: Ember.inject.service(),
   appSettings: Ember.inject.service(),
+  queryParams: {'loc': {refreshModel: true}},
 
-  renderTemplate (controller, model) {
+  renderTemplate (/*controller, model*/) {
     // TODO need to pass in model above?
     Ember.debug('IndexRoute::renderTemplate fired...');
     let errStatus = this.get('appSettings.errStatus');

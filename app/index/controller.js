@@ -3,6 +3,15 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   appSettings: Ember.inject.service(),
   openStreets: Ember.inject.service(),
+  queryParams: ['loc'],
+  loc: "",
+  changeLoc: Ember.observer('loc', 'appSettings.settings', function () {
+    var loc = this.get('loc');
+    if (loc) {
+      this.set('address', loc);
+      this.searchAddress();
+    }
+  }),
   address: "",
   returnedAddress: "",
   geocodedLocation: [],
@@ -18,9 +27,11 @@ export default Ember.Controller.extend({
 
   init () {
     this._super.apply(this, arguments);
+    this.get('changeLoc')
   },
 
   searchAddress () {
+    this.set('loc', this.get('address'));
     return this.get('openStreets').findLocationAddress(this.get('address'), {'bbox': this.get('bbox')})
       .then((results) => {
         this.set('returnedAddress', results.candidates[0].address);
@@ -31,6 +42,10 @@ export default Ember.Controller.extend({
         // TODO why is this error returning, even with successful results
         Ember.debug('Error occured fetching the searched address: ' + JSON.stringify(err));
       });
+  },
+
+  afterModel () {
+    this.set('loc', this.get('address'));
   },
 
   actions: {
