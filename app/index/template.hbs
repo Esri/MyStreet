@@ -2,13 +2,17 @@
 
 <h3> {{returnedAddress}} </h3>
 
-{{#each layers as |layer|}}
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">{{layer.title}}</h3>
+{{#if returnedAddress}}
+  {{#each layers as |layer|}}
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{layer.title}}</h3>
+    </div>
+    <div class="panel-body">
+      {{topic-list layer=layer location=geocodedLocation}}
+    </div>
   </div>
-  <div class="panel-body">
-    {{topic-list layer=layer location=geocodedLocation}}
-  </div>
-</div>
-{{/each}}
+  {{/each}}
+{{else}}
+  {{t 'index.instructions'}}
+{{/if}}

@@ -6,7 +6,7 @@ export default Ember.Route.extend({
   queryParams: {'loc': {refreshModel: true}},
 
   renderTemplate (/*controller, model*/) {
-    // TODO need to pass in model above?
+    // TODO need to pass in controller and model above?
     Ember.debug('IndexRoute::renderTemplate fired...');
     let errStatus = this.get('appSettings.errStatus');
 
@@ -38,6 +38,7 @@ export default Ember.Route.extend({
     .then((results) => {
       console.log('results from index route item call:', results);
       this.get('appSettings').set('settings', results);
+      // this.get('appSettings').set('errStatus', 200);
       return this.get('itemsService').getDataById(results.data.values.webmap)
     })
     .then((webmap) => {

@@ -5,12 +5,17 @@ export default Ember.Component.extend({
   location: [],
   featureInfos: [],
 
+  loading: true,
+
   onAddressChanged: Ember.observer('location', function() {
     let url = this.get('layer.url');
     let location = this.get('location');
     this.queryFeature(url, location)
       .then((result) => {
         this.set('featureInfos', result);
+      })
+      .then(() => {
+        this.set('loading', false);
       })
       // TODO .catch;
   }),
