@@ -2,6 +2,10 @@
 
 <h3> {{returnedAddress}} </h3>
 
+<!-- TODO should come from application -->
+<!-- TODO rename to inline-style -->
+{{download-style href=cssUrl}}
+
 {{#if returnedAddress}}
   {{#each layers as |layer|}}
   <div class="panel panel-default">

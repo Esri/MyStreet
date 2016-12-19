@@ -55,6 +55,6 @@
     "eslint-plugin-standard": "^2.0.0",
     "loader.js": "^4.0.1",
     "torii": "0.8.1",
-    "torii-provider-arcgis": "0.4.1"
+    "torii-provider-arcgis": "0.4.3"
   }
 }

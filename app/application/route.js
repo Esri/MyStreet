@@ -3,6 +3,8 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   intl: Ember.inject.service(),
+  session: Ember.inject.service(),
+  hostUrl: Ember.computed.reads('session.portalHostname'),
 
   beforeModel: function () {
     // set base language to english, will need TODO build out alternative options

@@ -24,10 +24,14 @@ export default Ember.Controller.extend({
   bbox: Ember.computed('appSettings.settings.webmap', function() {
     return this.get('appSettings.settings.item.extent')
   }),
+  cssUrl: Ember.computed('session.portalHostname', 'appSettings.settings.data.values.themeId',function() {
+    return `https://${this.get('session.portalHostname')}/sharing/rest/content/items/${this.get('appSettings.settings.data.values.themeId')}/resources/opendata.css.txt`
+  }),
+
 
   init () {
     this._super.apply(this, arguments);
-    this.get('changeLoc')
+    this.get('changeLoc');
   },
 
   searchAddress () {
