@@ -2,10 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   ajax: Ember.inject.service(),
-  //
-  // TODO tagname set to style gives issues (dom doesn't render)
+
   tagName: 'style',
-  // tagName: '',
 
   css: '',
 

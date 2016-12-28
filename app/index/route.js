@@ -6,7 +6,6 @@ export default Ember.Route.extend({
   queryParams: {'loc': {refreshModel: true}},
 
   renderTemplate (/*controller, model*/) {
-    // TODO need to pass in controller and model above?
     Ember.debug('IndexRoute::renderTemplate fired...');
     let errStatus = this.get('appSettings.errStatus');
 
