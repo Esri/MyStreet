@@ -22,9 +22,14 @@ Easily navigable bibliography within the app itself. Users are able to trackback
 
 - [Example search for dataset by Layer URL](https://opendata.arcgis.com/api/v2/datasets?include=sites&filter[url]=http://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/Public_Service_WebMercator/MapServer/27)
 
+#### Accessibility Consideration
+
+- Adherence to [WCAG](https://www.w3.org/WAI/intro/wcag.php)
+- Localizable strings.
+
 #### Shared URL State
 
-Configurable App Spec notes [URL parameters](http://doc.arcgis.com/en/arcgis-online/create-maps/create-app-templates.htm#ESRI_SECTION1_E383AB1F754746D19C8BF0251D22B54C) but only specifies `webmap=`. Apps should have consistent view state across apps. These enable bookmarkable links that maintain state of app at the time of tracking the url (extent, contents, etc...) as well as cross-linking between applications. For example, [DC Zoning for an house](http://maps.dcoz.dc.gov/zr16/#l=19&x=-8575669.181649944&y=4707024.994399112&mms=18!26!21!24!22!19!4!8!1!2&dcb=0) should be able to link to the [DC Lead pipe status](https://geo.dcwater.com/Lead/) for that same house or any other app. It should also allow opening apps from external third-party sites
+Configurable App Spec notes [URL parameters](http://doc.arcgis.com/en/arcgis-online/create-maps/create-app-templates.htm#ESRI_SECTION1_E383AB1F754746D19C8BF0251D22B54C) but only specifies `webmap=`. Apps should have consistent view state across apps (consistent set of query parameters). These enable bookmarkable links that maintain state of app at the time of tracking the url (extent, contents, etc...) as well as cross-linking between applications. For example, [DC Zoning for an house](http://maps.dcoz.dc.gov/zr16/#l=19&x=-8575669.181649944&y=4707024.994399112&mms=18!26!21!24!22!19!4!8!1!2&dcb=0) should be able to link to the [DC Lead pipe status](https://geo.dcwater.com/Lead/) for that same house or any other app. It should also allow opening apps from external third-party sites
 
 - View: `extent=` or `center=&zoom=` or other?
 - Selected feature: `selected=<item_id>:<feature_id>` ?
@@ -38,9 +43,23 @@ Apps should provide information on which data are required. This makes configura
 - [Hub suggestion](https://github.com/ArcGIS/Hub/issues/48)
 - or [Follow Configurable App specification](http://doc.arcgis.com/en/arcgis-online/create-maps/configurable-templates.htm)
 
-#### Accessibility Consideration
+#### Connected Apps
+Apps can be tagged/indexed in a way that allows them to be easily previewed and viewed from other (similarly connected apps). This requirement combines well with Shared State to allow users to navigate fluidly between applications.
 
-Adherence to [WCAG](https://www.w3.org/WAI/intro/wcag.php)
+#### Global Profile
+Users can login across applications to save favorites, interact with data, act as part of a group, track datasets, etc... A Global Profile allows consistency between apps and a more seamless/fully-featured user experience.
+
+---------------------
+
+| Capability       | Design        | Example  | Portal --> Hub |
+| ------------- |:-------------:| :-------------:| :-------------: |
+| Shared Themes (CSS, JSON)| 2/14, 2/14 | 2/14, 3/14 | ?, 3/14 |
+| Data Citation            | 2/14 | 2/14 |  |
+| Accessibility            | 2/14 | 2/14 | NA |
+| Shared State             | 2/14 | 2/14 |  |
+| Indicator Awareness      | DB/AT disc |  |  |
+| Connected Apps           | 2/14 |  |  |
+| Global Profile           | 2/14 |  |  |
 
 ---------------------
 
