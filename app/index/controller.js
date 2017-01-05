@@ -59,7 +59,7 @@ export default Ember.Controller.extend({
     onAddressChanged () {
       Ember.run.debounce(this, this.searchAddress, 500);
     },
-    clearAddress() {
+    onClearedAddress() {
       this.set('address', "");
       this.set('returnedAddress', "");
       this.set('loc', "");

@@ -1,7 +1,4 @@
-{{address-search setAddress=(action 'onAddressChanged') address=address}}
-
-<!-- TODO put the below in locales -->
-<button {{action "clearAddress"}}>Clear Address</button>
+{{address-search setAddress=(action 'onAddressChanged') clearAddress=(action 'onClearedAddress') address=address}}
 
 <h3> {{returnedAddress}} </h3>
 
