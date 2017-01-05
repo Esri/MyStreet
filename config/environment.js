@@ -50,6 +50,8 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    ENV.locationType = 'hash';
+    ENV.rootURL = '/open-streets/';
     // brought in from torii
     ENV.locationType = 'hash';
     ENV.rootURL = '/your-repo-name/';
