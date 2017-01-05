@@ -5,9 +5,11 @@ The following are draft requirements for hub-ready apps:
 
 1. Shared Themes
 1. Data Citation
+1. Accessibility Consideration
 1. Shared URL State
 1. Indicator Awareness
-1. Accessibility Consideration
+1. Connected Apps
+1. Global Profile
 
 #### Shared Themes
 Ability to pull in and apply agreed upon theming into a child application (e.g. local-perspective) from a parent organization (e.g. Los Angeles).

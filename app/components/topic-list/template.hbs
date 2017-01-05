@@ -4,6 +4,7 @@
   {{#each featureInfos as |featureInfo|}}
     {{topic-feature model=featureInfo}}
   {{/each}}
+  {{data-citation url=layer.url}}
   {{else}}
   <p>No data found for this address.</p>
 {{/if}}
