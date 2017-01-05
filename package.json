@@ -1,0 +1,40 @@
+{
+  "dependencies": {
+    "node-fetch": "^1.3.3"
+  },
+  "fastboot": {
+    "moduleWhitelist": [
+      "node-fetch"
+    ],
+    "manifest": {
+      "appFile": "fastboot/open-streets-67e65ee774001c201e90fef3c08fdb2f.js",
+      "vendorFile": "fastboot/vendor-203c447129dbfff390ca357c2f300e01.js",
+      "htmlFile": "index.html"
+    },
+    "appConfig": {
+      "modulePrefix": "open-streets",
+      "environment": "production",
+      "rootURL": "/your-repo-name/",
+      "locationType": "hash",
+      "EmberENV": {
+        "FEATURES": {}
+      },
+      "APP": {
+        "geocodeUrl": "",
+        "name": "open-streets",
+        "version": "0.0.1+29865ad2",
+        "autoboot": false
+      },
+      "torii": {
+        "sessionServiceName": "session",
+        "providers": {
+          "arcgis-oauth-bearer": {
+            "apiKey": "J87zpPnTLsEthjDx",
+            "portalUrl": "https://devext.arcgis.com"
+          }
+        }
+      },
+      "exportApplicationGlobal": false
+    }
+  }
+}
