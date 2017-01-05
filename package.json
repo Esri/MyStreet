@@ -14,7 +14,7 @@
     "appConfig": {
       "modulePrefix": "open-streets",
       "environment": "production",
-      "rootURL": "/your-repo-name/",
+      "rootURL": "/open-streets/",
       "locationType": "hash",
       "EmberENV": {
         "FEATURES": {}
