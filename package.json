@@ -22,7 +22,7 @@
       "APP": {
         "geocodeUrl": "",
         "name": "open-streets",
-        "version": "0.0.1+29865ad2",
+        "version": "0.0.1+ac5a7312",
         "autoboot": false
       },
       "torii": {
