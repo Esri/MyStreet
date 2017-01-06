@@ -3,12 +3,14 @@
     "title": "Open Streets",
     "home": "Home",
     "index": "Index",
-    "about": "Learn More"
+    "about": "Learn More",
+    "source": "Source"
   },
   "index": {
     "prompt": "Explore an Address",
     "DC": "D.C.",
     "LA": "L.A.",
-    "instructions": "Enter an address above!"
+    "instructions": "Enter an address above!",
+    "clear_address": "Clear Address"
   }
 }
