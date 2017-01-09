@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   ajax: Ember.inject.service(),
+  citationFound: false,
 
   init () {
     this._super.apply(this, arguments);
@@ -10,21 +11,29 @@ export default Ember.Component.extend({
   didReceiveAttrs() {
     let urlRegex = this.get('layer.url').replace(/.*?\/\//g,"http://");
     let urlFilter = `https://opendata.arcgis.com/api/v2/datasets?include=sites&filter[url]=${urlRegex}`
-    console.log('urlFilter', urlFilter);
     this.get('ajax').request(urlFilter, {dataType: 'json'})
       .then((response) =>{
-        console.log(response);
-        this.set('datasetName', response.data[0].attributes.name);
-        this.set('attributeName', response.included[0].attributes.title);
+        this.set('dataName', response.data[0].attributes.name);
 
         let baseUrl = response.included[0].attributes.url;
         let id = response.data[0].id;
+
         let odLink = `${baseUrl}/datasets/${id}`;
+        let agolLink = response.data[0].attributes.landingPage;
+        let serverLink = this.get('layer.url');
+        let dataLink;
 
-        this.set('odLink', odLink);
-        this.set('agolLink', response.data[0].attributes.landingPage);
-        this.set('serverLink', this.get('layer.url'));
-
+        this.set('citationFound', true);
+        if (odLink) {
+          dataLink = odLink;
+        } else if (agolLink) {
+          dataLink = agolLink;
+        } else if (serverLink) {
+          dataLink = serverLink;
+        } else {
+          this.set('citationFound', false);
+        }
+        this.set('dataLink', dataLink)
       });
   }
 
