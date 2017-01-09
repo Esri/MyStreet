@@ -7,7 +7,7 @@
       "node-fetch"
     ],
     "manifest": {
-      "appFile": "fastboot/open-streets-c817903a3ec355424d56e0bcb7362c8d.js",
+      "appFile": "fastboot/open-streets-96c55dc3dd2d74661a586f0fbe41306c.js",
       "vendorFile": "fastboot/vendor-05ee997dc85d4f77e65e0ec61d2b2c93.js",
       "htmlFile": "index.html"
     },
@@ -22,7 +22,7 @@
       "APP": {
         "geocodeUrl": "",
         "name": "open-streets",
-        "version": "0.0.1+377a28e0",
+        "version": "0.0.1+5d8a6222",
         "autoboot": false
       },
       "torii": {
