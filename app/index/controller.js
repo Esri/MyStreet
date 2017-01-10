@@ -4,9 +4,9 @@ export default Ember.Controller.extend({
   appSettings: Ember.inject.service(),
   openStreets: Ember.inject.service(),
 
-  queryParams: ['loc', 'theme'],
+  queryParams: ['loc', 'themeId'],
   loc: "",
-  theme: "",
+  themeId: "",
   changeLoc: Ember.observer('loc', 'appSettings.settings', function () {
     var loc = this.get('loc');
     if (loc) {
@@ -32,9 +32,9 @@ export default Ember.Controller.extend({
   configCssUrl: Ember.computed('session.portalHostname', 'appSettings.settings.data.values.themeId', function() {
     return `https://${this.get('session.portalHostname')}/sharing/rest/content/items/${this.get('appSettings.settings.data.values.themeId')}/resources/opendata.css.txt`
   }),
-  paramCssUrl: Ember.computed('theme', function () {
-    if (this.get('theme')) {
-      return `https://${this.get('session.portalHostname')}/sharing/rest/content/items/${this.get('theme')}/resources/opendata.css.txt`
+  paramCssUrl: Ember.computed('themeId', function () {
+    if (this.get('themeId')) {
+      return `https://${this.get('session.portalHostname')}/sharing/rest/content/items/${this.get('themeId')}/resources/opendata.css.txt`
     }
   }),
 

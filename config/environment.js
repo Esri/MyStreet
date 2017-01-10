@@ -49,6 +49,9 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
   }
 
+  // TODO setup dev/qa/prod environments for ENV.baseurl to point to api based on env (first use in data-citation)
+      // see opendata-admin for example
+
   if (environment === 'production') {
     ENV.locationType = 'hash';
     ENV.rootURL = '/open-streets/';

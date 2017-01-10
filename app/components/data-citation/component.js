@@ -9,8 +9,9 @@ export default Ember.Component.extend({
   },
 
   didReceiveAttrs() {
+    // TODO pass in baseUrl for the API
     let urlRegex = this.get('layer.url').replace(/.*?\/\//g,"http://");
-    let urlFilter = `https://opendata.arcgis.com/api/v2/datasets?include=sites&filter[url]=${urlRegex}`
+    let urlFilter = `https://opendata.arcgis.com/api/v2/datasets?include=sites&filter[url]=${urlRegex}`;
     this.get('ajax').request(urlFilter, {dataType: 'json'})
       .then((response) =>{
         this.set('dataName', response.data[0].attributes.name);
@@ -36,5 +37,4 @@ export default Ember.Component.extend({
         this.set('dataLink', dataLink)
       });
   }
-
 });
