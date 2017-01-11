@@ -23,6 +23,7 @@ module.exports = function(environment) {
       sessionServiceName: 'session',
       providers: {
         'arcgis-oauth-bearer': {
+          // TODO change these values by environment
           apiKey: 'J87zpPnTLsEthjDx', //QA App for Open Data Pages
           portalUrl: 'https://devext.arcgis.com'
         }
@@ -36,6 +37,9 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+
+    ENV.APP.baseURL = 'opendatadev.arcgis.com';
+    // ENV.APP.baseURL = 'opendata.arcgis.com';
   }
 
   if (environment === 'test') {
@@ -52,12 +56,17 @@ module.exports = function(environment) {
   // TODO setup dev/qa/prod environments for ENV.baseurl to point to api based on env (first use in data-citation)
       // see opendata-admin for example
 
+  if (environment === 'qa') {
+    ENV.APP.baseURL = 'opendataqa.arcgis.com';
+  }
+
   if (environment === 'production') {
     ENV.locationType = 'hash';
     ENV.rootURL = '/open-streets/';
     // brought in from torii
     // ENV.locationType = 'hash';
     // ENV.rootURL = '/your-repo-name/';
+    ENV.APP.baseURL = 'opendata.arcgis.com';
   }
 
   return ENV;

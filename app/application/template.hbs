@@ -1,6 +1,7 @@
 <nav class="navbar navbar-default navbar-static-top">
   <div class="container">
     <div class="navbar-header">
+      <!-- TODO q - function of this part of navbar -->
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar">1</span>
@@ -31,12 +32,13 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <h1>open-streets</h1>
+      <h1>{{t 'cache.title'}}</h1>
       <ul>
-        <li>Click "D.C." or "L.A." navigation options above to use the application.</li>
-        <li>This project is an <a href="http://emberjs.com/">Ember App</a> that demonstrates the <a href="https://github.com/ArcGIS/open-streets/blob/master/hub-ready.md">requirements of hub-ready</a> applications.</li>
-        <li>The <a href="http://opendata.arcgis.com/about">Esri DC Team</a> is developing this app for use in the Open Data and Hub Administration applications.</li>
-        <li>We will be making many changes to the application as we move forward, please reach out to mshofner@esri.com with any questions.</li>
+        <!-- TODO how to get these translations in with the links (without having to sanitize html completely out) -->
+        <li>{{!sanitize-html (t 'cache.bullet_one')}}Click "D.C." or "L.A." navigation options above to use the application.</li>
+        <li>{{!sanitize-html (t 'cache.bullet_two')}}This project is an <a href="http://emberjs.com/">Ember App</a> that demonstrates the <a href="https://github.com/ArcGIS/open-streets/blob/master/hub-ready.md">requirements of hub-ready</a> applications.</li>
+        <li>{{!sanitize-html (t 'cache.bullet_three')}}The <a href="http://opendata.arcgis.com/about">Esri DC Team</a> is developing this app for use in the Open Data and Hub Administration applications.</li>
+        <li>{{!sanitize-html (t 'cache.bullet_four')}}We will be making many changes to the application as we move forward, please reach out to mshofner@esri.com with any questions.</li>
       </ul>
     </div>
   </div>

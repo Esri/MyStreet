@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ENV from '../../config/environment';
 
 export default Ember.Component.extend({
   ajax: Ember.inject.service(),
@@ -10,8 +11,11 @@ export default Ember.Component.extend({
 
   didReceiveAttrs() {
     // TODO pass in baseUrl for the API
+    let envUrl = ENV.APP.baseURL;
+    console.log(envUrl);
     let urlRegex = this.get('layer.url').replace(/.*?\/\//g,"http://");
-    let urlFilter = `https://opendata.arcgis.com/api/v2/datasets?include=sites&filter[url]=${urlRegex}`;
+    console.log(urlRegex);
+    let urlFilter = `https://${envUrl}/api/v2/datasets?include=sites&filter[url]=${urlRegex}`;
     this.get('ajax').request(urlFilter, {dataType: 'json'})
       .then((response) =>{
         this.set('dataName', response.data[0].attributes.name);
