@@ -82,9 +82,25 @@ $icon-font-path: '../assets/fonts/';
 // image
 $bg-img: url('../public/assets/images/illustrated-city.jpg');
 
-
-
-
+.hero-unit {
+  background-image: -webkit-linear-gradient(bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.25)),url("/assets/images/street-image.png");
+  background-image: -o-linear-gradient(bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.25)),url("/assets/images/street-image.png");
+  background-image: linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.25)),url("/assets/images/street-image.png");
+  // background-size: cover;
+  // background-color: #EEEEEE;
+  height: 300px;
+  // h1 {
+  //   color: #FFFFFF;
+  //   font-size: 60px;
+  //   letter-spacing: -1px;
+  //   line-height: 1;
+  //   margin-bottom: 0;
+  // }
+  // h2 {
+  //   color: #FFFFFF;
+  //   font-size: 25px;
+  // }
+}
 
 
 
