@@ -7,29 +7,29 @@ export default Ember.Component.extend({
   themeJson: '',
   loaded: false,
 
-// TODO grab values from returned themeJson and (using ember observer?) change the css, then inject
-
+// TODO streamline this = (using ember observer?)
   derivedTheme: Ember.computed('themeJson', function() {
-    console.log('derivedTheme::in-sty-vars-', this.get('themeJson'));
+    let brandPrimary = this.get('themeJson.brand.primary') || '#136fbf';
+    let bodyBg = this.get('themeJson.body.bg') || '#136fbf';
+    let linkColor = this.get('themeJson.brand.secondary') || '#136fbf';
+    let textColor = this.get('themeJson.text.color') || '#136fbf';
+
+    console.log('brandPrimary', brandPrimary);
+    console.log('bodyBg', bodyBg);
+    console.log('linkColor', linkColor);
+    console.log('textColor', textColor);
+
+// how to lighten or darken is pure css
+// how to set hierarchy for repeating themes
     let cssString = `
-      html {
-        background-color: black;
-        color: green;
-      }
-      .panel-title {
-        background-color: black;
-        color: green;
+      .panel-default, .list-group-item {
+        background-color: ${bodyBg};
+        color: ${textColor};
       }
     `;
-// ${this.get('themeJson.body.bg')};
-    console.log('csstoString', cssString.toString());
     this.set('css', cssString);
-    console.log(this.get('css'));
   }),
 
-
-// TODO questions
-  // is json the only solution now? do they both need to happen?
 
 
 
