@@ -2,7 +2,8 @@
 
 <h3> {{returnedAddress}} </h3>
 
-{{inline-style configHref=configCssUrl paramHref=paramCssUrl}}
+{{!inline-style configHref=configCssUrl paramHref=paramCssUrl}}
+{{inline-style-vars configHref=configThemeUrl paramHref=paramThemeUrl}}
 
 {{#if returnedAddress}}
   {{#each layers as |layer|}}
