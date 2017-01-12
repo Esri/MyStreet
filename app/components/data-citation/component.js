@@ -10,11 +10,8 @@ export default Ember.Component.extend({
   },
 
   didReceiveAttrs() {
-    // TODO pass in baseUrl for the API
     let envUrl = ENV.APP.baseURL;
-    console.log(envUrl);
     let urlRegex = this.get('layer.url').replace(/.*?\/\//g,"http://");
-    console.log(urlRegex);
     let urlFilter = `https://${envUrl}/api/v2/datasets?include=sites&filter[url]=${urlRegex}`;
     this.get('ajax').request(urlFilter, {dataType: 'json'})
       .then((response) =>{

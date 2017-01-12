@@ -38,8 +38,8 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
-    ENV.APP.baseURL = 'opendatadev.arcgis.com';
-    // ENV.APP.baseURL = 'opendata.arcgis.com';
+    // ENV.APP.baseURL = 'opendatadev.arcgis.com';
+    ENV.APP.baseURL = 'opendata.arcgis.com';
   }
 
   if (environment === 'test') {
