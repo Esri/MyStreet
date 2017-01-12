@@ -13,9 +13,11 @@ export default Ember.Component.extend({
     } else {
       href = this.get('configHref');
     }
+    console.log('inline style comp::', href);
     if (!this.get('loaded')) {
       this.get('ajax').request(href, {dataType: 'text'}).then((css) =>{
         this.set('css', css);
+        console.log('cssLoaded', this.get('css'));
         this.set('loaded', true);
       });
     }

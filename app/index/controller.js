@@ -30,18 +30,17 @@ export default Ember.Controller.extend({
   }),
 
   configCssUrl: Ember.computed('session.portalHostname', 'appSettings.settings.data.values.themeId', function() {
-    return `https://${this.get('session.portalHostname')}/sharing/rest/content/items/${this.get('appSettings.settings.data.values.themeId')}/resources/theme.json`
-  }),
-  configJsonUrl: Ember.computed('session.portalHostname', 'appSettings.settings.data.values.themeId', function() {
     return `https://${this.get('session.portalHostname')}/sharing/rest/content/items/${this.get('appSettings.settings.data.values.themeId')}/resources/opendata.css.txt`
   }),
-  // TODO address query params overwrite
+  configJsonUrl: Ember.computed('session.portalHostname', 'appSettings.settings.data.values.themeId', function() {
+    return `https://${this.get('session.portalHostname')}/sharing/rest/content/items/${this.get('appSettings.settings.data.values.themeId')}/resources/theme.json`
+  }),
   paramCssUrl: Ember.computed('themeId', function () {
     if (this.get('themeId')) {
       return `https://${this.get('session.portalHostname')}/sharing/rest/content/items/${this.get('themeId')}/resources/opendata.css.txt`
     }
   }),
-  paramThemeUrl: Ember.computed('themeId', function () {
+  paramJsonUrl: Ember.computed('themeId', function () {
     if (this.get('themeId')) {
       return `https://${this.get('session.portalHostname')}/sharing/rest/content/items/${this.get('themeId')}/resources/theme.json`
     }
