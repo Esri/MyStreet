@@ -7,8 +7,8 @@
       "node-fetch"
     ],
     "manifest": {
-      "appFile": "fastboot/open-streets-96c55dc3dd2d74661a586f0fbe41306c.js",
-      "vendorFile": "fastboot/vendor-05ee997dc85d4f77e65e0ec61d2b2c93.js",
+      "appFile": "fastboot/open-streets-97a8f64ede7ff02d40a28ca078b10229.js",
+      "vendorFile": "fastboot/vendor-f80cfff20301b4e7e82ba191fcf714b0.js",
       "htmlFile": "index.html"
     },
     "appConfig": {
@@ -21,8 +21,9 @@
       },
       "APP": {
         "geocodeUrl": "",
+        "baseURL": "opendata.arcgis.com",
         "name": "open-streets",
-        "version": "0.0.1+5d8a6222",
+        "version": "0.0.1+d58a319d",
         "autoboot": false
       },
       "torii": {
