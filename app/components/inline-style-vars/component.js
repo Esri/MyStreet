@@ -7,22 +7,15 @@ export default Ember.Component.extend({
   themeJson: '',
   loaded: false,
 
-// TODO streamline this = (using ember observer?)
   derivedTheme: Ember.computed('themeJson', function() {
-    let brandPrimary = this.get('themeJson.brand.primary') || '#136fbf';
-    let bodyBg = this.get('themeJson.body.bg') || '#136fbf';
+    let brandPrimary = this.get('themeJson.brand.primary') || '#1c66a6';
+    let bodyBg = this.get('themeJson.body.bg') || '#f8f8f8';
     let linkColor = this.get('themeJson.brand.secondary') || '#136fbf';
-    let textColor = this.get('themeJson.text.color') || '#136fbf';
+    let textColor = this.get('themeJson.text.color') || '#4c4c4c';
+    // TODO - use color js here to lighten/darken and mature the aesthetics
 
-    console.log('brandPrimary', brandPrimary);
-    console.log('bodyBg', bodyBg);
-    console.log('linkColor', linkColor);
-    console.log('textColor', textColor);
-
-// how to lighten or darken is pure css
-// how to set hierarchy for repeating themes
     let cssString = `
-      .panel-default, .list-group-item {
+      .panel-default, .list-group-item, .form-control {
         background-color: ${bodyBg};
         color: ${textColor};
       }

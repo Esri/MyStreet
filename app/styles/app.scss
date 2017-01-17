@@ -89,6 +89,7 @@ $bg-img: url('../public/assets/images/illustrated-city.jpg');
   // background-size: cover;
   // background-color: #EEEEEE;
   height: 300px;
+
   // h1 {
   //   color: #FFFFFF;
   //   font-size: 60px;
@@ -102,6 +103,10 @@ $bg-img: url('../public/assets/images/illustrated-city.jpg');
   // }
 }
 
+.topic-icon {
+  color: white;
+  height: 20px;
+}
 // html {
 //   background-color: black;
 // }

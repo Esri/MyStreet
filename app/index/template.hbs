@@ -1,17 +1,15 @@
 {{address-search setAddress=(action 'onAddressChanged') clearAddress=(action 'onClearedAddress') address=address class="hero-unit"}}
 
-<h3> {{returnedAddress}} </h3>
+<h3> <img src="/assets/icons/location.svg" class="topic-icon"> {{returnedAddress}} </h3>
 
 {{inline-style configHref=configCssUrl paramHref=paramCssUrl}}
 {{inline-style-vars configHref=configJsonUrl paramHref=paramJsonUrl}}
-
-<img src="/assets/icons/agriculture2.svg">
 
 {{#if returnedAddress}}
   {{#each layers as |layer|}}
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">{{layer.title}}</h3>
+      <h3 class="panel-title">{{svg-icon title=layer.title}}{{layer.title}}</h3>
     </div>
     <div class="panel-body">
       {{topic-list layer=layer location=geocodedLocation}}
