@@ -15,6 +15,8 @@ module.exports = function(defaults) {
     },
   });
 
+  app.import('./bower_components/colorspaces/colorspaces.js');
+
   // TODO copy opendata-ui pattern for ember-cli builds (if there is a bower option),
     // can also use vendor scripts (after downloading the unminified version)
 
