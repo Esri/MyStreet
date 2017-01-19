@@ -5,10 +5,4 @@ export default Ember.Component.extend({
     this._super.apply(this, arguments);
   },
 
-  actions: {
-    clearAddress () {
-      this.sendAction('clearAddress');
-    }
-  }
-
 });

@@ -10,8 +10,7 @@
     "prompt": "Explore an Address",
     "DC": "D.C.",
     "LA": "L.A.",
-    "instructions": "Enter an address above!",
-    "clear_address": "Clear Address"
+    "instructions": "Enter an address above!"
   },
   "cache": {
     "no_data": "No data found for this address.",

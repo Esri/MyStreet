@@ -28,17 +28,18 @@ export default Ember.Component.extend({
     let textColorHexLight = textColorCielchLight.as('hex');
 
     let cssString = `
-      .panel-default, .list-group-item, .form-control {
+      .hero-unit .address-prompt, .hero-unit .address-input {
+        background-color: ${linkColor};
+      }
+      .panel-default, .list-group-item {
         background-color: ${bodyBgHexDark};
-        color: ${textColor};
       }
       .form-control {
-        background-color: ${bodyBg};
+        background-color: white;
+        color: ${textColor};
       }
       .address-icon {
         fill: ${textColor};
-      }
-      .panel-heading {
       }
       .panel-body {
         border: 1px;

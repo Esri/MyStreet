@@ -95,14 +95,13 @@ $bg-img: url('../public/assets/images/illustrated-city.jpg');
     color:#fff;
     background-color: rgba(72,169,166, 0.8);
     padding: 10px;
-    margin: 20px 0px;
+    margin: 45px 0px;
     display: inline-block;
     clear: both;
   }
   .address-input {
     background-color: rgba(72,169,166, 0.8);
     padding: 10px;
-    margin: 20px 0px;
     display: inline-block;
   }
 }
@@ -115,7 +114,11 @@ $bg-img: url('../public/assets/images/illustrated-city.jpg');
   display: inline-block;
 }
 
-.topic-icon, .address-icon {
+.address-icon {
+  height: 40px;
+}
+
+.topic-icon {
   fill: white;
   height: 20px;
   // display: inline-block;
