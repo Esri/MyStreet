@@ -18,29 +18,27 @@ export default Ember.Component.extend({
       [bodyBgHex.as('CIELCH')[0],
        bodyBgHex.as('CIELCH')[1],
        bodyBgHex.as('CIELCH')[2]*1.1]);
-    console.log('bodyBgCielchDark', bodyBgCielchDark);
     let bodyBgHexDark = bodyBgCielchDark.as('hex');
-    console.log('bodyBgHexDark', bodyBgHexDark);
 
     let textColorHex = $.colorspaces.make_color('hex', textColor);
     let textColorCielchLight = $.colorspaces.make_color('CIELCH',
       [textColorHex.as('CIELCH')[0],
        textColorHex.as('CIELCH')[1],
        textColorHex.as('CIELCH')[2]*0.75]);
-    console.log('textColorCielchLight', textColorCielchLight);
     let textColorHexLight = textColorCielchLight.as('hex');
-    console.log('textColorHexLight', textColorHexLight);
 
     let cssString = `
-      .panel-default, .list-group-item, .form-control, .panel-heading, .panel-title {
+      .panel-default, .list-group-item, .form-control {
         background-color: ${bodyBgHexDark};
         color: ${textColor};
       }
       .form-control {
         background-color: ${bodyBg};
       }
+      .address-icon {
+        fill: ${textColor};
+      }
       .panel-heading {
-        padding: 0;
       }
       .panel-body {
         border: 1px;

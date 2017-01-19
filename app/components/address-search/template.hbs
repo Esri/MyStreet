@@ -1,7 +1,10 @@
 <div class="container">
-  <h2>{{t 'index.prompt'}}</h2>
-  <div class="col-md-4"><!-- "col-md-offset-4" -->
-    {{input key-up=setAddress placeholder="123 Main St." class="form-control" value=address}}
+  <div class="col-md-4">
+    <h2 class="address-prompt">{{t 'index.prompt'}}</h2>
+    <div class="address-input input-group"><!-- "col-md-offset-4" -->
+      <label for="address-input" class="sr-only"><!--TODO internationalize -->Address</label>
+      {{input key-up=setAddress placeholder="123 Main St." class="form-control" value=address id="address-input"}}
+    <button class="btn btn-primary" {{action "clearAddress"}}>{{t 'index.clear_address'}}</button>
+    </div>
   </div>
-  <button class="btn btn-primary" {{action "clearAddress"}}>{{t 'index.clear_address'}}</button>
 </div>
