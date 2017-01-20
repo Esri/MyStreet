@@ -33,16 +33,17 @@ export default Ember.Component.extend({
       }
       .panel-default, .list-group-item {
         background-color: ${bodyBgHexDark};
-      }
-      .form-control {
-        background-color: white;
         color: ${textColor};
+      }
+      .input-bar {
+        background-color: white;
+        // color: ${textColor};
+        color: black;
       }
       .address-icon {
         fill: ${textColor};
       }
       .panel-body {
-        border: 1px;
         border-color: ${textColorHexLight};
       }
     `;
