@@ -67,7 +67,6 @@ export default Ember.Controller.extend({
 
   afterModel () {
     this.set('loc', this.get('address'));
-    console.log('appSettings.configModel', this.get('appSettings.configModel'));
   },
 
   actions: {
