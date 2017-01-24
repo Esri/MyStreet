@@ -1,0 +1,55 @@
+{
+    "configurationSettings": [
+        {
+            "category": "General Settings",
+            "fields": [
+                {
+                    "type": "string",
+                    "fieldName": "featureServiceUrl",
+                    "label": "Feature Service URL:",
+                    "tooltip": "Feature layer (table) with financial data",
+                    "placeHolder": "https://server.host.com/arcgis/rest/services/Map_Service/FeatureServer/0"
+                },
+                {
+                    "type": "string",
+                    "fieldName": "statisticField",
+                    "label": "Statistic Field:",
+                    "tooltip": "Field on which summary statistics will be calculated",
+                    "placeHolder": "Amount"
+                },
+                {
+                    "type": "string",
+                    "fieldName": "aspectFields",
+                    "label": "Aspect Fields:",
+                    "tooltip": "Comma separated list of field names (aspects) to use as top level grouping",
+                    "placeHolder": "Department_Description,Fund_Description,Vendor_Name"
+                },
+                {
+                    "type": "string",
+                    "fieldName": "subField",
+                    "label": "Sub Field:",
+                    "tooltip": "Field name to use for secondary level grouping",
+                    "placeHolder": "Expense_Type"
+                },
+                {
+                    "type": "number",
+                    "fieldName": "topListSize",
+                    "label": "Top List Size",
+                    "tooltip": "Show the top X values for aspect fields",
+                    "constraints": { "min": 0, "max": 10, "places": 0 }
+                },
+                {
+                    "type": "string",
+                    "fieldName": "webMapId",
+                    "label": "Web Map ID",
+                    "tooltip": "ID the app consumes",
+                    "placeholder": "40d2176ee0694c4ba2c6899aebd71f60"
+                }
+            ]
+        }
+    ],
+    "values": {
+        "topListSize": 5,
+        "theme": "test"
+    }
+}

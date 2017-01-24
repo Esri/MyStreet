@@ -17,6 +17,12 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
       geocodeUrl: '', //'https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/find?text='
+      featureServiceUrl:'https://servicesdev.arcgis.com/LjjARY1mkhxulWPq/ArcGIS/rest/services/Columbus_2014_Fiscal_Year_Edited/FeatureServer/0',
+      statisticField: 'Amount',
+      topListSize: 5,
+      aspectFields: ['Department_Description', 'Fund_Description', 'Vendor_Name'],
+      subFields: ['Expense', 'Expense_Account'],
+      chartPagingSize: 20
     },
 
     torii: {
@@ -53,6 +59,12 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
   }
 
+  if (environment === 'surge') {
+    // ENV.torii.providers['arcgis-oauth-bearer'].apiKey = 'dis8Iu8I0bACZOba';
+    // ENV.torii.providers['arcgis-oauth-bearer'].portalUrl = 'https://devext.arcgis.com';
+    ENV.APP.rootUrl = '/';
+  }
+
   // TODO setup dev/qa/prod environments for ENV.baseurl to point to api based on env (first use in data-citation)
       // see opendata-admin for example
 
@@ -61,11 +73,18 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.locationType = 'hash';
+    // ENV.locationType = 'hash';
     ENV.rootURL = '/open-streets/';
     // brought in from torii
     // ENV.locationType = 'hash';
     // ENV.rootURL = '/your-repo-name/';
+    ENV.APP.baseURL = 'opendata.arcgis.com';
+  }
+
+  if (environment === 'surge') {
+    // ENV.torii.providers['arcgis-oauth-bearer'].apiKey = 'dis8Iu8I0bACZOba';
+    // ENV.torii.providers['arcgis-oauth-bearer'].portalUrl = 'https://devext.arcgis.com';
+    ENV.APP.rootUrl = '/';
     ENV.APP.baseURL = 'opendata.arcgis.com';
   }
 
