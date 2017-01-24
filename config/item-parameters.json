@@ -12,6 +12,13 @@
                 },
                 {
                     "type": "string",
+                    "fieldName": "webMapId",
+                    "label": "Web Map ID",
+                    "tooltip": "ID the app consumes",
+                    "placeholder": "40d2176ee0694c4ba2c6899aebd71f60"
+                },
+                {
+                    "type": "string",
                     "fieldName": "statisticField",
                     "label": "Statistic Field:",
                     "tooltip": "Field on which summary statistics will be calculated",
@@ -32,18 +39,19 @@
                     "placeHolder": "Expense_Type"
                 },
                 {
-                    "type": "number",
-                    "fieldName": "topListSize",
-                    "label": "Top List Size",
-                    "tooltip": "Show the top X values for aspect fields",
-                    "constraints": { "min": 0, "max": 10, "places": 0 }
+                    "type": "string",
+                    "fieldName": "testString",
+                    "label": "Test String",
+                    "tooltip": "Test Field for strings",
+                    "placeHolder": "Write me!"
                 },
                 {
-                    "type": "string",
-                    "fieldName": "webMapId",
-                    "label": "Web Map ID",
-                    "tooltip": "ID the app consumes",
-                    "placeholder": "40d2176ee0694c4ba2c6899aebd71f60"
+                    "type": "number",
+                    "fieldName": "testInt",
+                    "label": "Test Integer",
+                    "tooltip": "Test Field for integers",
+                    "placeHolder": "5 * 4 * 3 * 2 * 1",
+                    "constraints": { "min": 0, "max": 10, "places": 0 }
                 }
             ]
         }

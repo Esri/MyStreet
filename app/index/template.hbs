@@ -8,6 +8,9 @@
 {{inline-style configHref=configCssUrl paramHref=paramCssUrl}}
 {{inline-style-vars configHref=configJsonUrl paramHref=paramJsonUrl}}
 
+Test String: {{appSettings.config.testString}}
+Test Integer: {{appSettings.config.testInt}}
+
 {{#if returnedAddress}}
   {{#each layers as |layer|}}
   <div class="panel panel-default">
