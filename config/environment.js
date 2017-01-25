@@ -18,11 +18,13 @@ module.exports = function(environment) {
       // when it is created
       geocodeUrl: '', //'https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/find?text='
       featureServiceUrl:'https://servicesdev.arcgis.com/LjjARY1mkhxulWPq/ArcGIS/rest/services/Columbus_2014_Fiscal_Year_Edited/FeatureServer/0',
-      statisticField: 'Amount',
-      topListSize: 5,
-      aspectFields: ['Department_Description', 'Fund_Description', 'Vendor_Name'],
-      subFields: ['Expense', 'Expense_Account'],
-      chartPagingSize: 20
+      // statisticField: 'Amount',
+      // topListSize: 5,
+      // aspectFields: ['Department_Description', 'Fund_Description', 'Vendor_Name'],
+      // subFields: ['Expense', 'Expense_Account'],
+      // chartPagingSize: 20
+      testString: 'table',
+      testInt: 3,
     },
 
     torii: {

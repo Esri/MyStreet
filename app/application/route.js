@@ -51,20 +51,24 @@ export default Ember.Route.extend({
   model (params) {
     // read params from environment config
     const {
-      statisticField,
+      // statisticField,
       featureServiceUrl,
-      topListSize,
-      aspectFields,
-      subFields,
-      chartPagingSize
+      // topListSize,
+      // aspectFields,
+      // subFields,
+      // chartPagingSize,
+      testString,
+      testInt
     } = ENV.APP;
     const config = {
-      statisticField,
+      // statisticField,
       featureServiceUrl,
-      topListSize,
-      aspectFields,
-      subFields,
-      chartPagingSize
+      // topListSize,
+      // aspectFields,
+      // subFields,
+      // chartPagingSize,
+      testString,
+      testInt
     };
 
     console.log('config0', config);
