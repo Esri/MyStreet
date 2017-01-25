@@ -34,10 +34,10 @@
     "assets/intl/locales/zh-hans.js": "assets/intl/locales/zh-hans-1728171e9ca3c35cd3889d59d379e543.js",
     "assets/intl/locales/zh-hant.js": "assets/intl/locales/zh-hant-f7b586a7f78912532a0c270f295b0108.js",
     "assets/intl/locales/zh.js": "assets/intl/locales/zh-a8ea1f631ed3c52d5de8c2a00a213603.js",
-    "assets/open-streets.css": "assets/open-streets-1f9fa7ae50f5bf23b8509c4a1e176995.css",
-    "assets/open-streets.js": "assets/open-streets-97a8f64ede7ff02d40a28ca078b10229.js",
+    "assets/open-streets.css": "assets/open-streets-c1030c45a731db41522fd39037d0e651.css",
+    "assets/open-streets.js": "assets/open-streets-40e63b3f201be323fc82c460c010ae12.js",
     "assets/vendor.css": "assets/vendor-d41d8cd98f00b204e9800998ecf8427e.css",
-    "assets/vendor.js": "assets/vendor-f80cfff20301b4e7e82ba191fcf714b0.js"
+    "assets/vendor.js": "assets/vendor-3dd79340d5dbcbc6651c72af445c187b.js"
   },
   "prepend": ""
 }

@@ -7,23 +7,26 @@
       "node-fetch"
     ],
     "manifest": {
-      "appFile": "fastboot/open-streets-97a8f64ede7ff02d40a28ca078b10229.js",
-      "vendorFile": "fastboot/vendor-f80cfff20301b4e7e82ba191fcf714b0.js",
+      "appFile": "fastboot/open-streets-40e63b3f201be323fc82c460c010ae12.js",
+      "vendorFile": "fastboot/vendor-3dd79340d5dbcbc6651c72af445c187b.js",
       "htmlFile": "index.html"
     },
     "appConfig": {
       "modulePrefix": "open-streets",
       "environment": "production",
       "rootURL": "/open-streets/",
-      "locationType": "hash",
+      "locationType": "auto",
       "EmberENV": {
         "FEATURES": {}
       },
       "APP": {
         "geocodeUrl": "",
+        "featureServiceUrl": "https://servicesdev.arcgis.com/LjjARY1mkhxulWPq/ArcGIS/rest/services/Columbus_2014_Fiscal_Year_Edited/FeatureServer/0",
+        "testString": "table",
+        "testInt": 3,
         "baseURL": "opendata.arcgis.com",
         "name": "open-streets",
-        "version": "0.0.1+d58a319d",
+        "version": "0.0.1+8a06cdc2",
         "autoboot": false
       },
       "torii": {
