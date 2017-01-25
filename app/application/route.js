@@ -24,6 +24,12 @@ function processConfigParams (params) {
     params.subFields = [params.subField];
     delete params.subField;
   }
+
+  // TODO - verify that passed in - Geocode Locator - geocodeUrl is actually a url
+    // (then in model function set as .APP.geocodeUrl)
+
+  // establish that themeId is a guid (globally unique id) - isGuid function
+
   return params;
 }
 
@@ -51,22 +57,16 @@ export default Ember.Route.extend({
   model (params) {
     // read params from environment config
     const {
-      // statisticField,
-      featureServiceUrl,
-      // topListSize,
-      // aspectFields,
-      // subFields,
-      // chartPagingSize,
+      geocodeUrl,
+      webappId,
+      themeId,
       testString,
       testInt
     } = ENV.APP;
     const config = {
-      // statisticField,
-      featureServiceUrl,
-      // topListSize,
-      // aspectFields,
-      // subFields,
-      // chartPagingSize,
+      geocodeUrl,
+      webappId,
+      themeId,
       testString,
       testInt
     };

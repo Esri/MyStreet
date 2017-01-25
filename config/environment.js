@@ -17,14 +17,10 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
       geocodeUrl: '', //'https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/find?text='
-      featureServiceUrl:'https://servicesdev.arcgis.com/LjjARY1mkhxulWPq/ArcGIS/rest/services/Columbus_2014_Fiscal_Year_Edited/FeatureServer/0',
-      // statisticField: 'Amount',
-      // topListSize: 5,
-      // aspectFields: ['Department_Description', 'Fund_Description', 'Vendor_Name'],
-      // subFields: ['Expense', 'Expense_Account'],
-      // chartPagingSize: 20
-      testString: 'table',
-      testInt: 3,
+      webappId: '', // 40d2176ee0694c4ba2c6899aebd71f60
+      themeId: '', // 283b7cf014394d7fab7b3fd5b4bd6aeb
+      testString: 'testerize',
+      testInt: 35,
     },
 
     torii: {
@@ -53,7 +49,6 @@ module.exports = function(environment) {
   if (environment === 'test') {
     // Testem prefers this...
     ENV.locationType = 'none';
-
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;
     ENV.APP.LOG_VIEW_LOOKUPS = false;
@@ -65,6 +60,7 @@ module.exports = function(environment) {
     // ENV.torii.providers['arcgis-oauth-bearer'].apiKey = 'dis8Iu8I0bACZOba';
     // ENV.torii.providers['arcgis-oauth-bearer'].portalUrl = 'https://devext.arcgis.com';
     ENV.APP.rootUrl = '/';
+    ENV.APP.baseURL = 'opendata.arcgis.com';
   }
 
   // TODO setup dev/qa/prod environments for ENV.baseurl to point to api based on env (first use in data-citation)
@@ -77,13 +73,6 @@ module.exports = function(environment) {
   if (environment === 'production') {
     ENV.locationType = 'hash';
     ENV.rootURL = '/open-streets/';
-    ENV.APP.baseURL = 'opendata.arcgis.com';
-  }
-
-  if (environment === 'surge') {
-    // ENV.torii.providers['arcgis-oauth-bearer'].apiKey = 'dis8Iu8I0bACZOba';
-    // ENV.torii.providers['arcgis-oauth-bearer'].portalUrl = 'https://devext.arcgis.com';
-    ENV.APP.rootUrl = '/';
     ENV.APP.baseURL = 'opendata.arcgis.com';
   }
 
