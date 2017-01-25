@@ -15,7 +15,7 @@
       "modulePrefix": "open-streets",
       "environment": "production",
       "rootURL": "/open-streets/",
-      "locationType": "auto",
+      "locationType": "hash",
       "EmberENV": {
         "FEATURES": {}
       },
@@ -26,7 +26,7 @@
         "testInt": 3,
         "baseURL": "opendata.arcgis.com",
         "name": "open-streets",
-        "version": "0.0.1+8a06cdc2",
+        "version": "0.0.1+574b8495",
         "autoboot": false
       },
       "torii": {
