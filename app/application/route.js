@@ -71,8 +71,6 @@ export default Ember.Route.extend({
       testInt
     };
 
-    console.log('config0', config);
-
     // TODO: also validate appid is a guid
     if (params.appid) {
       // get config params from an AGO item
@@ -81,7 +79,7 @@ export default Ember.Route.extend({
         const params = processConfigParams(response.values);
         // mixin any missing params from enviornment config and return
         this.set('appSettings.config', Object.assign(config, params));
-        return Object.assign(config, params);
+        this.transitionTo(`/${this.get('appSettings.config.webappId')}`);
       }, (err) => {
         // error fetching config from AGO item
         const error = err.message || err;
@@ -90,7 +88,6 @@ export default Ember.Route.extend({
     } else {
       // just use environment config
       this.set('appSettings.config', config);
-      return config;
     }
   }
 
