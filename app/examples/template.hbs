@@ -1,0 +1,37 @@
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <!-- TODO make collapsable navbar function -->
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <img class="navbar-logo pull-left" id="site-logo"/>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        {{#active-link}}{{link-to (t 'general.examples') "examples"}}{{/active-link}}
+        {{#active-link}}{{link-to (t 'index.DC') "index" "40d2176ee0694c4ba2c6899aebd71f60"}}{{/active-link}}
+        {{#active-link}}{{link-to (t 'index.LA') "index" "4e59db580fd2487d95133dd7f2d278bf"}}{{/active-link}}
+        <li><a href="http://opendata.arcgis.com/about">{{t 'general.about'}}</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!-- /.container -->
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>{{t 'cache.title'}}</h1>
+      <ul>
+        <!-- TODO how to get these translations in with the links (without having to sanitize html completely out) -->
+        <li>{{!sanitize-html (t 'cache.bullet_one')}}Click "D.C." or "L.A." navigation options above to use the application.</li>
+        <li>{{!sanitize-html (t 'cache.bullet_two')}}This project is an <a href="http://emberjs.com/">Ember App</a> that demonstrates the <a href="https://github.com/ArcGIS/open-streets/blob/master/hub-ready.md">requirements of hub-ready</a> applications.</li>
+        <li>{{!sanitize-html (t 'cache.bullet_three')}}The <a href="http://opendata.arcgis.com/about">Esri DC Team</a> is developing this app for use in the Open Data and Hub Administration applications.</li>
+        <li>{{!sanitize-html (t 'cache.bullet_four')}}We will be making many changes to the application as we move forward, please reach out to mshofner@esri.com with any questions.</li>
+      </ul>
+    </div>
+  </div>
+</div>

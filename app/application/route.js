@@ -88,6 +88,7 @@ export default Ember.Route.extend({
     } else {
       // just use environment config
       this.set('appSettings.config', config);
+      this.transitionTo('examples');
     }
   }
 
