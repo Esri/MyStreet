@@ -3,12 +3,11 @@ import ENV from '../config/environment';
 
 // TODO: move this to util function and unit test
 function processConfigParams (params) {
-  // TODO the below variables are taken from financial-transparency app, and not applicable here, but
-    // the pattern for converting / parsing may be useful
-  // TODO - verify that passed in - Geocode Locator - geocodeUrl is actually a url
+  // TODO
+  // 1) verify that passed in - Geocode Locator - geocodeUrl is actually a url
     // (then in model function set as .APP.geocodeUrl)
-
-  // establish that themeId is a guid (globally unique id) - isGuid function
+  // 2) establish that themeId is a guid (globally unique id) - isGuid function
+  // 3) validate the appid is a guid (maybe)
 
   return params;
 }
@@ -57,19 +56,19 @@ export default Ember.Route.extend({
       webmap
     };
 
-    // TODO: also validate appid is a guid
-
     return Ember.RSVP.hash({
       item: this.get('itemsService').getById(params.id),
       data: this.get('itemsService').getDataById(params.id),
     })
     .then((results) => {
-      const params = processConfigParams(results.values);
+      // TODO - merge/mixin and check for configs. figure out best way to apply to this app
+      // const params = processConfigParams(results.values);
       // mixin any missing params from enviornment config and return
+      // this.set('appSettings.config', Object.assign(config, params));
+
 
       this.get('appSettings').set('settings', results);
 
-      this.set('appSettings.config', Object.assign(config, params));
 
       console.log('appSettings', this.get('appSettings'));
       console.log('appSettings.settings', this.get('appSettings.settings'));
