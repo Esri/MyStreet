@@ -19,6 +19,13 @@
                 },
                 {
                     "type": "string",
+                    "fieldName": "webmap",
+                    "label": "Webmap ID",
+                    "tooltip": "Webmap the app consumes",
+                    "placeholder": "40d2176ee0694c4ba2c6899aebd71f60"
+                },
+                {
+                    "type": "string",
                     "fieldName": "geocodeUrl",
                     "label": "Geocode URL",
                     "tooltip": "URL used for geocode lookups",
