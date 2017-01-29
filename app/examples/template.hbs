@@ -25,11 +25,10 @@
     <div class="col-sm-12">
       <h1>{{t 'cache.title'}}</h1>
       <ul>
-        <!-- TODO how to get these translations in with the links (without having to sanitize html completely out) -->
-        <li>{{!sanitize-html (t 'cache.bullet_one')}}Click "D.C." or "L.A." navigation options above to use the application.</li>
-        <li>{{!sanitize-html (t 'cache.bullet_two')}}This project is an <a href="http://emberjs.com/">Ember App</a> that demonstrates the <a href="https://github.com/ArcGIS/open-streets/blob/master/hub-ready.md">requirements of hub-ready</a> applications.</li>
-        <li>{{!sanitize-html (t 'cache.bullet_three')}}The <a href="http://opendata.arcgis.com/about">Esri DC Team</a> is developing this app for use in the Open Data and Hub Administration applications.</li>
-        <li>{{!sanitize-html (t 'cache.bullet_four')}}We will be making many changes to the application as we move forward, please reach out to mshofner@esri.com with any questions.</li>
+        <li>{{format-html-message 'cache.bullet_one'}}</li>
+        <li>{{format-html-message 'cache.bullet_two'}}</li>
+        <li>{{format-html-message 'cache.bullet_three'}}</li>
+        <li>{{format-html-message 'cache.bullet_four'}}</li>
       </ul>
     </div>
   </div>

@@ -9,6 +9,8 @@ function processConfigParams (params) {
   // 2) establish that themeId is a guid (globally unique id) - isGuid function
   // 3) validate the appid is a guid (maybe)
 
+
+
   return params;
 }
 
@@ -20,12 +22,10 @@ export default Ember.Route.extend({
   renderTemplate (/*controller, model*/) {
     Ember.debug('IndexRoute::renderTemplate fired...');
     let errStatus = this.get('appSettings.errStatus');
-
     if (!errStatus) {
       this.render();
     } else {
       if (errStatus === 500) {
-        // TODO fix model pass in below
         this.render('gateway.error', {model: {status: errStatus}});
       } else {
         if (errStatus === 403) {
@@ -40,18 +40,16 @@ export default Ember.Route.extend({
 
   model (params) {
     // TODO Eventually, check if params.id === null, then make a
-    // this.get('itemService').search(...) call to locate all the App Config Items for Open Street.
+      // this.get('itemService').search(...) call to locate all the App Config Items for Open Street.
 
     // read params from environment config
     const {
       geocodeUrl,
-      webappId,
       themeId,
       webmap
     } = ENV.APP;
     const config = {
       geocodeUrl,
-      webappId,
       themeId,
       webmap
     };
@@ -61,17 +59,11 @@ export default Ember.Route.extend({
       data: this.get('itemsService').getDataById(params.id),
     })
     .then((results) => {
-      // TODO - merge/mixin and check for configs. figure out best way to apply to this app
-      // const params = processConfigParams(results.values);
-      // mixin any missing params from enviornment config and return
-      // this.set('appSettings.config', Object.assign(config, params));
-
-
       this.get('appSettings').set('settings', results);
-
-
-      console.log('appSettings', this.get('appSettings'));
-      console.log('appSettings.settings', this.get('appSettings.settings'));
+      // mixin any missing params from enviornment config
+      const params = processConfigParams(results.data.values);
+      this.set('appSettings.settings.data.values', Object.assign(config, params));
+      console.log('appsettings', this.get('appSettings'));
       return this.get('itemsService').getDataById(results.data.values.webmap)
     })
     .then((webmap) => {

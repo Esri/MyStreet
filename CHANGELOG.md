@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Recreate baseline working version of app.
 - Add in Shared Themes support.
 - Add in Data Citation support.
+- Make the application configurable within ArcGIS online.
 
 ### Changed
 -
