@@ -27,12 +27,11 @@ function processConfigParams (params) {
     delete params.themeId;
   }
 
-  // TODO 1) verify that passed in - Geocode Locator - geocodeUrl is actually a url
-    // (then in model function set as .APP.geocodeUrl)
-
   // verify that geocodeUrl is a url
   if (typeof params.geocodeUrl === 'string') {
+    console.log('geocodeUrl', params.geocodeUrl);
     const geocodeUrlValid = isUrl(params.geocodeUrl);
+    console.log('geocodeUrlValid', geocodeUrlValid);
     if (!geocodeUrlValid) {
       console.log('Geocode URL not a valid URL');
       delete params.geocodeUrl;
