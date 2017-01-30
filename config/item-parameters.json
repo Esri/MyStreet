@@ -23,21 +23,6 @@
                     "label": "Geocode URL",
                     "tooltip": "URL used for geocode lookups",
                     "placeholder": "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/"
-                },
-                {
-                    "type": "string",
-                    "fieldName": "testString",
-                    "label": "Test String",
-                    "tooltip": "Test Field for strings",
-                    "placeHolder": "Write me!"
-                },
-                {
-                    "type": "number",
-                    "fieldName": "testInt",
-                    "label": "Test Integer",
-                    "tooltip": "Test Field for integers",
-                    "placeHolder": "99",
-                    "constraints": { "min": 0, "max": 100, "places": 2 }
                 }
             ]
         }

@@ -19,8 +19,6 @@ module.exports = function(environment) {
       geocodeUrl: '', //'https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/find?text='
       webappId: '', // 40d2176ee0694c4ba2c6899aebd71f60
       themeId: '', // 283b7cf014394d7fab7b3fd5b4bd6aeb
-      testString: 'testerize',
-      testInt: 35,
     },
 
     torii: {

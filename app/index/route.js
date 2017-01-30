@@ -63,7 +63,6 @@ export default Ember.Route.extend({
       // mixin any missing params from enviornment config
       const params = processConfigParams(results.data.values);
       this.set('appSettings.settings.data.values', Object.assign(config, params));
-      console.log('appsettings', this.get('appSettings'));
       return this.get('itemsService').getDataById(results.data.values.webmap)
     })
     .then((webmap) => {

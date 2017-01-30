@@ -55,13 +55,13 @@ Users can login across applications to save favorites, interact with data, act a
 
 | Capability       | Design        | Example  | Portal --> Hub |
 | ------------- |:-------------:| :-------------:| :-------------: |
-| Shared Themes (CSS, JSON)| 2/14, 2/14 | 2/14, 3/14 | ?, 3/14 |
+| Shared Themes (CSS, JSON)| 2/14, 2/14 | 2/14, 2/14 | ?, 3/14 |
 | Data Citation            | 2/14 | 2/14 |  |
 | Accessibility            | 2/14 | 2/14 | NA |
+| Indicator Awareness      | 2/14 | 2/14 |  |
+| Connected Apps           |  |  |  |
 | Shared State             | 2/14 | 2/14 |  |
-| Indicator Awareness      | DB/AT disc |  |  |
-| Connected Apps           | 2/14 |  |  |
-| Global Profile           | 2/14 |  |  |
+| Global Profile           |  |  |  |
 
 ---------------------
 
