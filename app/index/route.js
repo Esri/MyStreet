@@ -3,15 +3,59 @@ import ENV from '../config/environment';
 
 // TODO: move this to util function and unit test
 function processConfigParams (params) {
-  // TODO
-  // 1) verify that passed in - Geocode Locator - geocodeUrl is actually a url
+  // verify that webmap is a guid
+  if (typeof params.webmap === 'string') {
+    const webmapGuid = isGuid(params.webmap);
+    if (!webmapGuid) {
+      console.log('Webmap ID not a guid');
+      delete params.webmap;
+    }
+  } else {
+    console.log('Webmap ID not a string');
+    delete params.webmap;
+  }
+
+  // verify that themeId is a guid
+  if (typeof params.themeId === 'string') {
+    const themeIdGuid = isGuid(params.themeId);
+    if (!themeIdGuid) {
+      console.log('Theme ID not a guid');
+      delete params.themeId;
+    }
+  } else {
+    console.log('Theme ID not a string');
+    delete params.themeId;
+  }
+
+  // TODO 1) verify that passed in - Geocode Locator - geocodeUrl is actually a url
     // (then in model function set as .APP.geocodeUrl)
-  // 2) establish that themeId is a guid (globally unique id) - isGuid function
-  // 3) validate the appid is a guid (maybe)
 
-
+  // verify that geocodeUrl is a url
+  if (typeof params.geocodeUrl === 'string') {
+    const geocodeUrlValid = isUrl(params.geocodeUrl);
+    if (!geocodeUrlValid) {
+      console.log('Geocode URL not a valid URL');
+      delete params.geocodeUrl;
+    }
+  } else {
+    console.log('Geocode URL not a valid string');
+    delete params.geocodeUrl;
+  }
 
   return params;
+}
+
+function isGuid (stringToTest) {
+  if (stringToTest[0] === '{') {
+    stringToTest = stringToTest.substring(1, stringToTest.length - 1);
+  }
+  var regexGuid = /^(\{){0,1}[0-9a-fA-F]{8}[-]?[0-9a-fA-F]{4}[-]?[0-9a-fA-F]{4}[-]?[0-9a-fA-F]{4}[-]?[0-9a-fA-F]{12}(\}){0,1}$/gi;
+  return regexGuid.test(stringToTest);
+}
+
+function isUrl (stringToTest) {
+  var regexUrl = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z;0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/
+  return regexUrl.test(stringToTest);
 }
 
 export default Ember.Route.extend({
@@ -63,6 +107,7 @@ export default Ember.Route.extend({
       // mixin any missing params from enviornment config
       const params = processConfigParams(results.data.values);
       this.set('appSettings.settings.data.values', Object.assign(config, params));
+      ENV.APP.geocodeUrl = params.geocodeUrl;
       return this.get('itemsService').getDataById(results.data.values.webmap)
     })
     .then((webmap) => {
