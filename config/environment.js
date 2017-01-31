@@ -25,7 +25,6 @@ module.exports = function(environment) {
       sessionServiceName: 'session',
       providers: {
         'arcgis-oauth-bearer': {
-          // TODO change these values by environment
           apiKey: 'J87zpPnTLsEthjDx', //QA App for Open Data Pages
           portalUrl: 'https://devext.arcgis.com'
         }
@@ -66,6 +65,7 @@ module.exports = function(environment) {
 
   if (environment === 'qa') {
     ENV.APP.baseURL = 'opendataqa.arcgis.com';
+    ENV.torii.providers.portalUrl = 'https://qaext.arcgis.com';
   }
 
   if (environment === 'production') {
