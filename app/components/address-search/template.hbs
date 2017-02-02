@@ -1,10 +1,10 @@
 <div class="container">
-  <div class="col-md-4">
+  <div class="col-xs-12 col-md-4">
     <h2 class="address-prompt">{{t 'index.prompt'}}</h2>
     <div class="address-input input-group">
       <label for="address-input" class="sr-only"><!--TODO internationalize -->Address</label>
-      {{input key-up=setAddress placeholder="123 Main St." class="input-bar" value=address id="address-input"}} <!--class="form-control" -->
-      <button class="btn btn-primary" type="submit" {{action "setAddress"}}>
+      {{input key-up=setAddress placeholder="123 Main St." class="input-bar input-md" value=address id="address-input"}} <!--class="form-control" -->
+      <button class="btn btn-primary input-md" type="submit" {{action "setAddress"}}>
         <span class="glyphicon glyphicon-search" aria-label="Submit Search"></span>
       </button>
     </div>
