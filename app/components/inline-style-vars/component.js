@@ -41,7 +41,10 @@ export default Ember.Component.extend({
         color: black;
       }
       .address-icon {
-        fill: ${textColor};
+        fill: ${linkColor};
+      }
+      .your-location {
+        color: ${textColor};
       }
       .panel-body {
         border-color: ${textColorHexLight};

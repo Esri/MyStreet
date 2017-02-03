@@ -12,4 +12,4 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Make the application configurable within ArcGIS online.
 
 ### Changed
--
+- Added in navbar, restructured to remove fixed-width container, added aria landmark roles, did CSS styling
