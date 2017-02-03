@@ -83,26 +83,54 @@ $icon-font-path: '../assets/fonts/';
 $bg-img: url('../public/assets/images/illustrated-city.jpg');
 
 .hero-unit {
-  background-image: -webkit-linear-gradient(bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.25)),url("/assets/images/street-image.png");
-  background-image: -o-linear-gradient(bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.25)),url("/assets/images/street-image.png");
-  background-image: linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.25)),url("/assets/images/street-image.png");
-  // background-size: cover;
-  // background-color: #EEEEEE;
+  background-image: url("/assets/images/street-image.png");
+  background-repeat: no-repeat;
+  background-size:cover;
+  padding-top: 30px;
   height: 300px;
-
+  border-bottom: 10px solid #EAEAEA;
 
   .address-prompt {
     color:#fff;
-    background-color: rgba(1,1,1, 0.8);
-    padding: 10px;
-    margin: 45px 0px;
-    display: inline-block;
+    text-shadow: none;
+    font-size: 36px;
+    background-color: rgba(1,1,1,0.8);
+    opacity: 0.8;
+    padding: 15px;
+    margin: 5px auto 10px auto;
     clear: both;
   }
   .address-input {
     background-color: rgba(1,1,1, 0.8);
-    padding: 10px;
-    display: inline-block;
+    opacity: 0.9;
+    padding: 15px;
+    min-width: 450px;
+    input {
+      border: 1px solid #fff;
+      background-color: #fff;
+      &:focus{
+        outline: thin dotted;
+        outline: 5px auto -webkit-focus-ring-color;
+      }
+      &::-webkit-input-placeholder {
+          color: #6a6a6a;
+        }
+        &:-moz-placeholder {
+          color: #6a6a6a;
+          opacity: 1;
+        }
+        &::-moz-placeholder {
+          color: #6a6a6a;
+          opacity: 1;
+        }
+        &:-ms-input-placeholder {
+          color: #6a6a6a;
+        }
+    }
+    button {
+      box-shadow: none;
+      border: 1px solid #fff;
+    }
   }
 }
 
@@ -114,8 +142,17 @@ $bg-img: url('../public/assets/images/illustrated-city.jpg');
   display: inline-block;
 }
 
-.address-icon {
-  height: 40px;
+svg.address-icon {
+  height: 20px;
+}
+
+h2.your-location {
+  margin: 5px 15px 10px 15px;
+}
+
+.data-citation {
+  display: inline-block;
+  margin-top: 10px;
 }
 
 .topic-icon {
@@ -127,4 +164,8 @@ $bg-img: url('../public/assets/images/illustrated-city.jpg');
 .address-search-button {
   background-color: green;
   display: inline-block;
+}
+
+.instructions {
+  margin-top: 60px;
 }
