@@ -60,10 +60,8 @@ export default Ember.Component.extend({
     } else {
       href = this.get('configHref');
     }
-    console.log('href in inline-style-vars::', href);
     if (!this.get('loaded')) {
       this.get('ajax').request(href, {dataType: 'json'}).then((response) =>{
-        console.log(response);
         this.set('themeJson', response);
       });
     }

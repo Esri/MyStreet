@@ -7,11 +7,11 @@ function processConfigParams (params) {
   if (typeof params.webmap === 'string') {
     const webmapGuid = isGuid(params.webmap);
     if (!webmapGuid) {
-      console.log('Webmap ID not a guid');
+      console.log('Config Webmap ID not a guid');
       delete params.webmap;
     }
   } else {
-    console.log('Webmap ID not a string');
+    console.log('Config Webmap ID not a string');
     delete params.webmap;
   }
 
@@ -19,25 +19,23 @@ function processConfigParams (params) {
   if (typeof params.themeId === 'string') {
     const themeIdGuid = isGuid(params.themeId);
     if (!themeIdGuid) {
-      console.log('Theme ID not a guid');
+      console.log('Config Theme ID not a guid');
       delete params.themeId;
     }
   } else {
-    console.log('Theme ID not a string');
+    console.log('Config Theme ID not a string');
     delete params.themeId;
   }
 
   // verify that geocodeUrl is a url
   if (typeof params.geocodeUrl === 'string') {
-    console.log('geocodeUrl', params.geocodeUrl);
     const geocodeUrlValid = isUrl(params.geocodeUrl);
-    console.log('geocodeUrlValid', geocodeUrlValid);
     if (!geocodeUrlValid) {
-      console.log('Geocode URL not a valid URL');
+      console.log('Config Geocode URL not a valid URL');
       delete params.geocodeUrl;
     }
   } else {
-    console.log('Geocode URL not a valid string');
+    console.log('Config Geocode URL not a valid string');
     delete params.geocodeUrl;
   }
 
