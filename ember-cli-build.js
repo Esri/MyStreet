@@ -15,6 +15,7 @@ module.exports = function(defaults) {
     },
   });
 
+  app.import('./bower_components/typeahead.js/dist/typeahead.jquery.js');
   app.import('./bower_components/colorspaces/colorspaces.js');
 
   var extraAssets = new Funnel('./node_modules/bootstrap-sass/assets/fonts/bootstrap', {

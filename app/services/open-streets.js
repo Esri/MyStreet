@@ -22,7 +22,7 @@ export default Ember.Service.extend({
     }
 
     // set default locations greater than 1, so that dropdown autocomplete receives more than 1 geocoded address
-    options.maxLocations = 5;
+    options.maxLocations = 4;
 
     return this.get('geocodeService').findLocationAddress(inputString, options)
       .catch((err) => {

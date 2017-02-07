@@ -9,6 +9,13 @@ export default Ember.Component.extend({
 
   value: '',
 
+  tagName: 'input',
+
+  attributeBindings: [ 'placeholder', 'value', 'aria-label' ],
+  //
+  // 'aria-label': Ember.computed(function () {
+  //  return this.get('intl').t('components.od_search.search_placeholder');
+  // }),
 
   init: function () {
     this._super(...arguments);
@@ -38,9 +45,9 @@ export default Ember.Component.extend({
   // show/hide ul based on user interaction
 
   initTypeahead: function () {
-    console.log('typeahead');
+    console.log('typeahead11');
     var myVal = this.$().typeahead('val');
-    console.log('test', myVal);
+    console.log('test11', myVal);
 
     var opts = {
       highlight: true,
@@ -49,23 +56,25 @@ export default Ember.Component.extend({
     };
 
     var datasets = {
-      name: 'candidates',
+      name: 'datasets',
       templates: {
         empty: ''
       },
       limit: this.get('limit'),
       async: true,
-      source: (query, syncResults, asyncResults) => {
-        let resp = this.get('candidates');
-        asyncResults(resp);
+      // source: (query, syncResults, asyncResults) => {
+      //   this.get('autocompleteService').fetch(query)
+      //     .then((response) => {
+      //       let resp = response ? response.data : [];
+      //       asyncResults(resp);
+      //     });
+      source: () => {
+        this.get('candidates')
+        console.log('source', this.get('candidates'));
       }
-      // source: () => {
-      //   this.get('candidates')
-      //   console.log('source', this.get('candidates'));
-      // }
     };
 
-    this.typeahead = this.$('.typeahead').typeahead(opts, datasets)
+    this.typeahead = this.$('').typeahead(opts, datasets)
       .on('typeahead:select', (e, datum) => {
         Ember.run(() => {
           let onSelectFunc = this.get('onSelect');
@@ -96,11 +105,4 @@ export default Ember.Component.extend({
       //   });
       // });
   },
-
-
-   actions: {
-    setAddress () {
-      this.sendAction('setAddress');
-    }
-  }
 });
