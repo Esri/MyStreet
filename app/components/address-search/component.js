@@ -7,10 +7,6 @@ export default Ember.Component.extend({
 
   value: '',
 
-  init: function () {
-    this._super(...arguments);
-  },
-
   didInsertElement: function() {
     this._super(...arguments);
     this.initTypeahead();
@@ -23,6 +19,19 @@ export default Ember.Component.extend({
     }
   },
 
+  executeQuery: function (query, asyncResults) {
+    this.get('source')(query)
+      .then((results)=>{
+        let addresses = [];
+        console.log('address-search::passed in results', results);
+        for (var i = 0; i<results.candidates.length; i++) {
+          addresses[i] = results.candidates[i].address;
+        }
+        console.log('address-search:: addresses array', addresses);
+        asyncResults(addresses);
+      })
+  },
+
   initTypeahead: function () {
     let opts = {
       highlight: true,
@@ -31,17 +40,10 @@ export default Ember.Component.extend({
     };
     let datasets = {
       name: 'candidates',
-      limit: this.get('limit'),
+      // limit: this.get('limit'),
       async: true,
       source: (query, syncResults, asyncResults) => {
-        this.get('source')(query)
-          .then((results)=>{
-            let addresses = [];
-            for (var i = 0; i<results.candidates.length; i++) {
-              addresses[i] = results.candidates[i].address;
-            }
-            asyncResults(addresses);
-          })
+        Ember.run.debounce(this, 'executeQuery', query, asyncResults, 200, true);
       }
     };
     this.typeahead = this.$('.typeahead').typeahead(opts, datasets);
