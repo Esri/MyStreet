@@ -1,8 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  candidates: [],
-
   minLength: 2,
 
   limit: 4,
@@ -49,8 +47,7 @@ export default Ember.Component.extend({
     this.typeahead = this.$('.typeahead').typeahead(opts, datasets);
   },
 
-
-   actions: {
+  actions: {
     setAddress () {
       this.sendAction('setAddress');
     }

@@ -18,7 +18,6 @@ export default Ember.Controller.extend({
   address: "",
   returnedAddress: "",
   geocodedLocation: [],
-  candidates: [],
 
   layers: Ember.computed('appSettings.settings.webmap.operationalLayers', function() {
     return this.get('appSettings.settings.webmap.operationalLayers')
@@ -56,13 +55,6 @@ export default Ember.Controller.extend({
     this.set('loc', this.get('address'));
     return this.get('openStreets').findLocationAddress(this.get('address'), {'bbox': this.get('bbox')})
       .then((results) => {
-        // click event that chooses the selected and sets the returned address and geocodedLocation
-        // once behavior working w static list in dom, look back to -ui for typeahead code
-
-        // this.set('candidates', results.candidates);
-        //
-        // this.set('returnedAddress', results.candidates[0].address);
-        // this.set('geocodedLocation', [results.candidates[0].location.x, results.candidates[0].location.y])
         return results;
       })
       .catch((err) => {
@@ -75,11 +67,6 @@ export default Ember.Controller.extend({
     this.set('loc', this.get('address'));
     return this.get('openStreets').findLocationAddress(this.get('address'), {'bbox': this.get('bbox')})
       .then((results) => {
-        // click event that chooses the selected and sets the returned address and geocodedLocation
-        // once behavior working w static list in dom, look back to -ui for typeahead code
-
-        this.set('candidates', results.candidates);
-
         this.set('returnedAddress', results.candidates[0].address);
         this.set('geocodedLocation', [results.candidates[0].location.x, results.candidates[0].location.y])
         return results;
@@ -95,7 +82,7 @@ export default Ember.Controller.extend({
   },
 
   actions: {
-    onAddressChanged (val) {
+    onAddressChanged () {
       // Ember.run.debounce(this, this._searchAddress, 0);
       // this.set('address', val);
       this._setAddress();
