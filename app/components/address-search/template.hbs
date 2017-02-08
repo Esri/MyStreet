@@ -18,14 +18,12 @@
     </div>
   </div>
   <ul>
+
     {{#each candidates as |candidate|}}
       {{candidate.address}}
       <br>
     {{/each}}
     <br>
-    <br>
-    {{address-typeahead candidates=candidates}}
-    <br>
-    <br>
+    
   </ul>
 </div>

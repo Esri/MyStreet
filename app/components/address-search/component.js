@@ -9,7 +9,6 @@ export default Ember.Component.extend({
 
   value: '',
 
-
   init: function () {
     this._super(...arguments);
   },
@@ -26,11 +25,6 @@ export default Ember.Component.extend({
     }
   },
 
-  // TODO deal with isdestroyed // isdestroying logic
-    // TODO !isdestorying logic in other parts of the app as well
-
-  // Q - maybe the app needs base.extend on one-way-input
-
   // pseudo code
   // fill in ul with options from geocode return
     // todo - elements that are selectable and identifiable
@@ -38,63 +32,37 @@ export default Ember.Component.extend({
   // show/hide ul based on user interaction
 
   initTypeahead: function () {
-    console.log('typeahead');
-    var myVal = this.$().typeahead('val');
-    console.log('test', myVal);
-
-    var opts = {
+    let opts = {
       highlight: true,
       minLength: this.get('minLength'),
       hint: false
     };
-
-    var datasets = {
+    let datasets = {
       name: 'candidates',
-      templates: {
-        empty: ''
-      },
-      limit: this.get('limit'),
+      // templates: {
+      //   empty: ''
+      // },
+      // limit: this.get('limit'),
       async: true,
       source: (query, syncResults, asyncResults) => {
-        let resp = this.get('candidates');
-        asyncResults(resp);
-      }
-      // source: () => {
-      //   this.get('candidates')
-      //   console.log('source', this.get('candidates'));
-      // }
-    };
+        this.get('source')(query)
+          .then((results)=>{
+            // console.log('results111', results.candidates);
+            // let addresses
+            // $.each(results.candidates, function(i) {
+            //   console.log('i', i);
+            //
+            // });
 
-    this.typeahead = this.$('.typeahead').typeahead(opts, datasets)
-      .on('typeahead:select', (e, datum) => {
-        Ember.run(() => {
-          let onSelectFunc = this.get('onSelect');
-          if (onSelectFunc) { onSelectFunc(datum); }
-          // this.get('telemetry').logAction({
-          //   category: 'Search',
-          //   action: 'autocomplete select',
-          //   eventLabel: datum
-          // });
-        });
-      })
-      .on('keyup', (e) => {
-        console.debug('>>>>> autocomplete keyup');
-        // TODO: we bound value to q on this thing but it is not propagating so...
-        Ember.run(() => {
-          this.set('value', this.typeahead.typeahead('val'));
-          console.log('value', this.typeahead.typeahead('val'));
-          if (e.which === 13) {
-            this.typeahead.typeahead('close');
-          }
-        });
-      })
-      // .on('typeahead:asyncreceive', () => {
-      //   //this one if for testing purposes
-      //   Ember.run(() => {
-      //     let receiveFunc = this.get('onReceive');
-      //     if (receiveFunc) { receiveFunc(); }
-      //   });
-      // });
+            for (var i = 0; i++; i<results.candidates.length) {
+              console.log('i', i);
+            }
+
+            asyncResults(results.candidates);
+          })
+      }
+    };
+    this.typeahead = this.$('.typeahead').typeahead(opts, datasets);
   },
 
 

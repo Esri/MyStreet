@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
     var loc = this.get('loc');
     if (loc) {
       this.set('address', loc);
-      this.searchAddress();
+      this._searchAddress();
     }
   }),
 
@@ -52,7 +52,7 @@ export default Ember.Controller.extend({
     this.get('changeLoc');
   },
 
-  searchAddress () {
+  _searchAddress () {
     this.set('loc', this.get('address'));
     return this.get('openStreets').findLocationAddress(this.get('address'), {'bbox': this.get('bbox')})
       .then((results) => {
@@ -77,7 +77,11 @@ export default Ember.Controller.extend({
 
   actions: {
     onAddressChanged () {
-      Ember.run.debounce(this, this.searchAddress, 500);
+      Ember.run.debounce(this, this._searchAddress, 500);
+    },
+    searchAddress (val) {
+      this.set('address', val);
+      return this._searchAddress();
     }
   }
 
