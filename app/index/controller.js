@@ -59,6 +59,25 @@ export default Ember.Controller.extend({
         // click event that chooses the selected and sets the returned address and geocodedLocation
         // once behavior working w static list in dom, look back to -ui for typeahead code
 
+        // this.set('candidates', results.candidates);
+        //
+        // this.set('returnedAddress', results.candidates[0].address);
+        // this.set('geocodedLocation', [results.candidates[0].location.x, results.candidates[0].location.y])
+        return results;
+      })
+      .catch((err) => {
+        // TODO why is this error returning, even with successful results
+        Ember.debug('Error occured fetching the searched address: ' + JSON.stringify(err));
+      });
+  },
+
+  _setAddress () {
+    this.set('loc', this.get('address'));
+    return this.get('openStreets').findLocationAddress(this.get('address'), {'bbox': this.get('bbox')})
+      .then((results) => {
+        // click event that chooses the selected and sets the returned address and geocodedLocation
+        // once behavior working w static list in dom, look back to -ui for typeahead code
+
         this.set('candidates', results.candidates);
 
         this.set('returnedAddress', results.candidates[0].address);
@@ -76,8 +95,10 @@ export default Ember.Controller.extend({
   },
 
   actions: {
-    onAddressChanged () {
-      Ember.run.debounce(this, this._searchAddress, 500);
+    onAddressChanged (val) {
+      // Ember.run.debounce(this, this._searchAddress, 0);
+      // this.set('address', val);
+      this._setAddress();
     },
     searchAddress (val) {
       this.set('address', val);

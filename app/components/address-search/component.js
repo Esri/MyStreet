@@ -25,12 +25,6 @@ export default Ember.Component.extend({
     }
   },
 
-  // pseudo code
-  // fill in ul with options from geocode return
-    // todo - elements that are selectable and identifiable
-  // set the address based on user selections
-  // show/hide ul based on user interaction
-
   initTypeahead: function () {
     let opts = {
       highlight: true,
@@ -39,26 +33,16 @@ export default Ember.Component.extend({
     };
     let datasets = {
       name: 'candidates',
-      // templates: {
-      //   empty: ''
-      // },
-      // limit: this.get('limit'),
+      limit: this.get('limit'),
       async: true,
       source: (query, syncResults, asyncResults) => {
         this.get('source')(query)
           .then((results)=>{
-            // console.log('results111', results.candidates);
-            // let addresses
-            // $.each(results.candidates, function(i) {
-            //   console.log('i', i);
-            //
-            // });
-
-            for (var i = 0; i++; i<results.candidates.length) {
-              console.log('i', i);
+            let addresses = [];
+            for (var i = 0; i<results.candidates.length; i++) {
+              addresses[i] = results.candidates[i].address;
             }
-
-            asyncResults(results.candidates);
+            asyncResults(addresses);
           })
       }
     };
