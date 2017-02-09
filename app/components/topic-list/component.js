@@ -7,21 +7,31 @@ export default Ember.Component.extend({
 
   loading: false,
 
-  onAddressChanged: Ember.observer('location', function() {
+  onAddressChanged: Ember.on('init', Ember.observer('location', function() {
+    Ember.run.once(this, 'updateFeatures');
+  })),
+
+  updateFeatures () {
     let url = this.get('layer.url');
     let location = this.get('location');
     this.set('loading', true);
     this.queryFeature(url, location)
       .then((result) => {
-        this.set('featureInfos', result);
+        if (!this.get('isDestroyed') && !this.get('isDestroying')) {
+          this.set('featureInfos', result);
+        }
       })
       .then(() => {
-        this.set('loading', false);
+        if (!this.get('isDestroyed') && !this.get('isDestroying')) {
+          this.set('loading', false);
+        }
       })
       .catch(() => {
-        this.set('loading', false);
+        if (!this.get('isDestroyed') && !this.get('isDestroying')) {
+          this.set('loading', false);
+        }
       });
-  }),
+  },
 
   hasData: Ember.computed('featureInfos', function(){
     return (this.get('featureInfos.length') > 0);
