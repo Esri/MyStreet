@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
     var loc = this.get('loc');
     if (loc) {
       this.set('address', loc);
-      this.searchAddress();
+      this._searchAddress();
     }
   }),
 
@@ -51,7 +51,19 @@ export default Ember.Controller.extend({
     this.get('changeLoc');
   },
 
-  searchAddress () {
+  _searchAddress (address) {
+    return this.get('openStreets').findLocationAddress(address, {'bbox': this.get('bbox')})
+      .then((results) => {
+        console.log('results from fLA search addres::', results);
+        return results;
+      })
+      .catch((err) => {
+        // TODO why is this error returning, even with successful results
+        Ember.debug('Error occured fetching the searched address: ' + JSON.stringify(err));
+      });
+  },
+
+  _setAddress () {
     this.set('loc', this.get('address'));
     return this.get('openStreets').findLocationAddress(this.get('address'), {'bbox': this.get('bbox')})
       .then((results) => {
@@ -71,7 +83,12 @@ export default Ember.Controller.extend({
 
   actions: {
     onAddressChanged () {
-      Ember.run.debounce(this, this.searchAddress, 500);
+      // this.set('address', val);
+      this._setAddress();
+    },
+    searchAddress (val) {
+      // Ember.run.debounce(this, this._searchAddress(val), 200);
+      return this._searchAddress(val);
     }
   }
 

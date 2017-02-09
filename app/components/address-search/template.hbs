@@ -8,7 +8,7 @@
     <div class="col-xs-12 col-sm-6 col-md-4">
       <div class="address-input input-group">
         <label for="address-field" class="sr-only">{{t 'a11y.address-input'}}</label>
-        {{input key-up=setAddress placeholder="123 Main St." class="form-control input-lg" value=address id="address-field" role="search"}}
+        {{input placeholder="123 Main St." class="form-control input-lg typeahead" value=address id="address-field" role="search"}}
         <span class="input-group-btn">
           <button class="btn btn-default btn-lg" type="submit" {{action "setAddress"}}>
               <span class="glyphicon glyphicon-search" aria-label="{{t 'a11y.search-label'}}"></span>
@@ -17,4 +17,6 @@
       </div>
     </div>
   </div>
+  <ul>
+  </ul>
 </div>

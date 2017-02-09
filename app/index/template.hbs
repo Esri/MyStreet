@@ -1,4 +1,4 @@
-{{address-search class="hero-unit" setAddress=(action 'onAddressChanged') address=address}}
+{{address-search class="hero-unit" setAddress=(action 'onAddressChanged') source=(action 'searchAddress')  address=address}}
 
 <div class="container">
   <div class="row">
@@ -9,7 +9,7 @@
     </h2>
 
     {{inline-style configHref=configCssUrl paramHref=paramCssUrl}}
-    
+
     {{inline-style-vars configHref=configJsonUrl paramHref=paramJsonUrl}}
 
     {{#if returnedAddress}}
