@@ -40,18 +40,23 @@ export default Ember.Component.extend({
     };
     let datasets = {
       name: 'candidates',
-      // limit: this.get('limit'),
+      limit: this.get('limit'),
       async: true,
       source: (query, syncResults, asyncResults) => {
         Ember.run.debounce(this, 'executeQuery', query, asyncResults, 200, true);
       }
     };
-    this.typeahead = this.$('.typeahead').typeahead(opts, datasets);
+    this.typeahead = this.$('.typeahead').typeahead(opts, datasets)
+      .on('typeahead:select', () => {
+        Ember.run(() => {
+          this.sendAction('setAddress');
+        });
+      })
   },
 
   actions: {
     setAddress () {
-      this.sendAction('setAddress');
+      this.get('setAddress')(this.get('address'));
     }
   }
 });

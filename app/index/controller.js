@@ -63,12 +63,19 @@ export default Ember.Controller.extend({
       });
   },
 
-  _setAddress () {
-    this.set('loc', this.get('address'));
-    return this.get('openStreets').findLocationAddress(this.get('address'), {'bbox': this.get('bbox')})
+  _setAddress (address) {
+    this.set('loc', address);
+    return this.get('openStreets').findLocationAddress(address, {'bbox': this.get('bbox')})
       .then((results) => {
-        this.set('returnedAddress', results.candidates[0].address);
-        this.set('geocodedLocation', [results.candidates[0].location.x, results.candidates[0].location.y])
+        console.log(results);
+        console.log('geocoded0', this.get('geocodedLocation'));
+
+        this.setProperties({
+          returnedAddress: results.candidates[0].address,
+          geocodedLocation: [results.candidates[0].location.x, results.candidates[0].location.y]
+        });
+        console.log('geocoded1', this.get('geocodedLocation'));
+
         return results;
       })
       .catch((err) => {
@@ -82,14 +89,13 @@ export default Ember.Controller.extend({
   },
 
   actions: {
-    onAddressChanged () {
-      // this.set('address', val);
-      this._setAddress();
-    },
     searchAddress (val) {
       // Ember.run.debounce(this, this._searchAddress(val), 200);
       return this._searchAddress(val);
-    }
+    },
+    onAddressChanged (val) {
+      this._setAddress(val);
+    },
   }
 
 });
