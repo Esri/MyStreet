@@ -13,3 +13,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - Added in navbar, restructured to remove fixed-width container, added aria landmark roles, did CSS styling
+
+###
+- Fixed twitter-typeahead to expand input to 100%
