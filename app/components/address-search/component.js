@@ -49,7 +49,7 @@ export default Ember.Component.extend({
     this.typeahead = this.$('.typeahead').typeahead(opts, datasets)
       .on('typeahead:select', () => {
         Ember.run(() => {
-          this.sendAction('setAddress');
+          this.sendAction('setAddress')(this.get('address'));
         });
       })
   },
