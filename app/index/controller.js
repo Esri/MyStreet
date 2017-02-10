@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   appSettings: Ember.inject.service(),
   openStreets: Ember.inject.service(),
+  ajax: Ember.inject.service(),
 
   queryParams: ['loc', 'themeId'],
   loc: "",
@@ -52,34 +53,30 @@ export default Ember.Controller.extend({
   },
 
   _searchAddress (address) {
-    return this.get('openStreets').findLocationAddress(address, {'bbox': this.get('bbox')})
-      .then((results) => {
-        console.log('results from fLA search addres::', results);
-        return results;
-      })
-      .catch((err) => {
-        // TODO why is this error returning, even with successful results
-        Ember.debug('Error occured fetching the searched address: ' + JSON.stringify(err));
-      });
+    let text = address;
+    let bbox = this.get('bbox');
+    let bb = {
+      "xmin": bbox[0][0],
+      "ymin": bbox[0][1],
+      "xmax": bbox[1][0],
+      "ymax": bbox[1][1],
+    };
+    let extent = `${bb.xmin},${bb.ymin},${bb.xmax},${bb.ymax}`;
+    return this.get('ajax').request(`https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/suggest?text=${text}&searchExtent=${extent}&f=json`)
   },
 
   _setAddress (address) {
     this.set('loc', address);
     return this.get('openStreets').findLocationAddress(address, {'bbox': this.get('bbox')})
       .then((results) => {
-        console.log(results);
-        console.log('geocoded0', this.get('geocodedLocation'));
-
         this.setProperties({
           returnedAddress: results.candidates[0].address,
           geocodedLocation: [results.candidates[0].location.x, results.candidates[0].location.y]
         });
-        console.log('geocoded1', this.get('geocodedLocation'));
-
         return results;
       })
       .catch((err) => {
-        // TODO why is this error returning, even with successful results
+        this.set('returnedAddress','');
         Ember.debug('Error occured fetching the searched address: ' + JSON.stringify(err));
       });
   },
@@ -90,7 +87,6 @@ export default Ember.Controller.extend({
 
   actions: {
     searchAddress (val) {
-      // Ember.run.debounce(this, this._searchAddress(val), 200);
       return this._searchAddress(val);
     },
     onAddressChanged (val) {

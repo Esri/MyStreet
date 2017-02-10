@@ -105,6 +105,7 @@ export default Ember.Route.extend({
       const params = processConfigParams(results.data.values);
       this.set('appSettings.settings.data.values', Object.assign(config, params));
       ENV.APP.geocodeUrl = params.geocodeUrl;
+      this.get('appSettings').set('errStatus', null);
       return this.get('itemsService').getDataById(results.data.values.webmap)
     })
     .then((webmap) => {

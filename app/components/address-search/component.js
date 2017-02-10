@@ -23,11 +23,9 @@ export default Ember.Component.extend({
     this.get('source')(query)
       .then((results)=>{
         let addresses = [];
-        console.log('address-search::passed in results', results);
-        for (var i = 0; i<results.candidates.length; i++) {
-          addresses[i] = results.candidates[i].address;
+        for (var i = 0; i<results.suggestions.length; i++) {
+          addresses[i] = results.suggestions[i].text;
         }
-        console.log('address-search:: addresses array', addresses);
         asyncResults(addresses);
       })
   },
@@ -49,7 +47,8 @@ export default Ember.Component.extend({
     this.typeahead = this.$('.typeahead').typeahead(opts, datasets)
       .on('typeahead:select', () => {
         Ember.run(() => {
-          this.sendAction('setAddress')(this.get('address'));
+          this.typeahead.typeahead('close');
+          this.get('setAddress')(this.get('address'));
         });
       })
   },
