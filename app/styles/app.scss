@@ -132,6 +132,11 @@ $bg-img: url('../public/assets/images/illustrated-city.jpg');
       border: 1px solid #fff;
     }
   }
+  .twitter-typeahead {
+    width: 100%;
+    display: table !important;
+    border-collapse: separate;
+  }
 }
 
 .list-group-item {
