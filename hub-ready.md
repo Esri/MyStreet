@@ -5,9 +5,9 @@ The following are draft requirements for hub-ready apps:
 
 1. Shared Themes
 1. Data Citation
-1. Accessibility Consideration
-1. Shared URL State
 1. Indicator Awareness
+1. Accessibility
+1. Shared URL State
 1. Connected Apps
 1. Global Profile
 
@@ -24,10 +24,19 @@ Easily navigable bibliography within the app itself. Users are able to trackback
 
 - [Example search for dataset by Layer URL](https://opendata.arcgis.com/api/v2/datasets?include=sites&filter[url]=http://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/Public_Service_WebMercator/MapServer/27)
 
-#### Accessibility Consideration
+#### Indicator Awareness
+
+Apps should provide information on which data are required. This makes configuration easier and ensures that data --> application isn't a one-way one-time event, but rather that apps stay up to date with indicator information.
+
+- [Hub suggestion](https://github.com/ArcGIS/Hub/issues/48)
+- or [Follow Configurable App specification](http://doc.arcgis.com/en/arcgis-online/create-maps/configurable-templates.htm)
+
+#### Accessibility
 
 - Adherence to [WCAG](https://www.w3.org/WAI/intro/wcag.php)
 - Localizable strings.
+
+--------------------------------------------------------------------------
 
 #### Shared URL State
 
@@ -36,14 +45,6 @@ Configurable App Spec notes [URL parameters](http://doc.arcgis.com/en/arcgis-onl
 - View: `extent=` or `center=&zoom=` or other?
 - Selected feature: `selected=<item_id>:<feature_id>` ?
 - Webmap or App configuration: `id=` or `item=` or `item_id=`
-
-
-#### Indicator Awareness
-
-Apps should provide information on which data are required. This makes configuration easier and ensures that data --> application isn't a one-way one-time event, but rather that apps stay up to date with indicator information.
-
-- [Hub suggestion](https://github.com/ArcGIS/Hub/issues/48)
-- or [Follow Configurable App specification](http://doc.arcgis.com/en/arcgis-online/create-maps/configurable-templates.htm)
 
 #### Connected Apps
 Apps can be tagged/indexed in a way that allows them to be easily previewed and viewed from other (similarly connected apps). This requirement combines well with Shared State to allow users to navigate fluidly between applications.

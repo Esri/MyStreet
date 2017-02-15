@@ -12,7 +12,7 @@ export default Ember.Component.extend({
   didReceiveAttrs() {
     let envUrl = ENV.APP.baseURL;
     let urlRegex = this.get('layer.url').replace(/.*?\/\//g,"http://");
-    let urlFilter = `https://${envUrl}/api/v2/datasets?include=sites&filter[url]=${urlRegex}`;
+    let urlFilter = `https://${envUrl}/api/v2/datasets?include=sites&filter[url]=${urlRegex}`;  
     this.get('ajax').request(urlFilter, {dataType: 'json'})
       .then((response) =>{
         // this component could have been destroyed while waiting for the promise to resolve
