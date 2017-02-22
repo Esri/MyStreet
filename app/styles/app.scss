@@ -87,12 +87,15 @@ $icon-font-path: '../assets/fonts/';
 $bg-img: url('../public/assets/images/illustrated-city.jpg');
 
 .hero-unit {
-  background-image: url("/assets/images/street-image.png");
+  // background-image: url("/assets/images/street-image.png");
   background-repeat: no-repeat;
   background-size:cover;
   padding-top: 30px;
   height: 300px;
-  border-bottom: 10px solid #EAEAEA;
+  width: 100%;
+  // border-bottom: 10px solid #EAEAEA;
+  position: absolute;
+  z-index: 40;
 
   .address-prompt {
     color:#fff;
