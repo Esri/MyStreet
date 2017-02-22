@@ -13,6 +13,24 @@ module.exports = function(defaults) {
         'node_modules/calcite-bootstrap/dist/sass',
       ]
     },
+
+    amd : {
+      // Specify the type of AMD loader. Either a CDN path or a local loader ('dojo' or 'requirejs')
+      // NOTE: not using compact b/c we're loading webmaps and JSAPI will want ALL the modules
+      loader: 'https://js.arcgis.com/3.19/',
+      // user defined AMD packages to search for in application
+      packages: [
+        'esri','dojo','dojox','dijit',
+        'put-selector','xstyle','dgrid'
+      ],
+      // Required the AMD configuration file path relative to the project root.
+      // The file will be copied to the output directory (./dist) and the configuration file
+      // will be loaded before the loader is loaded. The configuration file must define the global variable used by the specific loader.
+      // For dojo, the supported global variable name are `dojoConfig`, `djConfig` or `require`.
+      // For requirejs, the global variable is called `require`.
+      // Please refer to the documentation for the correct use of the configuration object.
+      configPath: 'config/dojo-config.js'
+    }
   });
 
   app.import('./bower_components/typeahead.js/dist/typeahead.jquery.js');
