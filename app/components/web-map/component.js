@@ -1,8 +1,9 @@
 import Ember from 'ember';
-import arcgisUtils from 'esri/arcgis/utils';
 
 export default Ember.Component.extend({
   classNames: ['web-map'],
+
+  arcgisMapService: Ember.inject.service('arcgis-map-service'),
 
   init () {
     this._super(...arguments);
@@ -12,14 +13,20 @@ export default Ember.Component.extend({
   didInsertElement () {
     this._super(...arguments);
 
-    this._createMap(this.get('mapElementId'));
-  },
-
-
-  _createMap (elementId) {
+    // create the map _after_ the element has been inserdted into the DOM
+    const arcgisMapService = this.get('arcgisMapService');
+    const mapElementId = this.get('mapElementId');
     const itemInfo = this.get('itemInfo');
     const itemId = this.get('itemId');
+    arcgisMapService.createMap(itemInfo || itemId, mapElementId);
+  },
 
-    arcgisUtils.createMap(itemInfo || itemId, elementId);
+  willDestroyElement() {
+    this._super(...arguments);
+
+    // destroy the map _before_ removing this element from the DOM
+    const arcgisMapService = this.get('arcgisMapService');
+    const mapElementId = this.get('mapElementId');
+    arcgisMapService.destroyMap(mapElementId);
   }
 });
