@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  classNames: ['address-search'],
+
   minLength: 2,
 
   limit: 4,

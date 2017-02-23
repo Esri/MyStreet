@@ -1,6 +1,12 @@
-{{#web-map itemInfo=itemInfo}}
-  {{address-search class="hero-unit" source=(action 'searchAddress') setAddress=(action 'onAddressChanged') address=address}}
-{{/web-map}}
+{{#if showMap}}
+  {{#web-map itemInfo=itemInfo}}
+    {{address-search  source=(action 'searchAddress') setAddress=(action 'onAddressChanged') address=address}}
+  {{/web-map}}
+{{else}}
+  <div class="hero-unit">
+    {{address-search source=(action 'searchAddress') setAddress=(action 'onAddressChanged') address=address}}
+  </div>
+{{/if}}
 <div class="container">
   <div class="row">
   <div role="main">

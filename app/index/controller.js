@@ -24,6 +24,7 @@ export default Ember.Controller.extend({
 
   webmap: Ember.computed.alias('appSettings.settings.webmap.itemData'),
   layers: Ember.computed.alias('webmap.operationalLayers'),
+  showMap: Ember.computed.alias('appSettings.settings.data.values.showMap'),
   bbox: Ember.computed('appSettings.settings.item.extent', function() {
     return this.get('appSettings.settings.item.extent');
   }),
