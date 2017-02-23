@@ -106,10 +106,13 @@ export default Ember.Route.extend({
       this.set('appSettings.settings.data.values', Object.assign(config, params));
       ENV.APP.geocodeUrl = params.geocodeUrl;
       this.get('appSettings').set('errStatus', null);
-      return this.get('itemsService').getDataById(results.data.values.webmap)
+      return Ember.RSVP.hash({
+        item: this.get('itemsService').getById(results.data.values.webmap),
+        itemData: this.get('itemsService').getDataById(results.data.values.webmap)
+      });
     })
-    .then((webmap) => {
-      this.get('appSettings').set('settings.webmap', webmap);
+    .then((webmapResults) => {
+      this.get('appSettings').set('settings.webmap', webmapResults);
     })
     .catch((err) => {
       this.get('appSettings').set('errStatus', err.code || 500);
