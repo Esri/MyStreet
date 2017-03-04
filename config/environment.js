@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'open-streets',
+    modulePrefix: 'MyStreet',
     environment: environment,
     rootURL: '/',
     locationType: 'auto',
