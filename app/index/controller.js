@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   appSettings: Ember.inject.service(),
-  openStreets: Ember.inject.service(),
+  myStreet: Ember.inject.service(),
   ajax: Ember.inject.service(),
 
   queryParams: ['loc', 'themeId'],
@@ -67,7 +67,7 @@ export default Ember.Controller.extend({
 
   _setAddress (address) {
     this.set('loc', address);
-    return this.get('openStreets').findLocationAddress(address, {'bbox': this.get('bbox')})
+    return this.get('myStreet').findLocationAddress(address, {'bbox': this.get('bbox')})
       .then((results) => {
         this.setProperties({
           returnedAddress: results.candidates[0].address,
