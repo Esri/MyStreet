@@ -9,20 +9,24 @@ If you have any questions, please reach out to mshofner@esri.com, or make a PR/I
 #### High Level Steps to Reproduce MyStreet with a New City
 1. [Create](http://doc.arcgis.com/en/arcgis-online/share-maps/add-items.htm) a Web Map and associated feature layers.
 ![image](https://cloud.githubusercontent.com/assets/14302394/22866720/03f9e2ac-f149-11e6-974a-6f5f8a350b01.png)
+
 2. Create a Web App which points to the :id from the Web Map above.
 The hash should look something like
-  ```
-  {
-    "source": "My City",
-    "folderId": null,
-    "values": {
-      "webmap": "f155264b2b0942daa2c30945b1023675",
-      "themeId": "283b7cf014394d7fab7b3fd5b4bd6aeb"
-    }
+```
+{
+  "source": "My City",
+  "folderId": null,
+  "values": {
+    "webmap": "f155264b2b0942daa2c30945b1023675",
+    "themeId": "283b7cf014394d7fab7b3fd5b4bd6aeb"
   }
-  ```
+}
+```
+
 3. Point the MyStreet application to the :id of the Web App
+
 e.g. for item "2f4c72dc471b4baab362c0437273bd51" put that on the tail end of the url - either  http://mystreet.surge.sh/2f4c72dc471b4baab362c0437273bd51 or http://localhost:4200/2f4c72dc471b4baab362c0437273bd51
+
 4. Enjoy the app!
 
 ## Prerequisites
