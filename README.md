@@ -2,11 +2,14 @@
 
 This application is a municipality viewer that allows users to input an address and receive information based on that location. More technically, the application points to an ArcGIS online Web Map that contains a series of layers bounded by a geographic extent - and then MyStreet returns relevant data based on the searched coordinates within that extent.
 
-Additionally, this app can be used to demonstrate a set of "hub-ready" requirements that allow an application to become a part of the hub. The flagship requirements are Shared Themes, Data Citation, Indicator Awareness, and Accessibility. More information can be found [here](https://github.com/ArcGIS/MyStreet/blob/master/hub-ready.md).
+Additionally, this app can be used to demonstrate a set of "hub-ready" requirements that allow an application to become a part of the hub. The flagship requirements are Shared Themes, Data Citation, Indicator Awareness, and Accessibility. More information can be found [here](https://github.com/Esri/MyStreet/blob/master/hub-ready.md).
+
+**Currently MyStreet is in development and should be thought of as a beta or preview.**
+
 
 If you have any questions, please reach out to mshofner@esri.com, or make a PR/Issue in this repo!
 
-#### High Level Steps to Reproduce MyStreet with a New City
+### High Level Steps to Reproduce MyStreet with a New City
 1. [Create](http://doc.arcgis.com/en/arcgis-online/share-maps/add-items.htm) a Web Map and associated feature layers.
 ![image](https://cloud.githubusercontent.com/assets/14302394/22866720/03f9e2ac-f149-11e6-974a-6f5f8a350b01.png)
 

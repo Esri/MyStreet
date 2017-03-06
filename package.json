@@ -14,7 +14,7 @@
     "clean": "rm -rf node_modules bower_components tmp dist",
     "deploy": "ember surge"
   },
-  "repository": "https://github.com/ArcGIS/MyStreet",
+  "repository": "https://github.com/Esri/MyStreet",
   "engines": {
     "node": ">= 0.10.0"
   },

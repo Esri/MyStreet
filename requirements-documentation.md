@@ -1,4 +1,4 @@
-This file describes the process a developer can follow to achieve a state of hub-readiness for their application. By matching the following hub ready requirements (described from a high-level [here](https://github.com/ArcGIS/open-streets/blob/master/hub-ready.md)), an application will more seamlessly integrate with the hub.
+This file describes the process a developer can follow to achieve a state of hub-readiness for their application. By matching the following hub ready requirements (described from a high-level [here](https://github.com/Esri/open-streets/blob/master/hub-ready.md)), an application will more seamlessly integrate with the hub.
 
 #### Data Citation
 - Create hyperlinks to page that is informing that data represented on the page.
@@ -21,7 +21,7 @@ This file describes the process a developer can follow to achieve a state of hub
   - Share the configurable app.
   - In the settings tab (past overview, and usage) of the app,  
 - Then create app using a template (see picture)
-- Select Open Streets Application
+- Select MyStreet Application
 - Select a properly configured web map
 - Share with public
 - Fix the extent
@@ -33,14 +33,14 @@ This file describes the process a developer can follow to achieve a state of hub
 
 --------------------------------
 
-#### High Level Steps to Reproduce Open Streets
+#### High Level Steps to Reproduce MyStreet
 1. [Create](http://doc.arcgis.com/en/arcgis-online/share-maps/add-items.htm) a Web Map and associated feature layers.
 ![image](https://cloud.githubusercontent.com/assets/14302394/22866720/03f9e2ac-f149-11e6-974a-6f5f8a350b01.png)
 2. Create a Web App which points to the :id from the Web Map above.
 The hash should look something like
 ```
 {
-  "source": "ALLPOWERFULOPENDATABUWHAHAHAAH",
+  "source": "TheApplication",
   "folderId": null,
   "values": {
     "webmap": "f155264b2b0942daa2c30945b1023675",
