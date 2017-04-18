@@ -8,7 +8,7 @@ export default Ember.Component.extend({
   loaded: false,
 
   derivedTheme: Ember.observer('themeJson', function() {
-    let brandPrimary = this.get('themeJson.brand.primary') || '#1c66a6';
+    // let brandPrimary = this.get('themeJson.brand.primary') || '#1c66a6';
     let bodyBg = this.get('themeJson.body.bg') || '#f8f8f8';
     let linkColor = this.get('themeJson.brand.secondary') || '#136fbf';
     let textColor = this.get('themeJson.text.color') || '#4c4c4c';
