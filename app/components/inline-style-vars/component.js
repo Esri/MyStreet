@@ -1,3 +1,4 @@
+/* global $ */
 import Ember from 'ember';
 
 export default Ember.Component.extend({
@@ -28,7 +29,7 @@ export default Ember.Component.extend({
     let textColorHexLight = textColorCielchLight.as('hex');
 
     let cssString = `
-      .hero-unit .address-prompt, .hero-unit .address-input {
+      .address-search .address-prompt, .address-search .address-input {
         background-color: ${linkColor};
       }
       .panel-default, .list-group-item {
