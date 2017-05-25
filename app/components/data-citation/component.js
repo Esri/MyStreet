@@ -11,12 +11,10 @@ export default Ember.Component.extend({
 
   didReceiveAttrs() {
     let envUrl = ENV.APP.baseURL;
-    debugger
     let urlRegex = this.get('layer.url').replace(/.*?\/\//g,"http://");
     let urlFilter = `https://${envUrl}/api/v2/datasets?include=sites&filter[url]=${urlRegex}`;
     this.get('ajax').request(urlFilter, {dataType: 'json'})
       .then((response) =>{
-        debugger
         // this component could have been destroyed while waiting for the promise to resolve
         if (!this.get('isDestroyed') && !this.get('isDestroying')) {
           if (response.data[0]) { // currently causing issues because response no longer is returning data for these sets
