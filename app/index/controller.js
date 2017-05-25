@@ -20,23 +20,24 @@ export default Ember.Controller.extend({
   returnedAddress: "",
   geocodedLocation: [],
 
-  layers: Ember.computed('appSettings.settings.webmap.operationalLayers', function() {
-    return this.get('appSettings.settings.webmap.operationalLayers')
-  }),
-  webmap: Ember.computed('appSettings.settings.webmap', function() {
-    return this.get('appSettings.settings.webmap')
-  }),
-  bbox: Ember.computed('appSettings.settings.webmap', function() {
-    return this.get('appSettings.settings.item.extent')
-  }),
-  // itemInfo: Ember.computed.alias('appSettings.settings.webmap'),
-  // webmap: Ember.computed.alias('appSettings.settings.webmap.itemData'),
-  // layers: Ember.computed.alias('webmap.operationalLayers'),
-  // // showMap: Ember.computed.alias('appSettings.settings.data.values.showMap'),
-  // showMap: false, //TODO start as false here (and in config settings)
-  // bbox: Ember.computed('appSettings.settings.item.extent', function() {
-  //   return this.get('appSettings.settings.item.extent');
+  // layers: Ember.computed('appSettings.settings.webmap.operationalLayers', function() {
+  //   return this.get('appSettings.settings.webmap.operationalLayers')
   // }),
+  // webmap: Ember.computed('appSettings.settings.webmap', function() {
+  //   return this.get('appSettings.settings.webmap')
+  // }),
+  // bbox: Ember.computed('appSettings.settings.webmap', function() {
+  //   return this.get('appSettings.settings.item.extent')
+  // }),
+
+  // itemInfo: Ember.computed.alias('appSettings.settings.webmap'),
+  webmap: Ember.computed.alias('appSettings.settings.webmap'),
+  layers: Ember.computed.alias('webmap.data.operationalLayers'),
+  // showMap: Ember.computed.alias('appSettings.settings.data.values.showMap'),
+  showMap: true, //TODO start as false here (and in config settings)
+  bbox: Ember.computed('appSettings.settings.item.extent', function() {
+    return this.get('appSettings.settings.item.extent');
+  }),
 
   configCssUrl: Ember.computed('session.portalHostname', 'appSettings.settings.data.values.themeId', function() {
     return `https://${this.get('session.portalHostname')}/sharing/rest/content/items/${this.get('appSettings.settings.data.values.themeId')}/resources/opendata.css.txt`
