@@ -1,4 +1,11 @@
-{{address-search class="hero-unit" source=(action 'searchAddress') setAddress=(action 'onAddressChanged') address=address}}
+{{#if showMap}}
+  {{web-map itemId="f2e9b762544945f390ca4ac3671cfa72"}}
+  {{address-search  source=(action 'searchAddress') setAddress=(action 'onAddressChanged') address=address}}
+{{else}}
+  <div class="hero-unit">
+    {{address-search source=(action 'searchAddress') setAddress=(action 'onAddressChanged') address=address}}
+  </div>
+{{/if}}
 
 <div class="container">
   <div class="row">

@@ -29,6 +29,14 @@ export default Ember.Controller.extend({
   bbox: Ember.computed('appSettings.settings.webmap', function() {
     return this.get('appSettings.settings.item.extent')
   }),
+  // itemInfo: Ember.computed.alias('appSettings.settings.webmap'),
+  // webmap: Ember.computed.alias('appSettings.settings.webmap.itemData'),
+  // layers: Ember.computed.alias('webmap.operationalLayers'),
+  // // showMap: Ember.computed.alias('appSettings.settings.data.values.showMap'),
+  // showMap: false, //TODO start as false here (and in config settings)
+  // bbox: Ember.computed('appSettings.settings.item.extent', function() {
+  //   return this.get('appSettings.settings.item.extent');
+  // }),
 
   configCssUrl: Ember.computed('session.portalHostname', 'appSettings.settings.data.values.themeId', function() {
     return `https://${this.get('session.portalHostname')}/sharing/rest/content/items/${this.get('appSettings.settings.data.values.themeId')}/resources/opendata.css.txt`
