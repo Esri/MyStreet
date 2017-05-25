@@ -20,19 +20,8 @@ export default Ember.Controller.extend({
   returnedAddress: "",
   geocodedLocation: [],
 
-  // layers: Ember.computed('appSettings.settings.webmap.operationalLayers', function() {
-  //   return this.get('appSettings.settings.webmap.operationalLayers')
-  // }),
-  // webmap: Ember.computed('appSettings.settings.webmap', function() {
-  //   return this.get('appSettings.settings.webmap')
-  // }),
-  // bbox: Ember.computed('appSettings.settings.webmap', function() {
-  //   return this.get('appSettings.settings.item.extent')
-  // }),
-
-  // itemInfo: Ember.computed.alias('appSettings.settings.webmap'),
   webmap: Ember.computed.alias('appSettings.settings.webmap'),
-  layers: Ember.computed.alias('webmap.data.operationalLayers'),
+  layers: Ember.computed.alias('webmap.itemData.operationalLayers'),
   // showMap: Ember.computed.alias('appSettings.settings.data.values.showMap'),
   showMap: true, //TODO start as false here (and in config settings)
   bbox: Ember.computed('appSettings.settings.item.extent', function() {
@@ -63,6 +52,7 @@ export default Ember.Controller.extend({
 
   _searchAddress (address) {
     let text = address;
+    // debugger
     let bbox = this.get('bbox');
     let bb = {
       "xmin": bbox[0][0],

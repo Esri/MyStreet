@@ -1,19 +1,23 @@
 import Ember from 'ember';
-// import layout from './template';
 
 export default Ember.Component.extend({
-  // layout,
+  classNames: ['web-map'],
   esriLoader: Ember.inject.service('esri-loader'),
 
   // once we have a DOM node to attach the map to...
   didInsertElement () {
     this._super(...arguments);
     // load the map modules
-    this.get('esriLoader').loadModules(['esri/views/MapView', 'esri/WebMap']).then(modules => {
-      const [MapView, WebMap] = modules;
+
+    this.get('esriLoader').loadModules(['esri/views/MapView', 'esri/WebMap', 'esri/config']).then(modules => {
+      const [MapView, WebMap, esriConfig] = modules;
+
+      esriConfig.portalUrl = "https://devext.arcgis.com"; // TODO base off of ENV variable, have it be a parameter passed in based on component call
+
       // load the webmap from a portal item
       const webmap = new WebMap({
-        portalItem: { // autocasts as new PortalItem()
+        portalItem: // this.get('webmap.item')
+        { // autocasts as new PortalItem()
           id: this.itemId
         }
       });
@@ -39,7 +43,7 @@ export default Ember.Component.extend({
   //   this.get('esriLoader').loadModules(['esri/map', 'esri/layers/VectorTileLayer']).then(modules => {
   //     const [Map, VectorTileLayer] = modules;
   //     // create a map at the DOM node
-  //     this._map = new Map(this.elementId, {
+  //     this._map = new Map(this.itemId, {
   //       center: [2.3508, 48.8567], // longitude, latitude
   //       zoom: 11
   //     });

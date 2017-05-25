@@ -119,7 +119,7 @@ export default Ember.Route.extend({
     .then((webmapResults) => {
       this.get('appSettings').set('settings.webmap', {});
       this.get('appSettings').set('settings.webmap.item', webmapResults.item);
-      this.get('appSettings').set('settings.webmap.data', webmapResults.itemData);
+      this.get('appSettings').set('settings.webmap.itemData', webmapResults.itemData);
     })
     .catch((err) => {
       this.get('appSettings').set('errStatus', err.code || 500);

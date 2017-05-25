@@ -9,7 +9,7 @@ $icon-font-path: '../assets/fonts/';
 
 /* esri styles */
 // TODO: replace w/ urls to calcite theme if using map components
-@import url('https://js.arcgis.com/3.20/esri/css/esri.css');
+@import url('https://js.arcgis.com/4.3/esri/css/main.css');
 
 // Calcite Fast Fonts Imports
 @import url('https://fast.fonts.net/cssapi/9431e9a5-7a6d-4b5f-82be-4d935972de5a.css');
@@ -89,13 +89,26 @@ $bg-img: url('../public/assets/images/illustrated-city.jpg');
 .hero-unit {
   background-image: url('/assets/images/street-image.png');
   background-repeat: no-repeat;
-  background-size:cover;
-  padding-top: 30px;
-  height: 300px;
+  background-size: cover;
   border-bottom: 10px solid #EAEAEA;
+}
 
+.web-map {
+  .address-search {
+    position: absolute;
+    width: 100%;
+    z-index: 40;
+  }
+}
+
+.hero-unit, .web-map {
+  height: 350px;
+}
+
+.address-search {
+   padding-top: 30px;
   .address-prompt {
-    color:#fff;
+    color: #fff;
     text-shadow: none;
     font-size: 36px;
     background-color: rgba(1,1,1,0.8);
