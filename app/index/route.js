@@ -7,11 +7,11 @@ function processConfigParams (params) {
   if (typeof params.webmap === 'string') {
     const webmapGuid = isGuid(params.webmap);
     if (!webmapGuid) {
-      console.log('Config Webmap ID not a guid');
+      Ember.debug('Config Webmap ID not a guid');
       delete params.webmap;
     }
   } else {
-    console.log('Config Webmap ID not a string');
+    Ember.debug('Config Webmap ID not a string');
     delete params.webmap;
   }
 
@@ -19,11 +19,11 @@ function processConfigParams (params) {
   if (typeof params.themeId === 'string') {
     const themeIdGuid = isGuid(params.themeId);
     if (!themeIdGuid) {
-      console.log('Config Theme ID not a guid');
+      Ember.debug('Config Theme ID not a guid');
       delete params.themeId;
     }
   } else {
-    console.log('Config Theme ID not a string');
+    Ember.debug('Config Theme ID not a string');
     delete params.themeId;
   }
 
@@ -31,11 +31,11 @@ function processConfigParams (params) {
   if (typeof params.geocodeUrl === 'string') {
     const geocodeUrlValid = isUrl(params.geocodeUrl);
     if (!geocodeUrlValid) {
-      console.log('Config Geocode URL not a valid URL');
+      Ember.debug('Config Geocode URL not a valid URL');
       delete params.geocodeUrl;
     }
   } else {
-    console.log('Config Geocode URL not a valid string');
+    Ember.debug('Config Geocode URL not a valid string');
     delete params.geocodeUrl;
   }
 
@@ -106,10 +106,18 @@ export default Ember.Route.extend({
       this.set('appSettings.settings.data.values', Object.assign(config, params));
       ENV.APP.geocodeUrl = params.geocodeUrl;
       this.get('appSettings').set('errStatus', null);
-      return this.get('itemsService').getDataById(results.data.values.webmap)
-    })
-    .then((webmap) => {
-      this.get('appSettings').set('settings.webmap', webmap);
+    //   return this.get('itemsService').getDataById(results.data.values.webmap)
+    // })
+    // .then((webmap) => {
+    //   this.get('appSettings').set('settings.webmap', webmap);
+    // })
+      return Ember.RSVP.hash({
+          item: this.get('itemsService').getById(results.data.values.webmap),
+          itemData: this.get('itemsService').getDataById(results.data.values.webmap)
+        });
+      })
+    .then((webmapResults) => {
+      this.get('appSettings').set('settings.webmap', webmapResults.itemData);
     })
     .catch((err) => {
       this.get('appSettings').set('errStatus', err.code || 500);
