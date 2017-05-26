@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
   appSettings: Ember.inject.service(),
   myStreet: Ember.inject.service(),
   ajax: Ember.inject.service(),
-  portalUrl: ENV.torii.providers.portalUrl,
+  portalUrl: ENV.torii.providers['arcgis-oauth-bearer'].portalUrl,
 
   queryParams: ['loc', 'themeId'],
   loc: "",
@@ -24,8 +24,7 @@ export default Ember.Controller.extend({
 
   webmap: Ember.computed.alias('appSettings.settings.webmap'),
   layers: Ember.computed.alias('webmap.itemData.operationalLayers'),
-  // showMap: Ember.computed.alias('appSettings.settings.data.values.showMap'),
-  showMap: true, //TODO start as false here (and in config settings)
+  showMap: Ember.computed.alias('appSettings.settings.data.values.showMap'),
   bbox: Ember.computed('appSettings.settings.item.extent', function() {
     return this.get('appSettings.settings.item.extent');
   }),
@@ -54,7 +53,6 @@ export default Ember.Controller.extend({
 
   _searchAddress (address) {
     let text = address;
-    // debugger
     let bbox = this.get('bbox');
     let bb = {
       "xmin": bbox[0][0],

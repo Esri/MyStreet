@@ -8,11 +8,10 @@ export default Ember.Component.extend({
   didInsertElement () {
     this._super(...arguments);
     // load the map modules
-
     this.get('esriLoader').loadModules(['esri/views/MapView', 'esri/WebMap', 'esri/config']).then(modules => {
       const [MapView, WebMap, esriConfig] = modules;
 
-      esriConfig.portalUrl = "https://devext.arcgis.com"; // TODO base off of ENV variable, have it be a parameter passed in based on component call
+      esriConfig.portalUrl = this.get('portalUrl');
 
       // load the webmap from a portal item
       const webmap = new WebMap({
