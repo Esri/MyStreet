@@ -1,6 +1,5 @@
 {{#if showMap}}
-  {{web-map itemId="f155264b2b0942daa2c30945b1023675"}} <!--5865341bb7dd4c17aa7314dbdcdd5d89-->
-  {{!web-map webmap=webmap}}
+  {{web-map itemId=webmap.item.id portalUrl=portalUrl}}
   {{address-search  source=(action 'searchAddress') setAddress=(action 'onAddressChanged') address=address}}
 {{else}}
   <div class="hero-unit">

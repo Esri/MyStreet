@@ -1,9 +1,11 @@
 import Ember from 'ember';
+import ENV from '../config/environment';
 
 export default Ember.Controller.extend({
   appSettings: Ember.inject.service(),
   myStreet: Ember.inject.service(),
   ajax: Ember.inject.service(),
+  portalUrl: ENV.torii.providers.portalUrl,
 
   queryParams: ['loc', 'themeId'],
   loc: "",
