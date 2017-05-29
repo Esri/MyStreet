@@ -15,6 +15,9 @@ export default Ember.Component.extend({
       .then( response => {
         // get a reference to the map for proper teardown
         this._map = response.map;
+        // don't move the map if the user is just trying to scroll down the page
+        this._map.disableScrollWheelPan()
+        this._map.disableScrollWheelZoom();
         return response;
       });
     });

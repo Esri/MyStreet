@@ -135,7 +135,6 @@ export default Ember.Route.extend({
     const esriLoader = this.get('esriLoader');
     if (this.get('appSettings.settings.data.values.showMap') && !esriLoader.get('isLoaded')) {
       // will be showing a map, so lazy-load the JSAPI
-      console.log('loading JSAPI');
       esriLoader.load({
         url: 'https://js.arcgis.com/3.20'
       }).catch(err => {
