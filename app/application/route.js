@@ -6,7 +6,6 @@ export default Ember.Route.extend({
   hostUrl: Ember.computed.reads('session.portalHostname'),
   appSettings: Ember.inject.service(),
   itemService: Ember.inject.service('items-service'),
-  esriLoader: Ember.inject.service('esri-loader'),
 
   queryParams: {
     appid: {
@@ -20,18 +19,6 @@ export default Ember.Route.extend({
     let defaultLocale = 'en-us';
     intl.setLocale(defaultLocale);
     // let translationKey = this._calculateTranslationKey(defaultLocale);
-  },
-
-  renderTemplate: function () {
-    // render the template as normal
-    this._super(...arguments);
-    // then preload the JSAPI
-    this.get('esriLoader').load({
-      url: 'https://js.arcgis.com/3.20'
-    }).catch(err => {
-      // do something with the error
-      Ember.debug(`application:route:renderTemplate:esriLoader error: ${err}`);
-    });
   },
 
   model (params) {

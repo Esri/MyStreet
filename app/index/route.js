@@ -59,6 +59,7 @@ export default Ember.Route.extend({
   itemsService: Ember.inject.service(),
   appSettings: Ember.inject.service(),
   queryParams: {'loc': {refreshModel: true}},
+  esriLoader: Ember.inject.service('esri-loader'),
 
   renderTemplate (/*controller, model*/) {
     Ember.debug('IndexRoute::renderTemplate fired...');
@@ -128,4 +129,19 @@ export default Ember.Route.extend({
     });
   },
 
+  // TODO: could move this inside the promise chain in model() right after this line:
+  // this.get('appSettings').set('errStatus', null);
+  afterModel () {
+    const esriLoader = this.get('esriLoader');
+    if (this.get('appSettings.settings.data.values.showMap') && !esriLoader.get('isLoaded')) {
+      // will be showing a map, so lazy-load the JSAPI
+      console.log('loading JSAPI');
+      esriLoader.load({
+        url: 'https://js.arcgis.com/3.20'
+      }).catch(err => {
+        // TODO: do something with the error
+        Ember.debug(`application:route:renderTemplate:esriLoader error: ${err}`);
+      });
+    }
+  }
 });
