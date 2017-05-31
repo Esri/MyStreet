@@ -1,5 +1,5 @@
 {{#if showMap}}
-  {{web-map itemId=webmap.item.id portalUrl=portalUrl}}
+  {{web-map webmap=webmap}}
   {{address-search  source=(action 'searchAddress') setAddress=(action 'onAddressChanged') address=address}}
 {{else}}
   <div class="hero-unit">

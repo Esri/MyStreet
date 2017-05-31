@@ -7,31 +7,29 @@ export default Ember.Component.extend({
   // once we have a DOM node to attach the map to...
   didInsertElement () {
     this._super(...arguments);
-    // load the map modules
-    this.get('esriLoader').loadModules(['esri/views/MapView', 'esri/WebMap', 'esri/config']).then(modules => {
-      const [MapView, WebMap, esriConfig] = modules;
-
-      esriConfig.portalUrl = this.get('portalUrl');
-
-      // load the webmap from a portal item
-      const webmap = new WebMap({
-        portalItem: // this.get('webmap.item')
-        { // autocasts as new PortalItem()
-          id: this.itemId
-        }
-      });
-      // Set the WebMap instance to the map property in a MapView.
-      this._view = new MapView({
-        map: webmap,
-        container: this.elementId
+    // load the arcgis util module
+    this.get('esriLoader').loadModules(['esri/arcgis/utils']).then(modules => {
+      const [arcgisUtils] = modules;
+      // create the map
+      return arcgisUtils.createMap(this.get('webmap'), this.elementId)
+      .then( response => {
+        // get a reference to the map for proper teardown
+        this._map = response.map;
+        // don't move the map if the user is just trying to scroll down the page
+        this._map.disableScrollWheelPan()
+        this._map.disableScrollWheelZoom();
+        return response;
       });
     });
   },
 
   // destroy the map before this component is removed from the DOM
   willDestroyElement () {
-    if (this._view) {
-      delete this._view;
+    if (this._map) {
+      if (this._map.destroy) {
+        this._map.destroy();
+      }
+      delete this._map;
     }
   }
 });

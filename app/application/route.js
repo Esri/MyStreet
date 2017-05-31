@@ -6,7 +6,6 @@ export default Ember.Route.extend({
   hostUrl: Ember.computed.reads('session.portalHostname'),
   appSettings: Ember.inject.service(),
   itemService: Ember.inject.service('items-service'),
-  esriLoader: Ember.inject.service('esri-loader'),
 
   queryParams: {
     appid: {
@@ -20,17 +19,6 @@ export default Ember.Route.extend({
     let defaultLocale = 'en-us';
     intl.setLocale(defaultLocale);
     // let translationKey = this._calculateTranslationKey(defaultLocale);
-  },
-
-  renderTemplate: function () {
-    // render the template as normal
-    this._super(...arguments);
-    // then preload the JSAPI
-    // NOTE: to use the latest 4.x release don't pass any arguments to load()
-    this.get('esriLoader').load().catch(err => {
-      // do something with the error
-      Ember.debug(`application:route:renderTemplate:esriLoader error: ${err}`);
-    });
   },
 
   model (params) {
