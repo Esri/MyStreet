@@ -13,7 +13,13 @@ module.exports = function(defaults) {
         'node_modules/calcite-bootstrap/dist/sass',
       ]
     },
+    fingerprint: {
+      enabled: true,
+      extensions: ['js', 'css', 'png', 'jpg', 'gif', 'map', 'ico', 'eot', 'svg', 'ttf', 'woff', 'woff2'],
+      prepend: '//s3.amazonaws.com/dev-od-assets/apps/mystreet/'
+    }
   });
+
 
   app.import('./bower_components/typeahead.js/dist/typeahead.jquery.js');
   app.import('./bower_components/colorspaces/colorspaces.js');
