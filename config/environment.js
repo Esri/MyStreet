@@ -26,9 +26,9 @@ module.exports = function(environment) {
       providers: {
         'arcgis-oauth-bearer': {
           apiKey: 'J87zpPnTLsEthjDx', //QA App for Open Data Pages
-          portalUrl: 'https://devext.arcgis.com'
+          // portalUrl: 'https://devext.arcgis.com'
           // portalUrl: 'https://qaext.arcgis.com'
-          // portalUrl: 'https://www.arcgis.com'
+          portalUrl: 'https://www.arcgis.com'
         }
       }
     }
