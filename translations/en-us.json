@@ -1,0 +1,29 @@
+{
+  "general": {
+    "title": "MyStreet",
+    "examples": "Examples",
+    "index": "Index",
+    "about": "Learn More",
+    "source": "Source"
+  },
+  "index": {
+    "prompt": "Explore an Address",
+    "DC": "D.C.",
+    "LA": "L.A.",
+    "instructions": "Enter an address above!"
+  },
+  "cache": {
+    "no_data": "No data found for this address.",
+    "title": "MyStreet",
+    "bullet_one": "Click D.C. or L.A. navigation options above to use the application.",
+    "bullet_two": "This <a href=\"https://github.com/Esri/MyStreet\">project</a> is an <a href=\"http://emberjs.com/\">Ember App</a> that demonstrates the <a href=\"https://github.com/Esri/MyStreet/blob/master/hub-ready.md\">requirements of hub-ready</a> applications.",
+    "bullet_three": "The <a href=\"http://opendata.arcgis.com/about\">Esri DC Team</a> is developing this app for use in the Open Data and Hub Administration applications.",
+    "bullet_four": "We will be making many changes to the application as we move forward, please reach out to mshofner@esri.com with any questions."
+  },
+  "a11y": {
+    "address-input": "Address",
+    "location":"Location",
+    "nav-toggle": "Toggle navigation",
+    "search-label":"Submit Search"
+  }
+}

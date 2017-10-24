@@ -1,0 +1,176 @@
+//============================
+// arcgist-items-engine
+//============================//============================//============================
+
+/* The addon's css should be included in vendor */
+//@import 'bootstrap/mixins/_bidirectional';
+/* set the output folder for fonts */
+$icon-font-path: '../assets/fonts/';
+
+// Calcite Fast Fonts Imports
+@import url('https://fast.fonts.net/cssapi/9431e9a5-7a6d-4b5f-82be-4d935972de5a.css');
+
+// Set variable to change the primary typeface in the font stack
+$primary-font-sanserif:  'Avenir Next W01', 'Avenir Next', 'Avenir';
+$primary-font-serif: 'Kepler W01';
+
+$primary-headings-weight: 300;
+
+@import 'calcite/colors-default';
+
+@import 'calcite/variables';
+@import 'bootstrap/_variables';
+//
+// // Custom Calcite Components
+@import 'calcite/components'; // This loads the custom calcite css
+
+//NOTE: SOMEWHERE IN CALCITE_BOOTSTRAP THE FONT PATH IS SET WITHOUT !default
+$icon-font-path: '../assets/fonts/';
+/**
+* Bootstrap Components
+*/
+// Core variables and mixins
+@import 'bootstrap/mixins';
+
+// Reset and dependencies
+@import 'bootstrap/normalize';
+//@import 'bootstrap/print';
+@import 'bootstrap/glyphicons';
+
+// Core CSS
+@import 'bootstrap/scaffolding';
+@import 'bootstrap/type';
+@import 'bootstrap/code';
+@import 'bootstrap/grid';
+@import 'bootstrap/tables';
+@import 'bootstrap/forms';
+@import 'bootstrap/buttons';
+
+// Components
+@import 'bootstrap/component-animations';
+@import 'bootstrap/dropdowns';
+@import 'bootstrap/button-groups';
+@import 'bootstrap/input-groups';
+@import 'bootstrap/navs';
+@import 'bootstrap/navbar';
+@import 'bootstrap/breadcrumbs';
+@import 'bootstrap/pagination';
+@import 'bootstrap/pager';
+@import 'bootstrap/labels';
+@import 'bootstrap/badges';
+@import 'bootstrap/jumbotron';
+@import 'bootstrap/thumbnails';
+@import 'bootstrap/alerts';
+@import 'bootstrap/progress-bars';
+@import 'bootstrap/media';
+@import 'bootstrap/list-group';
+@import 'bootstrap/panels';
+@import 'bootstrap/responsive-embed';
+@import 'bootstrap/wells';
+@import 'bootstrap/close';
+
+// Components w/ JavaScript
+@import 'bootstrap/modals';
+@import 'bootstrap/tooltip';
+@import 'bootstrap/popovers';
+//@import 'bootstrap/carousel';
+
+// Utility classes
+@import 'bootstrap/utilities';
+@import 'bootstrap/responsive-utilities';
+
+// image
+$bg-img: url('../public/assets/images/illustrated-city.jpg');
+
+.hero-unit {
+  background-image: url("/assets/images/street-image.png");
+  background-repeat: no-repeat;
+  background-size:cover;
+  padding-top: 30px;
+  height: 300px;
+  border-bottom: 10px solid #EAEAEA;
+
+  .address-prompt {
+    color:#fff;
+    text-shadow: none;
+    font-size: 36px;
+    background-color: rgba(1,1,1,0.8);
+    opacity: 0.8;
+    padding: 15px;
+    margin: 5px auto 10px auto;
+    clear: both;
+  }
+  .address-input {
+    background-color: rgba(1,1,1, 0.8);
+    opacity: 0.9;
+    padding: 15px;
+    min-width: 450px;
+    input {
+      border: 1px solid #fff;
+      background-color: #fff;
+      &:focus{
+        outline: thin dotted;
+        outline: 5px auto -webkit-focus-ring-color;
+      }
+      &::-webkit-input-placeholder {
+          color: #6a6a6a;
+        }
+        &:-moz-placeholder {
+          color: #6a6a6a;
+          opacity: 1;
+        }
+        &::-moz-placeholder {
+          color: #6a6a6a;
+          opacity: 1;
+        }
+        &:-ms-input-placeholder {
+          color: #6a6a6a;
+        }
+    }
+    button {
+      box-shadow: none;
+      border: 1px solid #fff;
+    }
+  }
+  .twitter-typeahead {
+    width: 100%;
+    display: table !important;
+    border-collapse: separate;
+  }
+}
+
+.list-group-item {
+  border: 0px;
+}
+
+.topic-title {
+  display: inline-block;
+}
+
+svg.address-icon {
+  height: 20px;
+}
+
+h2.your-location {
+  margin: 5px 15px 10px 15px;
+}
+
+.data-citation {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.topic-icon {
+  fill: white;
+  height: 20px;
+  // display: inline-block;
+}
+
+.address-search-button {
+  background-color: green;
+  display: inline-block;
+}
+
+.instructions {
+  margin-top: 60px;
+}

@@ -1,0 +1,34 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">{{t 'a11y.nav-toggle'}}</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">MyStreet</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+        {{#active-link}}{{link-to (t 'index.DC') "index" "40d2176ee0694c4ba2c6899aebd71f60"}}{{/active-link}}
+        {{#active-link}}{{link-to (t 'index.LA') "index" "ce08b5ef9351405a9a1a067b3ec62e61"}}{{/active-link}}
+        <li><a href="http://opendata.arcgis.com/about">{{t 'general.about'}}</a></li>
+      </ul>
+        </div>
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 instructions">
+      <h1>{{t 'cache.title'}}</h1>
+      <ul>
+        <li>{{format-html-message 'cache.bullet_one'}}</li>
+        <li>{{format-html-message 'cache.bullet_two'}}</li>
+        <li>{{format-html-message 'cache.bullet_three'}}</li>
+        <li>{{format-html-message 'cache.bullet_four'}}</li>
+      </ul>
+    </div>
+  </div>
+</div>

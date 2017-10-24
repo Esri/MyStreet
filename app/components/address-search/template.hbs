@@ -1,0 +1,22 @@
+<form {{action "setAddress" on="submit"}}>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <h1 class="address-prompt">{{t 'index.prompt'}}</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="address-input input-group">
+          <label for="address-field" class="sr-only">{{t 'a11y.address-input'}}</label>
+          {{input placeholder="123 Main St." class="typeahead form-control input-lg" value=address id="address-field" role="search"}}
+          <span class="input-group-btn">
+            <button class="btn btn-default btn-lg" type="submit" {{action "setAddress"}}>
+              <span class="glyphicon glyphicon-search" aria-label="{{t 'a11y.search-label'}}"></span>
+            </button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

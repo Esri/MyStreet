@@ -1,0 +1,34 @@
+{
+    "configurationSettings": [
+        {
+            "category": "General Settings",
+            "fields": [
+                {
+                    "type": "webmap",
+                    "fieldName": "webmap",
+                    "label": "Webmap ID",
+                    "tooltip": "Webmap the app consumes",
+                    "placeholder": "f155264b2b0942daa2c30945b1023675"
+                },
+                {
+                    "type": "string",
+                    "fieldName": "themeId",
+                    "label": "Theme ID",
+                    "tooltip": "Theme the app consumes",
+                    "placeholder": "283b7cf014394d7fab7b3fd5b4bd6aeb"
+                },
+                {
+                    "type": "string",
+                    "fieldName": "geocodeUrl",
+                    "label": "Geocode URL",
+                    "tooltip": "URL used for geocode lookups",
+                    "placeholder": "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/"
+                }
+            ]
+        }
+    ],
+    "values": {
+        "topListSize": 5,
+        "theme": "test"
+    }
+}

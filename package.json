@@ -1,44 +1,64 @@
 {
-  "dependencies": {
-    "node-fetch": "^1.3.3"
+  "name": "MyStreet",
+  "version": "0.0.1",
+  "description": "City viewer app that will demonstate the determined requirements for a hub read app.",
+  "private": true,
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
   },
-  "fastboot": {
-    "moduleWhitelist": [
-      "node-fetch"
-    ],
-    "manifest": {
-      "appFile": "fastboot/open-streets-40e63b3f201be323fc82c460c010ae12.js",
-      "vendorFile": "fastboot/vendor-3dd79340d5dbcbc6651c72af445c187b.js",
-      "htmlFile": "index.html"
-    },
-    "appConfig": {
-      "modulePrefix": "open-streets",
-      "environment": "production",
-      "rootURL": "/open-streets/",
-      "locationType": "hash",
-      "EmberENV": {
-        "FEATURES": {}
-      },
-      "APP": {
-        "geocodeUrl": "",
-        "featureServiceUrl": "https://servicesdev.arcgis.com/LjjARY1mkhxulWPq/ArcGIS/rest/services/Columbus_2014_Fiscal_Year_Edited/FeatureServer/0",
-        "testString": "table",
-        "testInt": 3,
-        "baseURL": "opendata.arcgis.com",
-        "name": "open-streets",
-        "version": "0.0.1+574b8495",
-        "autoboot": false
-      },
-      "torii": {
-        "sessionServiceName": "session",
-        "providers": {
-          "arcgis-oauth-bearer": {
-            "apiKey": "J87zpPnTLsEthjDx",
-            "portalUrl": "https://devext.arcgis.com"
-          }
-        }
-      },
-      "exportApplicationGlobal": false
-    }
+  "scripts": {
+    "build": "ember build",
+    "start": "ember server",
+    "test": "ember test",
+    "clean": "rm -rf node_modules bower_components tmp dist",
+    "deploy": "ember surge"
+  },
+  "repository": "https://github.com/Esri/MyStreet",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "author": "Markham Shofner <mshofner@esri.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "broccoli-asset-rev": "^2.4.2",
+    "calcite-bootstrap": "^0.3.3",
+    "ember-ajax": "^2.0.1",
+    "ember-arcgis-opendata-components": "^0.1.0",
+    "ember-arcgis-portal-services": "^0.8.4",
+    "ember-arcgis-server-services": "0.1.1",
+    "ember-cli": "2.8.0",
+    "ember-cli-active-link-wrapper": "0.3.2",
+    "ember-cli-app-version": "^1.0.0",
+    "ember-cli-babel": "^5.1.6",
+    "ember-cli-dependency-checker": "^1.2.0",
+    "ember-cli-eslint": "^3.0.0",
+    "ember-cli-fastboot": "1.0.0-beta.13",
+    "ember-cli-github-pages": "0.1.2",
+    "ember-cli-htmlbars": "^1.0.3",
+    "ember-cli-htmlbars-inline-precompile": "^0.3.1",
+    "ember-cli-inject-live-reload": "^1.4.0",
+    "ember-cli-qunit": "^2.1.0",
+    "ember-cli-release": "^0.2.9",
+    "ember-cli-sass": "5.6.0",
+    "ember-cli-sri": "^2.1.0",
+    "ember-cli-surge": "1.1.16",
+    "ember-cli-test-loader": "^1.1.0",
+    "ember-cli-uglify": "^1.2.0",
+    "ember-export-application-global": "^1.0.5",
+    "ember-intl": "^2.15.1",
+    "ember-load-initializers": "^0.5.1",
+    "ember-network": "0.3.0",
+    "ember-one-way-controls": "1.1.2",
+    "ember-resolver": "^2.0.3",
+    "ember-sanitize": "^2.0.1",
+    "eslint-config-semistandard": "~7.0.0",
+    "eslint-config-standard": "~6.0.0",
+    "eslint-plugin-promise": "^2.0.1",
+    "eslint-plugin-react": "^6.2.0",
+    "eslint-plugin-standard": "^2.0.0",
+    "loader.js": "^4.0.1",
+    "torii": "0.8.1",
+    "torii-provider-arcgis": "0.4.3"
   }
 }
