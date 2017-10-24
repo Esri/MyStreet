@@ -95,6 +95,8 @@ export default Ember.Route.extend({
       webmap
     };
 
+    debugger;
+
     return Ember.RSVP.hash({
       item: this.get('itemsService').getById(params.id),
       data: this.get('itemsService').getDataById(params.id),
