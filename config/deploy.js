@@ -7,8 +7,8 @@ module.exports = function(deployTarget) {
   };
 
   ENV.s3 = {
-    accessKeyId: 'AKIAIBPMW5O5PVAFU3ZA',
-    secretAccessKey: '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',
+    accessKeyId: '', // TODO inject these via local variables
+    secretAccessKey: '',
     bucket: 'dev-od-assets',
     region: 'us-east-1',
     prefix: 'apps/mystreet',
