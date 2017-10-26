@@ -29,6 +29,7 @@
     ],
     "values": {
         "topListSize": 5,
-        "theme": "test"
+        "theme": "test",
+        "showMap": "false"
     }
 }
