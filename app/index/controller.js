@@ -1,9 +1,11 @@
 import Ember from 'ember';
+import ENV from '../config/environment';
 
 export default Ember.Controller.extend({
   appSettings: Ember.inject.service(),
   myStreet: Ember.inject.service(),
   ajax: Ember.inject.service(),
+  portalUrl: ENV.torii.providers['arcgis-oauth-bearer'].portalUrl,
 
   queryParams: ['loc', 'themeId'],
   loc: "",
@@ -20,14 +22,11 @@ export default Ember.Controller.extend({
   returnedAddress: "",
   geocodedLocation: [],
 
-  layers: Ember.computed('appSettings.settings.webmap.operationalLayers', function() {
-    return this.get('appSettings.settings.webmap.operationalLayers')
-  }),
-  webmap: Ember.computed('appSettings.settings.webmap', function() {
-    return this.get('appSettings.settings.webmap')
-  }),
-  bbox: Ember.computed('appSettings.settings.webmap', function() {
-    return this.get('appSettings.settings.item.extent')
+  webmap: Ember.computed.alias('appSettings.settings.webmap'),
+  layers: Ember.computed.alias('webmap.itemData.operationalLayers'),
+  showMap: Ember.computed.alias('appSettings.settings.data.values.showMap'),
+  bbox: Ember.computed('appSettings.settings.item.extent', function() {
+    return this.get('appSettings.settings.item.extent');
   }),
 
   configCssUrl: Ember.computed('session.portalHostname', 'appSettings.settings.data.values.themeId', function() {
