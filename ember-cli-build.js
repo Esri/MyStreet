@@ -16,7 +16,7 @@ module.exports = function(defaults) {
     fingerprint: {
       enabled: true,
       extensions: ['js', 'css', 'png', 'jpg', 'gif', 'map', 'ico', 'eot', 'svg', 'ttf', 'woff', 'woff2'],
-      prepend: '//s3.amazonaws.com/dev-od-assets/apps/mystreet/'
+      // prepend: '//s3.amazonaws.com/dev-od-assets/apps/mystreet/' // Comment out (surge), in (s3)
     }
   });
 
