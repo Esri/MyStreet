@@ -1,4 +1,5 @@
-Public facing session talks summary:
+Summary of 2017 DevSummit presentation [Building Apps for Hub: Hub-Ready Apps](http://proceedings.esri.com/library/userconf/devsummit17/papers/dev_int_242.pdf):
+
 >The Hub builds smart communities for close collaboration with Governments and Citizens that are driven by focused initiatives. Developers can discover, create, and share data-based applications that improve collaboration through analytics-based decision making. Hub-Ready Apps extend WebGIS so that solutions built by the community are deeply integrated with Hubs. These capabilities include shared themes, indicator awareness, data citation, shared state, and accessibility consideration. When an app is Hub-Ready it can be easily reused and shared across many municipalities by many developers.
 
 The following are draft requirements for hub-ready apps:
