@@ -8,18 +8,20 @@ export default Ember.Component.extend({
   didInsertElement () {
     this._super(...arguments);
     // load the arcgis util module
-    this.get('esriLoader').loadModules(['esri/arcgis/utils']).then(modules => {
-      const [arcgisUtils] = modules;
-      // create the map
-      return arcgisUtils.createMap(this.get('webmap'), this.elementId)
-      .then( response => {
-        // get a reference to the map for proper teardown
-        this._map = response.map;
-        // don't move the map if the user is just trying to scroll down the page
-        this._map.disableScrollWheelPan()
-        this._map.disableScrollWheelZoom();
-        return response;
-      });
+    this.get('esriLoader').loadModules(['esri/arcgis/utils'], {url: 'https://js.arcgis.com/3.20'}).then(modules => {
+      if (!this.get('isDestroying') || this.get('isDestroyed')) {
+        const [arcgisUtils] = modules;
+        // create the map
+        return arcgisUtils.createMap(this.get('webmap'), this.elementId)
+        .then( response => {
+          // get a reference to the map for proper teardown
+          this._map = response.map;
+          // don't move the map if the user is just trying to scroll down the page
+          this._map.disableScrollWheelPan()
+          this._map.disableScrollWheelZoom();
+          return response;
+        });
+      }
     });
   },
 

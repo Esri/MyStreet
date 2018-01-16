@@ -131,16 +131,16 @@ export default Ember.Route.extend({
 
   // TODO: could move this inside the promise chain in model() right after this line:
   // this.get('appSettings').set('errStatus', null);
-  afterModel () {
-    const esriLoader = this.get('esriLoader');
-    if (this.get('appSettings.settings.data.values.showMap') && !esriLoader.get('isLoaded')) {
+  // afterModel () {
+    // const esriLoader = this.get('esriLoader');
+    // if (this.get('appSettings.settings.data.values.showMap') && !esriLoader.get('isLoaded')) {
       // will be showing a map, so lazy-load the JSAPI
-      esriLoader.load({
-        url: 'https://js.arcgis.com/3.20'
-      }).catch(err => {
-        // TODO: do something with the error
-        Ember.debug(`application:route:renderTemplate:esriLoader error: ${err}`);
-      });
-    }
-  }
+      // esriLoader.load({
+      //   url: 'https://js.arcgis.com/3.20'
+      // }).catch(err => {
+      //   // TODO: do something with the error
+      //   Ember.debug(`application:route:renderTemplate:esriLoader error: ${err}`);
+      // });
+    // }
+  // }
 });
