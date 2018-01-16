@@ -5,8 +5,11 @@ export default Ember.Component.extend({
   esriLoader: Ember.inject.service('esri-loader'),
 
   // once we have a DOM node to attach the map to...
-  didInsertElement () {
+  didInsertElement () { // TODO change to didReceiveAttrs and verify that webmap exists AND has changed.
+    // ^(move contents to a function like createMap(), and leave condiditonal logic here). Webmap component in cards is a good place to start.
+    // ^/ember-arcgis-layout-cards/addon/components/web-map/component.js
     this._super(...arguments);
+    if (!this.get('webmap')) return;
     // load the arcgis util module
     this.get('esriLoader').loadModules(['esri/arcgis/utils'], {url: 'https://js.arcgis.com/3.20'}).then(modules => {
       if (!this.get('isDestroying') || this.get('isDestroyed')) {
