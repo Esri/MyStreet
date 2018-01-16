@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
+- Change name from MyStreet to my-street
+
 ### Changed
 - update ember-esri-loader to 2.0.0
 

@@ -11,7 +11,7 @@ module.exports = function(deployTarget) {
     secretAccessKey: '',
     bucket: 'dev-od-assets',
     region: 'us-east-1',
-    prefix: 'apps/mystreet',
+    prefix: 'apps/my-street',
     filePattern: '**/*.{js,css,png,gif,ico,jpg,map,xml,txt,svg,swf,eot,ttf,woff,woff2,otf,html,json}'
   }
 

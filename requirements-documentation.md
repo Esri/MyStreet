@@ -19,9 +19,9 @@ This file describes the process a developer can follow to achieve a state of hub
 - Create a configurable app
   - Add item. Type: Web Mapping. Purpose: Configurable. API: Javascript. URL: [whatever your deployed url is]
   - Share the configurable app.
-  - In the settings tab (past overview, and usage) of the app,  
+  - In the settings tab (past overview, and usage) of the app,
 - Then create app using a template (see picture)
-- Select MyStreet Application
+- Select my-street Application
 - Select a properly configured web map
 - Share with public
 - Fix the extent
@@ -33,7 +33,7 @@ This file describes the process a developer can follow to achieve a state of hub
 
 --------------------------------
 
-#### High Level Steps to Reproduce MyStreet
+#### High Level Steps to Reproduce my-street
 1. [Create](http://doc.arcgis.com/en/arcgis-online/share-maps/add-items.htm) a Web Map and associated feature layers.
 ![image](https://cloud.githubusercontent.com/assets/14302394/22866720/03f9e2ac-f149-11e6-974a-6f5f8a350b01.png)
 2. Create a Web App which points to the :id from the Web Map above.

@@ -30,7 +30,7 @@ export default Ember.Service.extend({
       })
       // TODO
       // .then((results) => {
-        // manipulate raw response into what is needed in MyStreet
+        // manipulate raw response into what is needed in my-street
 
       // })
       // handling of empty response object

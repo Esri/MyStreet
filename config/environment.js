@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'MyStreet',
+    modulePrefix: 'my-street',
     environment: environment,
     rootURL: '/',
     locationType: 'auto',
@@ -72,7 +72,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.locationType = 'hash';
-    ENV.rootURL = '/'; //'/mystreet/';
+    ENV.rootURL = '/'; //'/my-street/';
     ENV.APP.baseURL = 'opendata.arcgis.com';
   }
 

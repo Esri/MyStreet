@@ -19,3 +19,5 @@ testem.log
 
 .cache.md
 /itemStore
+
+package-lock.json

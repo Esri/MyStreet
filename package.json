@@ -1,5 +1,5 @@
 {
-  "name": "MyStreet",
+  "name": "my-street",
   "version": "0.0.1",
   "description": "City viewer app that will demonstate the determined requirements for a hub read app.",
   "private": true,
@@ -14,7 +14,7 @@
     "clean": "rm -rf node_modules bower_components tmp dist",
     "deploy": "ember surge"
   },
-  "repository": "https://github.com/Esri/MyStreet",
+  "repository": "https://github.com/Esri/my-street",
   "engines": {
     "node": ">= 0.10.0"
   },

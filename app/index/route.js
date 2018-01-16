@@ -82,7 +82,7 @@ export default Ember.Route.extend({
 
   model (params) {
     // TODO Eventually, check if params.id === null, then make a
-      // this.get('itemService').search(...) call to locate all the App Config Items for MyStreet.
+      // this.get('itemService').search(...) call to locate all the App Config Items for my-street.
 
     // read params from environment config
     const {
