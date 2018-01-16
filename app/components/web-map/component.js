@@ -12,7 +12,7 @@ export default Ember.Component.extend({
     if (!this.get('webmap')) return;
     // load the arcgis util module
     this.get('esriLoader').loadModules(['esri/arcgis/utils'], {url: 'https://js.arcgis.com/3.20'}).then(modules => {
-      if (!this.get('isDestroying') || this.get('isDestroyed')) {
+      if (!this.get('isDestroyed') && !this.get('isDestroying')) {
         const [arcgisUtils] = modules;
         // create the map
         return arcgisUtils.createMap(this.get('webmap'), this.elementId)
