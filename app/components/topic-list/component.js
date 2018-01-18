@@ -1,15 +1,21 @@
-import Ember from 'ember';
+import { once } from '@ember/runloop';
+import { observer, computed } from '@ember/object';
+import { on } from '@ember/object/evented';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
-  featureService: Ember.inject.service(),
-  location: [],
-  featureInfos: [],
+export default Component.extend({
+  featureService: service(),
 
   loading: false,
 
-  onAddressChanged: Ember.on('init', Ember.observer('location', function() {
-    Ember.run.once(this, 'updateFeatures');
+
+  // TODO: replace this w/ didInsertElement()
+  /* eslint-disable ember/no-on-calls-in-components */
+  onAddressChanged: on('init', observer('location', function() {
+    once(this, 'updateFeatures');
   })),
+  /* eslint-enable ember/no-on-calls-in-components */
 
   updateFeatures () {
     let url = this.get('layer.url');
@@ -33,12 +39,16 @@ export default Ember.Component.extend({
       });
   },
 
-  hasData: Ember.computed('featureInfos', function(){
+  hasData: computed('featureInfos', function(){
     return (this.get('featureInfos.length') > 0);
   }),
 
-  didInsertElement () {
-    this._super.apply(this, arguments);
+  init () {
+    this._super(...arguments);
+    this.setProperties({
+      location: [],
+      featureInfos: []
+    })
   },
 
   getValue: function(data, key, fields) {

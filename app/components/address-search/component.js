@@ -1,6 +1,7 @@
-import Ember from 'ember';
+import { debounce, run } from '@ember/runloop';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
+export default Component.extend({
   classNames: ['address-search'],
   
   minLength: 2,
@@ -43,12 +44,12 @@ export default Ember.Component.extend({
       limit: this.get('limit'),
       async: true,
       source: (query, syncResults, asyncResults) => {
-        Ember.run.debounce(this, 'executeQuery', query, asyncResults, 200, true);
+        debounce(this, 'executeQuery', query, asyncResults, 200, true);
       }
     };
     this.typeahead = this.$('.typeahead').typeahead(opts, datasets)
       .on('typeahead:select', () => {
-        Ember.run(() => {
+        run(() => {
           this.typeahead.typeahead('close');
           this.get('setAddress')(this.get('address'));
         });

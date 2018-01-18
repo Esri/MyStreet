@@ -1,13 +1,10 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
 import ENV from '../../config/environment';
 
-export default Ember.Component.extend({
-  ajax: Ember.inject.service(),
+export default Component.extend({
+  ajax: service(),
   citationFound: false,
-
-  init () {
-    this._super.apply(this, arguments);
-  },
 
   didReceiveAttrs() {
     let envUrl = ENV.APP.baseURL;
