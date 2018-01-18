@@ -1,11 +1,13 @@
-import Ember from 'ember';
+import { reads } from '@ember/object/computed';
+import { inject as service } from '@ember/service';
+import Route from '@ember/routing/route';
 
-export default Ember.Route.extend({
-  intl: Ember.inject.service(),
-  session: Ember.inject.service(),
-  hostUrl: Ember.computed.reads('session.portalHostname'),
-  appSettings: Ember.inject.service(),
-  itemService: Ember.inject.service('items-service'),
+export default Route.extend({
+  intl: service(),
+  session: service(),
+  hostUrl: reads('session.portalHostname'),
+  appSettings: service(),
+  itemService: service('items-service'),
 
   queryParams: {
     appid: {

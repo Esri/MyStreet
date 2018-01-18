@@ -1,14 +1,18 @@
-import Ember from 'ember';
+import { once } from '@ember/runloop';
+import { observer, computed } from '@ember/object';
+import { on } from '@ember/object/evented';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
-  featureService: Ember.inject.service(),
+export default Component.extend({
+  featureService: service(),
   location: [],
   featureInfos: [],
 
   loading: false,
 
-  onAddressChanged: Ember.on('init', Ember.observer('location', function() {
-    Ember.run.once(this, 'updateFeatures');
+  onAddressChanged: on('init', observer('location', function() {
+    once(this, 'updateFeatures');
   })),
 
   updateFeatures () {
@@ -33,7 +37,7 @@ export default Ember.Component.extend({
       });
   },
 
-  hasData: Ember.computed('featureInfos', function(){
+  hasData: computed('featureInfos', function(){
     return (this.get('featureInfos.length') > 0);
   }),
 

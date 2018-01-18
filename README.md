@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # MyStreet
+=======
+# my-app
+>>>>>>> de5b992... message
 
 This application is a municipality viewer that allows users to input an address and receive information based on that location. More technically, the application points to an ArcGIS online Web Map that contains a series of layers bounded by a geographic extent - and then MyStreet returns relevant data based on the searched coordinates within that extent.
 
@@ -36,23 +40,22 @@ e.g. for item "2f4c72dc471b4baab362c0437273bd51" put that on the tail end of the
 
 You will need the following things properly installed on your computer.
 
-* [Git](http://git-scm.com/)
-* [Node.js](http://nodejs.org/) (with NPM)
-* [Bower](http://bower.io/)
-* [Ember CLI](http://ember-cli.com/)
-* [PhantomJS](http://phantomjs.org/)
+* [Git](https://git-scm.com/)
+* [Node.js](https://nodejs.org/) (with npm)
+* [Ember CLI](https://ember-cli.com/)
+* [Google Chrome](https://google.com/chrome/)
 
 ## Installation
 
 * `git clone <repository-url>` this repository
 * `cd MyStreet`
 * `npm install`
-* `bower install`
 
 ## Running / Development
 
 * `ember serve`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
+* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
 
 ### Code Generators
 
@@ -74,11 +77,12 @@ Specify what it takes to deploy your app.
 
 ## Further Reading / Useful Links
 
-* [ember.js](http://emberjs.com/)
-* [ember-cli](http://ember-cli.com/)
+* [ember.js](https://emberjs.com/)
+* [ember-cli](https://ember-cli.com/)
 * Development Browser Extensions
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+<<<<<<< HEAD
 
 ## Licensing
 
@@ -102,3 +106,5 @@ If you have any questions, please reach out to mshofner@esri.com, or make a PR/I
 
 [](Esri Tags: ArcGIS Web Mapping Leaflet JavaScript Hub Government)
 [](Esri Language: JavaScript Ember)
+=======
+>>>>>>> de5b992... message

@@ -1,11 +1,11 @@
-import Ember from 'ember';
+import Service, { inject as service } from '@ember/service';
 
 // Contextualizes calls to other services
-export default Ember.Service.extend({
-  appSettings: Ember.inject.service(),
-  itemsService: Ember.inject.service(),
-  featureService: Ember.inject.service(),
-  geocodeService: Ember.inject.service(),
+export default Service.extend({
+  appSettings: service(),
+  itemsService: service(),
+  featureService: service(),
+  geocodeService: service(),
 
   /**
    * Promisified call to geocode-service to find an address

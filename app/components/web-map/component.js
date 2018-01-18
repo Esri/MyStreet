@@ -1,8 +1,9 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
+export default Component.extend({
   classNames: ['web-map'],
-  esriLoader: Ember.inject.service('esri-loader'),
+  esriLoader: service('esri-loader'),
 
   // once we have a DOM node to attach the map to...
   didInsertElement () { // TODO change to didReceiveAttrs and verify that webmap exists AND has changed.
