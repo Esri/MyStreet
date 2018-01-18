@@ -61,8 +61,8 @@
     "eslint-plugin-react": "^6.2.0",
     "eslint-plugin-standard": "^2.0.0",
     "loader.js": "^4.2.3",
-    "torii": "0.8.1",
-    "torii-provider-arcgis": "0.4.3"
+    "torii": "0.8.4",
+    "torii-provider-arcgis": "^0.11.0"
   },
   "engines": {
     "node": "^4.5 || 6.* || >= 7.*"
