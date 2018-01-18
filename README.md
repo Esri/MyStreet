@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 # MyStreet
-=======
-# my-app
->>>>>>> de5b992... message
 
 This application is a municipality viewer that allows users to input an address and receive information based on that location. More technically, the application points to an ArcGIS online Web Map that contains a series of layers bounded by a geographic extent - and then MyStreet returns relevant data based on the searched coordinates within that extent.
 
@@ -82,7 +78,6 @@ Specify what it takes to deploy your app.
 * Development Browser Extensions
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
-<<<<<<< HEAD
 
 ## Licensing
 
@@ -106,5 +101,3 @@ If you have any questions, please reach out to mshofner@esri.com, or make a PR/I
 
 [](Esri Tags: ArcGIS Web Mapping Leaflet JavaScript Hub Government)
 [](Esri Language: JavaScript Ember)
-=======
->>>>>>> de5b992... message
