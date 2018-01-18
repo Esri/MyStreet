@@ -3,9 +3,9 @@ import Component from '@ember/component';
 
 export default Component.extend({
   featureService: service(),
-  feature: [],
 
-  didInsertElement () {
-    this._super.apply(this, arguments);
+  init () {
+    this._super(...arguments);
+    this.set('feature', []);
   },
 });

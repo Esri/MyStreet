@@ -6,14 +6,16 @@ import Component from '@ember/component';
 
 export default Component.extend({
   featureService: service(),
-  location: [],
-  featureInfos: [],
 
   loading: false,
 
+
+  // TODO: replace this w/ didInsertElement()
+  /* eslint-disable ember/no-on-calls-in-components */
   onAddressChanged: on('init', observer('location', function() {
     once(this, 'updateFeatures');
   })),
+  /* eslint-enable ember/no-on-calls-in-components */
 
   updateFeatures () {
     let url = this.get('layer.url');
@@ -41,8 +43,12 @@ export default Component.extend({
     return (this.get('featureInfos.length') > 0);
   }),
 
-  didInsertElement () {
-    this._super.apply(this, arguments);
+  init () {
+    this._super(...arguments);
+    this.setProperties({
+      location: [],
+      featureInfos: []
+    })
   },
 
   getValue: function(data, key, fields) {

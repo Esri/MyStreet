@@ -6,10 +6,6 @@ export default Component.extend({
   ajax: service(),
   citationFound: false,
 
-  init () {
-    this._super.apply(this, arguments);
-  },
-
   didReceiveAttrs() {
     let envUrl = ENV.APP.baseURL;
     let urlRegex = this.get('layer.url').replace(/.*?\/\//g,"http://");

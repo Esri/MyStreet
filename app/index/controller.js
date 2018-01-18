@@ -24,7 +24,6 @@ export default Controller.extend({
 
   address: "",
   returnedAddress: "",
-  geocodedLocation: [],
 
   webmap: alias('appSettings.settings.webmap'),
   layers: alias('webmap.itemData.operationalLayers'),
@@ -51,7 +50,10 @@ export default Controller.extend({
   }),
 
   init () {
-    this._super.apply(this, arguments);
+    this._super(...arguments);
+    this.setProperties({
+      geocodedLocation: []
+    });
     this.get('changeLoc');
   },
 
