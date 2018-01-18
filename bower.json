@@ -1,0 +1,8 @@
+{
+  "name": "MyStreet",
+  "dependencies": {
+    "sanitize.js": "^1.0.0",
+    "colorspaces": "^0.1.4",
+    "typeahead.js": "^0.11.1"
+  }
+}
