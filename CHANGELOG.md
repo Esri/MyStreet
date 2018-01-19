@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - update ember-esri-loader to 2.0.0
+- update ember to 2.18
 
 ## [0.0.1]
 ### Added

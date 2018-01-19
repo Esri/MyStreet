@@ -1,10 +1,11 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
-  featureService: Ember.inject.service(),
-  feature: [],
+export default Component.extend({
+  featureService: service(),
 
-  didInsertElement () {
-    this._super.apply(this, arguments);
+  init () {
+    this._super(...arguments);
+    this.set('feature', []);
   },
 });

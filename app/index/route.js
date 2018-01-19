@@ -1,4 +1,7 @@
-import Ember from 'ember';
+import { hash } from 'rsvp';
+import { inject as service } from '@ember/service';
+import Route from '@ember/routing/route';
+import { debug } from '@ember/debug';
 import ENV from '../config/environment';
 
 // TODO: move this to util function and unit test
@@ -7,11 +10,11 @@ function processConfigParams (params) {
   if (typeof params.webmap === 'string') {
     const webmapGuid = isGuid(params.webmap);
     if (!webmapGuid) {
-      Ember.debug('Config Webmap ID not a guid');
+      debug('Config Webmap ID not a guid');
       delete params.webmap;
     }
   } else {
-    Ember.debug('Config Webmap ID not a string');
+    debug('Config Webmap ID not a string');
     delete params.webmap;
   }
 
@@ -19,11 +22,11 @@ function processConfigParams (params) {
   if (typeof params.themeId === 'string') {
     const themeIdGuid = isGuid(params.themeId);
     if (!themeIdGuid) {
-      Ember.debug('Config Theme ID not a guid');
+      debug('Config Theme ID not a guid');
       delete params.themeId;
     }
   } else {
-    Ember.debug('Config Theme ID not a string');
+    debug('Config Theme ID not a string');
     delete params.themeId;
   }
 
@@ -31,11 +34,11 @@ function processConfigParams (params) {
   if (typeof params.geocodeUrl === 'string') {
     const geocodeUrlValid = isUrl(params.geocodeUrl);
     if (!geocodeUrlValid) {
-      Ember.debug('Config Geocode URL not a valid URL');
+      debug('Config Geocode URL not a valid URL');
       delete params.geocodeUrl;
     }
   } else {
-    Ember.debug('Config Geocode URL not a valid string');
+    debug('Config Geocode URL not a valid string');
     delete params.geocodeUrl;
   }
 
@@ -51,18 +54,21 @@ function isGuid (stringToTest) {
 }
 
 function isUrl (stringToTest) {
+  // TODO: update this so that it passes lint w/o disabling no-useless-escape
+  /* eslint-disable no-useless-escape */
   var regexUrl = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z;0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/
+  /* eslint-enable no-useless-escape */
   return regexUrl.test(stringToTest);
 }
 
-export default Ember.Route.extend({
-  itemsService: Ember.inject.service(),
-  appSettings: Ember.inject.service(),
+export default Route.extend({
+  itemsService: service(),
+  appSettings: service(),
   queryParams: {'loc': {refreshModel: true}},
-  esriLoader: Ember.inject.service('esri-loader'),
+  esriLoader: service('esri-loader'),
 
   renderTemplate (/*controller, model*/) {
-    Ember.debug('IndexRoute::renderTemplate fired...');
+    debug('IndexRoute::renderTemplate fired...');
     let errStatus = this.get('appSettings.errStatus');
     if (!errStatus) {
       this.render();
@@ -96,7 +102,7 @@ export default Ember.Route.extend({
       webmap
     };
 
-    return Ember.RSVP.hash({
+    return hash({
       item: this.get('itemsService').getById(params.id),
       data: this.get('itemsService').getDataById(params.id),
     })
@@ -112,7 +118,7 @@ export default Ember.Route.extend({
     // .then((webmap) => {
     //   this.get('appSettings').set('settings.webmap', webmap);
     // })
-      return Ember.RSVP.hash({
+      return hash({
           item: this.get('itemsService').getById(results.data.values.webmap),
           itemData: this.get('itemsService').getDataById(results.data.values.webmap)
         });
@@ -125,22 +131,8 @@ export default Ember.Route.extend({
     .catch((err) => {
       this.get('appSettings').set('errStatus', err.code || 500);
       this.transitionTo('examples');
-      Ember.debug('Error occured fetching the item: ' + JSON.stringify(err));
+      debug('Error occured fetching the item: ' + JSON.stringify(err));
     });
   },
 
-  // TODO: could move this inside the promise chain in model() right after this line:
-  // this.get('appSettings').set('errStatus', null);
-  afterModel () {
-    const esriLoader = this.get('esriLoader');
-    if (this.get('appSettings.settings.data.values.showMap') && !esriLoader.get('isLoaded')) {
-      // will be showing a map, so lazy-load the JSAPI
-      esriLoader.load({
-        url: 'https://js.arcgis.com/3.20'
-      }).catch(err => {
-        // TODO: do something with the error
-        Ember.debug(`application:route:renderTemplate:esriLoader error: ${err}`);
-      });
-    }
-  }
 });

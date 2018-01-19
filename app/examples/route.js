@@ -1,7 +1,8 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import Route from '@ember/routing/route';
 
-export default Ember.Route.extend({
-  appSettings: Ember.inject.service(),
+export default Route.extend({
+  appSettings: service(),
 
   // renderTemplate (/*controller, model*/) {
   //   Ember.debug('IndexRoute::renderTemplate fired...');

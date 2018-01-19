@@ -1,14 +1,17 @@
 /* global $ */
-import Ember from 'ember';
+import { observer } from '@ember/object';
 
-export default Ember.Component.extend({
-  ajax: Ember.inject.service(),
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
+
+export default Component.extend({
+  ajax: service(),
   tagName: 'style',
   css: '',
   themeJson: '',
   loaded: false,
 
-  derivedTheme: Ember.observer('themeJson', function() {
+  derivedTheme: observer('themeJson', function() {
     // let brandPrimary = this.get('themeJson.brand.primary') || '#1c66a6';
     let bodyBg = this.get('themeJson.body.bg') || '#f8f8f8';
     let linkColor = this.get('themeJson.brand.secondary') || '#136fbf';
