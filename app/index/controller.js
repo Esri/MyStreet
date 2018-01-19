@@ -1,16 +1,20 @@
-import Ember from 'ember';
+import { debug } from '@ember/debug';
+import { alias } from '@ember/object/computed';
+import { observer, computed } from '@ember/object';
+import { inject as service } from '@ember/service';
+import Controller from '@ember/controller';
 import ENV from '../config/environment';
 
-export default Ember.Controller.extend({
-  appSettings: Ember.inject.service(),
-  myStreet: Ember.inject.service(),
-  ajax: Ember.inject.service(),
+export default Controller.extend({
+  appSettings: service(),
+  myStreet: service(),
+  ajax: service(),
   portalUrl: ENV.torii.providers['arcgis-oauth-bearer'].portalUrl,
 
   queryParams: ['loc', 'themeId'],
   loc: "",
   themeId: "",
-  changeLoc: Ember.observer('loc', 'appSettings.settings', function () {
+  changeLoc: observer('loc', 'appSettings.settings', function () {
     var loc = this.get('loc');
     if (loc) {
       this.set('address', loc);
@@ -20,34 +24,36 @@ export default Ember.Controller.extend({
 
   address: "",
   returnedAddress: "",
-  geocodedLocation: [],
 
-  webmap: Ember.computed.alias('appSettings.settings.webmap'),
-  layers: Ember.computed.alias('webmap.itemData.operationalLayers'),
-  showMap: Ember.computed.alias('appSettings.settings.data.values.showMap'),
-  bbox: Ember.computed('appSettings.settings.item.extent', function() {
+  webmap: alias('appSettings.settings.webmap'),
+  layers: alias('webmap.itemData.operationalLayers'),
+  showMap: alias('appSettings.settings.data.values.showMap'),
+  bbox: computed('appSettings.settings.item.extent', function() {
     return this.get('appSettings.settings.item.extent');
   }),
 
-  configCssUrl: Ember.computed('session.portalHostname', 'appSettings.settings.data.values.themeId', function() {
+  configCssUrl: computed('session.portalHostname', 'appSettings.settings.data.values.themeId', function() {
     return `https://${this.get('session.portalHostname')}/sharing/rest/content/items/${this.get('appSettings.settings.data.values.themeId')}/resources/opendata.css.txt`
   }),
-  configJsonUrl: Ember.computed('session.portalHostname', 'appSettings.settings.data.values.themeId', function() {
+  configJsonUrl: computed('session.portalHostname', 'appSettings.settings.data.values.themeId', function() {
     return `https://${this.get('session.portalHostname')}/sharing/rest/content/items/${this.get('appSettings.settings.data.values.themeId')}/resources/theme.json`
   }),
-  paramCssUrl: Ember.computed('themeId', function () {
+  paramCssUrl: computed('themeId', function () {
     if (this.get('themeId')) {
       return `https://${this.get('session.portalHostname')}/sharing/rest/content/items/${this.get('themeId')}/resources/opendata.css.txt`
     }
   }),
-  paramJsonUrl: Ember.computed('themeId', function () {
+  paramJsonUrl: computed('themeId', function () {
     if (this.get('themeId')) {
       return `https://${this.get('session.portalHostname')}/sharing/rest/content/items/${this.get('themeId')}/resources/theme.json`
     }
   }),
 
   init () {
-    this._super.apply(this, arguments);
+    this._super(...arguments);
+    this.setProperties({
+      geocodedLocation: []
+    });
     this.get('changeLoc');
   },
 
@@ -76,7 +82,7 @@ export default Ember.Controller.extend({
       })
       .catch((err) => {
         this.set('returnedAddress','');
-        Ember.debug('Error occured fetching the searched address: ' + JSON.stringify(err));
+        debug('Error occured fetching the searched address: ' + JSON.stringify(err));
       });
   },
 
