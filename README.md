@@ -32,6 +32,16 @@ e.g. for item "2f4c72dc471b4baab362c0437273bd51" put that on the tail end of the
 
 4. Enjoy the app!
 
+## [hub ready](https://github.com/Esri/hub-ready-apps/) checklist
+
+- [X] [Live Content](https://github.com/Esri/hub-ready-apps/blob/master/README.md#live-content)
+- [X] [Shared Theme](https://github.com/Esri/hub-ready-apps/blob/master/README.md#shared-theme)
+- [X] [Durable State](https://github.com/Esri/hub-ready-apps/blob/master/README.md#durable-state)
+- [X] [Accessibility](https://github.com/Esri/hub-ready-apps/blob/master/README.md#accessibility)
+- [X] [Indicator Aware](https://github.com/Esri/hub-ready-apps/blob/master/README.md#indicator-aware)
+- [X] [Data Citation](https://github.com/Esri/hub-ready-apps/blob/master/README.md#data-citation)
+- [X] [Versioning](https://github.com/Esri/hub-ready-apps/blob/master/README.md#versioning)
+
 ## Prerequisites
 
 You will need the following things properly installed on your computer.
