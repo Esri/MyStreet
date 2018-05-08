@@ -88,6 +88,7 @@ export default Component.extend({
       }
       options.distance = distance;
       options.units = 'esriSRUnit_Meter';
+      options.resultRecordCount = 1;
     }
 
     if (location.length>0) {
@@ -110,13 +111,17 @@ export default Component.extend({
           var featureTitleInterpolated = featureTitle.replace(/\{(\w*)\}/g, (m,key) => {
             return this.getValue(data, key, fields);
           });
-          var featureDescriptionInterpolated = featureDescription.replace(/\{(\w*)\}/g,(m,key) =>{
-            return this.getValue(data, key, fields);
-          });
+          var featureDescriptionInterpolated;
+          if (featureDescription) { // guard if the `popupInfo.description` is null
+            featureDescriptionInterpolated = featureDescription.replace(/\{(\w*)\}/g,(m,key) =>{
+              return this.getValue(data, key, fields);
+            });
+          } else {
+            featureDescriptionInterpolated = "";
+          }
           let featureInfo = {"title": featureTitleInterpolated, "description": featureDescriptionInterpolated};
           featureInfos.pushObject(featureInfo);
         });
-
         return featureInfos;
       });
   }
