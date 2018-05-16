@@ -78,6 +78,9 @@ export default Controller.extend({
           returnedAddress: results.candidates[0].address,
           geocodedLocation: [results.candidates[0].location.x, results.candidates[0].location.y]
         });
+        this.get('appSettings').set('geometry', {});
+        this.get('appSettings').set('geometry.returnedAddress', results.candidates[0].address);
+        this.get('appSettings').set('geometry.geocodedLocation', [results.candidates[0].location.x, results.candidates[0].location.y]);
         return results;
       })
       .catch((err) => {
