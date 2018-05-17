@@ -6,6 +6,7 @@ import Component from '@ember/component';
 
 export default Component.extend({
   featureService: service(),
+  appSettings: service(),
 
   loading: false,
 
@@ -14,12 +15,13 @@ export default Component.extend({
   /* eslint-disable ember/no-on-calls-in-components */
   onAddressChanged: on('init', observer('location', function() {
     once(this, 'updateFeatures');
+    // this.updateFeatures();
   })),
   /* eslint-enable ember/no-on-calls-in-components */
 
   updateFeatures () {
     let url = this.get('layer.url');
-    let location = this.get('location');
+    let location = this.get('appSettings.geometry.geocodedLocation');
     this.set('loading', true);
     this.queryFeature(url, location)
       .then((result) => {
@@ -126,4 +128,3 @@ export default Component.extend({
       });
   }
 });
-//
