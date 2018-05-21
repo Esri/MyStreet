@@ -29,7 +29,8 @@ module.exports = function(environment) {
       sessionServiceName: 'session',
       providers: {
         'arcgis-oauth-bearer': {
-          apiKey: 'J87zpPnTLsEthjDx', //QA App for Open Data Pages
+          // apiKey: 'J87zpPnTLsEthjDx', //QA App for Open Data Pages
+          apiKey: 'zAPtOGV1Jj2MHQNa', // App for MyStreet. Should this be obfuscated?
           // portalUrl: 'https://devext.arcgis.com'
           // portalUrl: 'https://qaext.arcgis.com'
           portalUrl: 'https://www.arcgis.com'

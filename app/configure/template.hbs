@@ -1,1 +1,26 @@
-{{outlet}}
+<!-- TODO fix padding issues -->
+<br>
+<br>
+<br>
+<br>
+
+
+{{#if session.isAuthenticated}}
+  <a href="#" {{action 'signout'}}>Sign Out</a>
+{{else}}
+  <a class="nav-link active" href="#" {{action 'signin'}}>Sign In</a>
+{{/if}}
+
+<div class="container">
+  <div class="row">
+    <div role="main">
+      <div class="panel panel-default">
+        <p>{{model.data.values.topListSize}}</p>
+        <p>{{model.data.values.showMap}}</p>
+        <p>{{model.data.values.webmap}}</p>
+        <p>{{model.data.values.themeId}}</p>
+        <p>{{model.data.values.theme}}</p>
+      </div>
+    </div>
+  </div>
+</div>
