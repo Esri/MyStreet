@@ -33,12 +33,17 @@
     <form class="editor-body"> <!--oninput={{action "modelChanged"}} onchange={{action "modelChanged"}}-->
       <div class="form-group">
         <label for="{{inputWebmapId}}">{{t 'config.webmapLabel'}}</label>
-        {{input id=inputWebmapId class="form-control" value=model.data.values.webmap placeholder=(t 'config.webmapPlaceholder')}}
+        {{input id=inputWebmapId class="form-control" value=model.data.values.webmap placeholder=webmapPlaceholder}}
       </div>
       <div class="form-group">
         <label for="{{inputThemeId}}">{{t 'config.themeLabel'}}</label>
-        {{input id=inputThemeId class="form-control" value=model.data.values.themeId placeholder=(t 'config.themePlaceholder')}}
+        {{input id=inputThemeId class="form-control" value=model.data.values.themeId placeholder=themePlaceholder}}
       </div>
+      <div class="form-group">
+        <label for="{{inputGeocodeUrl}}">{{t 'config.geocodeLabel'}}</label>
+        {{input id=inputGeocodeUrl class="form-control" value=model.data.values.geocodeUrl placeholder=geocodePlaceholder}}
+      </div>
+
       <button type="button" class="btn btn-primary" {{action 'save'}}>
         {{t 'general.buttons.save'}}
       </button>
@@ -56,6 +61,7 @@
         <p>{{model.data.values.webmap}}</p>
         <p>{{model.data.values.themeId}}</p>
         <p>{{model.data.values.theme}}</p>
+        <p>{{model.data.values.geocodeUrl}}</p>
       </div>
     </div>
   </div>

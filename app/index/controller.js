@@ -25,6 +25,11 @@ export default Controller.extend({
   address: "",
   returnedAddress: "",
 
+  // TODO - bring in once the app is ready for geocoders
+  // geocodeUrl: computed('appSettings.settings.data.values.geocodeUrl', function() {
+  //   return this.get('appSettings.settings.data.values.geocodeUrl');
+  // }),
+
   webmap: alias('appSettings.settings.webmap'),
   layers: alias('webmap.itemData.operationalLayers'),
   showMap: alias('appSettings.settings.data.values.showMap'),
@@ -58,6 +63,9 @@ export default Controller.extend({
   },
 
   _searchAddress (address) {
+    const geocodeUrl = 'https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/'; // use geocodeUrl for typeahead?
+    // const geocodeUrl = this.get('geocodeUrl');
+
     let text = address;
     let bbox = this.get('bbox');
     let bb = {
@@ -67,12 +75,21 @@ export default Controller.extend({
       "ymax": bbox[1][1],
     };
     let extent = `${bb.xmin},${bb.ymin},${bb.xmax},${bb.ymax}`;
-    return this.get('ajax').request(`https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/suggest?text=${text}&searchExtent=${extent}&f=json`)
+    let searchString = `${geocodeUrl}suggest?text=${text}&searchExtent=${extent}&f=json`;
+    return this.get('ajax').request(searchString)
   },
 
   _setAddress (address) {
     this.set('loc', address);
-    return this.get('myStreet').findLocationAddress(address, {'bbox': this.get('bbox')})
+    let options = {
+      bbox: this.get('bbox'),
+    }
+
+    // if (this.get('geocodeUrl')) { TODO - bring in once geocodeUrl is ready
+    //   options.geocodeUrl = this.get('geocodeUrl');
+    // }
+
+    return this.get('myStreet').findLocationAddress(address, options)
       .then((results) => {
         this.setProperties({
           returnedAddress: results.candidates[0].address,

@@ -22,6 +22,14 @@ export default Controller.extend({
     return `${this.get('elementId')}-theme`;
   }),
 
+  inputGeocodeUrl: computed('elementId', function () {
+    return `${this.get('elementId')}-geocodeUrl`;
+  }),
+
+  webmapPlaceholder: 'e05bffc3b1644435823fbab91199196d',
+  themePlaceholder: 'f2c15fc3221c4abea5ab70916bd77d6d',
+  geocodePlaceholder: 'https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer',
+
   init () {
     this._super(...arguments);
     console.log(this.get('model'));
@@ -46,8 +54,6 @@ export default Controller.extend({
       throw new Error('Configure route::update requires model.item.owner be set');
     }
 
-    debugger;
-
     let item = model.item;
     item.data = copy(model.data, true);
     // ensure we don't save the `.runtime` node
@@ -55,12 +61,10 @@ export default Controller.extend({
 
     return itemsService.update(item)
     .then((results) => {
-      console.log(results);
-      debugger;
+      debug(`ItemService update() returned ${results}`);
     })
     .catch((err) => {
       console.log(err);
-      debugger;
       debug(`Error checking for resources on item ${model.item.id}`);
       return false;
     });
