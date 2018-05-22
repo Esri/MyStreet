@@ -5,11 +5,6 @@ import { debug } from '@ember/debug';
 
 export default Route.extend({
   itemsService: service(),
-  appSettings: service(),
-
-  // renderTemplate (/*controller, model*/) {
-  //   this.render();
-  // },
 
   model (params) {
     return hash({
@@ -17,6 +12,25 @@ export default Route.extend({
       data: this.get('itemsService').getDataById(params.id),
     });
   },
+
+
+  beforeModel () {
+      //set up the interationalization
+      // this.get('intl').setLocale('en-us'); // TODO eventually not here
+      // automatically re-hydrate a session
+      return this._initSession();
+    },
+
+    _initSession () {
+      return this.get('session').fetch()
+        .then(() => {
+          debug('User has been automatically logged in... ');
+        })
+        .catch((/*err*/) => {
+          // we want to catch this, otherwise Ember will redirect to an error route!
+          debug('No cookie was found, user is anonymous... ');
+        });
+    },
 
   actions: {
     signin () {

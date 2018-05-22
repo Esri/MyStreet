@@ -4,13 +4,49 @@
 <br>
 <br>
 
+{{#navbar.nav class="ml-auto" as |nav|}}
+  {{#if session.isAuthenticated}}
+    {{#nav.dropdown as |dd|}}
+      {{#dd.toggle class="ml-auto"}}{{session.currentUser.fullName}}  <span class="caret"></span>{{/dd.toggle}}
+      {{#dd.menu as |ddm|}}
+        {{#ddm.item}}<a class="dropdown-item" href="#" {{action 'signout'}}>Sign Out</a>{{/ddm.item}}
+      {{/dd.menu}}
+    {{/nav.dropdown}}
+  {{else}}
+    {{#nav.item}}<a class="nav-link active" href="#" {{action 'signin'}}>Sign In</a>{{/nav.item}}
+  {{/if}}
+{{/navbar.nav}}
 
-{{#if session.isAuthenticated}}
-  <a href="#" {{action 'signout'}}>Sign Out</a>
-{{else}}
-  <a class="nav-link active" href="#" {{action 'signin'}}>Sign In</a>
-{{/if}}
+<div class="container">
+  <div class="row">
+    {{#if session.isAuthenticated}}
+      <p>{{session.currentUser.fullName}}<span class="caret"></span></p>
+      <a href="#" {{action 'signout'}}>Sign Out</a>
+    {{else}}
+      <a class="nav-link active" href="#" {{action 'signin'}}>Sign In</a>
+    {{/if}}
 
+    <div class="editor-heading">
+      <h4>{{t 'config.configureHeading'}}</h4>
+    </div>
+
+    <form class="editor-body"> <!--oninput={{action "modelChanged"}} onchange={{action "modelChanged"}}-->
+      <div class="form-group">
+        <label for="{{inputWebmapId}}">{{t 'config.webmapLabel'}}</label>
+        {{input id=inputWebmapId class="form-control" value=model.data.values.webmap placeholder=(t 'config.webmapPlaceholder')}}
+      </div>
+      <div class="form-group">
+        <label for="{{inputThemeId}}">{{t 'config.themeLabel'}}</label>
+        {{input id=inputThemeId class="form-control" value=model.data.values.themeId placeholder=(t 'config.themePlaceholder')}}
+      </div>
+      <button type="button" class="btn btn-primary" {{action 'save'}}>
+        {{t 'general.buttons.save'}}
+      </button>
+    </form>
+  </div>
+</div>
+
+<br>
 <div class="container">
   <div class="row">
     <div role="main">

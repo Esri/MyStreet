@@ -4,7 +4,10 @@
     "examples": "Examples",
     "index": "Index",
     "about": "Learn More",
-    "source": "Source"
+    "source": "Source",
+    "buttons": {
+      "save": "Save"
+    }
   },
   "index": {
     "prompt": "Explore an Address",
@@ -25,5 +28,12 @@
     "location":"Location",
     "nav-toggle": "Toggle navigation",
     "search-label":"Submit Search"
+  },
+  "config": {
+    "configureHeading": "Configure App",
+    "webmapLabel": "Webmap ID",
+    "webmapPlaceholder": "e05bffc3b1644435823fbab91199196d",
+    "themeLabel": "Theme ID",
+    "themePlaceholder": "f2c15fc3221c4abea5ab70916bd77d6d"
   }
 }
