@@ -38,7 +38,7 @@ export default Route.extend({
         .then((authorization) => {
           debug('AUTH SUCCESS: ', authorization);
           //transition to some secured route or... so whatever is needed
-          this.transitionTo('index');
+          // this.transitionTo('index');
         })
         .catch((err)=>{
           debug('AUTH ERROR: ', err);
