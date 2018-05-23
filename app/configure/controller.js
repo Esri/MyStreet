@@ -1,17 +1,11 @@
 import { copy } from '@ember/object/internals';
 import { debug } from '@ember/debug';
-// import { alias } from '@ember/object/computed';
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Controller from '@ember/controller';
-// import ENV from '../config/environment';
 
 export default Controller.extend({
-  // appSettings: service(),
-  // myStreet: service(),
   itemsService: service(),
-  // ajax: service(),
-  // portalUrl: ENV.torii.providers['arcgis-oauth-bearer'].portalUrl,
 
   // dynamically generate allyship ids, TODO - get the elementId extraction working
   inputWebmapId: computed('elementId', function () {
@@ -32,15 +26,9 @@ export default Controller.extend({
 
   init () {
     this._super(...arguments);
-    console.log(this.get('model'));
   },
 
-  // afterModel () {
-  //   this.set('loc', this.get('address'));
-  // },
-
   saveItem () {
-    console.log("saving");
     const itemsService = this.get('itemsService');
     let model = this.get('model');
 
@@ -74,12 +62,6 @@ export default Controller.extend({
     save() {
       this.saveItem();
     }
-    // searchAddress (val) {
-    //   return this._searchAddress(val);
-    // },
-    // onAddressChanged (val) {
-    //   this._setAddress(val);
-    // },
   }
-
+  
 });
