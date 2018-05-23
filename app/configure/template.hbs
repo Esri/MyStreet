@@ -4,19 +4,6 @@
 <br>
 <br>
 
-{{#navbar.nav class="ml-auto" as |nav|}}
-  {{#if session.isAuthenticated}}
-    {{#nav.dropdown as |dd|}}
-      {{#dd.toggle class="ml-auto"}}{{session.currentUser.fullName}}  <span class="caret"></span>{{/dd.toggle}}
-      {{#dd.menu as |ddm|}}
-        {{#ddm.item}}<a class="dropdown-item" href="#" {{action 'signout'}}>Sign Out</a>{{/ddm.item}}
-      {{/dd.menu}}
-    {{/nav.dropdown}}
-  {{else}}
-    {{#nav.item}}<a class="nav-link active" href="#" {{action 'signin'}}>Sign In</a>{{/nav.item}}
-  {{/if}}
-{{/navbar.nav}}
-
 <div class="container">
   <div class="row">
     {{#if session.isAuthenticated}}
@@ -44,25 +31,11 @@
         {{input id=inputGeocodeUrl class="form-control" value=model.data.values.geocodeUrl placeholder=geocodePlaceholder}}
       </div>
 
+      <!-- TODO add show map Show Map: <p>{{model.data.values.showMap}}</p> -->
+
       <button type="button" class="btn btn-primary" {{action 'save'}}>
         {{t 'general.buttons.save'}}
       </button>
     </form>
-  </div>
-</div>
-
-<br>
-<div class="container">
-  <div class="row">
-    <div role="main">
-      <div class="panel panel-default">
-        <p>{{model.data.values.topListSize}}</p>
-        <p>{{model.data.values.showMap}}</p>
-        <p>{{model.data.values.webmap}}</p>
-        <p>{{model.data.values.themeId}}</p>
-        <p>{{model.data.values.theme}}</p>
-        <p>{{model.data.values.geocodeUrl}}</p>
-      </div>
-    </div>
   </div>
 </div>
