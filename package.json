@@ -22,7 +22,7 @@
     "broccoli-asset-rev": "^2.4.5",
     "calcite-bootstrap": "^0.3.3",
     "ember-ajax": "^3.0.0",
-    "ember-arcgis-portal-services": "^0.8.4",
+    "ember-arcgis-portal-services": "0.8.4",
     "ember-arcgis-server-services": "0.1.1",
     "ember-cli": "~2.18.0",
     "ember-cli-active-link-wrapper": "0.3.2",
@@ -43,6 +43,7 @@
     "ember-cli-sri": "^2.1.0",
     "ember-cli-surge": "1.1.16",
     "ember-cli-uglify": "^2.0.0",
+    "ember-cli-update": "^0.21.4",
     "ember-esri-loader": "^2.0.0",
     "ember-export-application-global": "^2.0.0",
     "ember-fetch": "3.2.9",
@@ -60,8 +61,8 @@
     "eslint-plugin-react": "^6.2.0",
     "eslint-plugin-standard": "^2.0.0",
     "loader.js": "^4.2.3",
-    "torii": "0.8.4",
-    "torii-provider-arcgis": "^0.11.0"
+    "torii": "^0.9.6",
+    "torii-provider-arcgis": "^1.1.1"
   },
   "engines": {
     "node": "^4.5 || 6.* || >= 7.*"

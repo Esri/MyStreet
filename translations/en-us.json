@@ -4,7 +4,10 @@
     "examples": "Examples",
     "index": "Index",
     "about": "Learn More",
-    "source": "Source"
+    "source": "Source",
+    "buttons": {
+      "save": "Save"
+    }
   },
   "index": {
     "prompt": "Explore an Address",
@@ -25,5 +28,11 @@
     "location":"Location",
     "nav-toggle": "Toggle navigation",
     "search-label":"Submit Search"
+  },
+  "config": {
+    "configureHeading": "Configure App",
+    "webmapLabel": "Webmap ID",
+    "themeLabel": "Theme ID",
+    "geocodeLabel": "Geocode URL"
   }
 }

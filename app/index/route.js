@@ -109,9 +109,9 @@ export default Route.extend({
     .then((results) => {
       this.get('appSettings').set('settings', results);
       // mixin any missing params from enviornment config
-      const params = processConfigParams(results.data.values);
+      const params = processConfigParams(results.data.values); // may remove this if config based entirely on item
       this.set('appSettings.settings.data.values', Object.assign(config, params));
-      ENV.APP.geocodeUrl = params.geocodeUrl;
+      // ENV.APP.geocodeUrl = params.geocodeUrl; bring in once geocoding is ready
       this.get('appSettings').set('errStatus', null);
     //   return this.get('itemsService').getDataById(results.data.values.webmap)
     // })
