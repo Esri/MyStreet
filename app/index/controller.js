@@ -26,9 +26,10 @@ export default Controller.extend({
   returnedAddress: "",
 
   // TODO - bring in once the app is ready for geocoders
-  // geocodeUrl: computed('appSettings.settings.data.values.geocodeUrl', function() {
-  //   return this.get('appSettings.settings.data.values.geocodeUrl');
-  // }),
+  geocodeUrl: computed('appSettings.settings.data.values.geocodeUrl', function() {
+    debugger;
+    return this.get('appSettings.settings.data.values.geocodeUrl');
+  }),
 
   webmap: alias('appSettings.settings.webmap'),
   layers: alias('webmap.itemData.operationalLayers'),
@@ -63,8 +64,10 @@ export default Controller.extend({
   },
 
   _searchAddress (address) {
-    const geocodeUrl = 'https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/'; // use geocodeUrl for typeahead?
-    // const geocodeUrl = this.get('geocodeUrl');
+    // const geocodeUrl = 'https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/'; // use geocodeUrl for typeahead?
+    const geocodeUrl = this.get('geocodeUrl');
+
+    debugger;
 
     let text = address;
     let bbox = this.get('bbox');
@@ -85,9 +88,9 @@ export default Controller.extend({
       bbox: this.get('bbox'),
     }
 
-    // if (this.get('geocodeUrl')) { TODO - bring in once geocodeUrl is ready
-    //   options.geocodeUrl = this.get('geocodeUrl');
-    // }
+    if (this.get('geocodeUrl')) { // TODO - bring in once geocodeUrl is ready
+      options.geocodeUrl = this.get('geocodeUrl');
+    }
 
     return this.get('myStreet').findLocationAddress(address, options)
       .then((results) => {
