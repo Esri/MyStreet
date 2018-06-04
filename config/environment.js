@@ -71,6 +71,12 @@ module.exports = function(environment) {
   // TODO setup dev/qa/prod environments for ENV.baseurl to point to api based on env (first use in data-citation)
       // see opendata-admin for example
 
+  if (environment === 'devext') {
+    ENV.rootURL = '/apps/mystreet';
+    // ENV.APP.baseURL = 'opendataqa.arcgis.com';
+    // ENV.torii.providers.portalUrl = 'https://qaext.arcgis.com';
+  }
+
   if (environment === 'qa') {
     ENV.APP.baseURL = 'opendataqa.arcgis.com';
     ENV.torii.providers.portalUrl = 'https://qaext.arcgis.com';

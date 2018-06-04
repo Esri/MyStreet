@@ -1,37 +1,30 @@
 /* jshint node: true */
-
 module.exports = function(deployTarget) {
-  var ENV = {
-    build: {}
-    // include other plugin configuration that applies to all deploy targets here
+  const assetBuckets = {
+    devext: 'dev-od-assets',
+    qaext: 'qa-od-assets',
+    production: 'prod-od-assets'
   };
 
-  ENV.s3 = {
-    accessKeyId: '', // TODO inject these via local variables
-    secretAccessKey: '',
-    bucket: 'dev-od-assets',
-    region: 'us-east-1',
-    prefix: 'apps/mystreet',
-    filePattern: '**/*.{js,css,png,gif,ico,jpg,map,xml,txt,svg,swf,eot,ttf,woff,woff2,otf,html,json}'
-  }
+  var ENV = {
+    build: {
+      environment: deployTarget,
+    },
+    'revision-data': {
+      type: 'git-commit'
+    },
+    's3-index': {
+      bucket: assetBuckets[deployTarget],
+      region: 'us-east-1',
+      prefix: 'apps/mystreet',
+      allowOverwrite: true
+    },
+    's3': {
+      bucket: assetBuckets[deployTarget],
+      region: 'us-east-1',
+      prefix: 'apps/mystreet',
+    }
+  };
 
-  if (deployTarget === 'development') {
-    ENV.build.environment = 'development';
-
-  }
-
-  if (deployTarget === 'staging') {
-    ENV.build.environment = 'production';
-    // configure other plugins for staging deploy target here
-  }
-
-  if (deployTarget === 'production') {
-    ENV.build.environment = 'production';
-    // configure other plugins for production deploy target here
-  }
-
-  // Note: if you need to build some configuration asynchronously, you can return
-  // a promise that resolves with the ENV object instead of returning the
-  // ENV object synchronously.
   return ENV;
 };
