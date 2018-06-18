@@ -17,12 +17,14 @@ module.exports = function(deployTarget) {
       bucket: assetBuckets[deployTarget],
       region: 'us-east-1',
       prefix: 'apps/mystreet',
+      // filePattern: '**/*.{js,css,png,gif,ico,jpg,map,xml,txt,svg,swf,eot,ttf,woff,woff2,otf,html,json}',
       allowOverwrite: true
     },
     's3': {
       bucket: assetBuckets[deployTarget],
       region: 'us-east-1',
       prefix: 'apps/mystreet',
+      // filePattern: '**/*.{js,css,png,gif,ico,jpg,map,xml,txt,svg,swf,eot,ttf,woff,woff2,otf,html,json}',
     }
   };
 

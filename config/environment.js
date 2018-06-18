@@ -88,7 +88,6 @@ module.exports = function(environment) {
     // here you can enable a production-specific feature
     ENV.locationType = 'hash';
     ENV.rootURL = '/apps/mystreet';
-    // ENV.rootURL = '/'; //'/mystreet/';
     ENV.APP.baseURL = 'opendata.arcgis.com';
   }
 
