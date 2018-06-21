@@ -98,8 +98,6 @@ export default Component.extend({
       options.geometry = location;
     }
 
-    debugger;
-
     return this.get('featureService').query(url, options)
       .then((results) => {
         let fields = {};
