@@ -27,7 +27,6 @@ export default Controller.extend({
 
   // TODO - bring in once the app is ready for geocoders
   geocodeUrl: computed('appSettings.settings.data.values.geocodeUrl', function() {
-    debugger;
     return this.get('appSettings.settings.data.values.geocodeUrl');
   }),
 
@@ -78,8 +77,9 @@ export default Controller.extend({
       "ymax": bbox[1][1],
     };
     let extent = `${bb.xmin},${bb.ymin},${bb.xmax},${bb.ymax}`;
-    let searchString = `${geocodeUrl}suggest?text=${text}&searchExtent=${extent}&f=json`;
-    return this.get('ajax').request(searchString)
+    // let searchString = `${geocodeUrl}suggest?text=${text}&searchExtent=${extent}&f=json`;
+    let searchString = `${geocodeUrl}suggest?text=${text}&f=json`;
+    return this.get('ajax').request(searchString);
   },
 
   _setAddress (address) {
@@ -94,10 +94,12 @@ export default Controller.extend({
 
     return this.get('myStreet').findLocationAddress(address, options)
       .then((results) => {
+        debugger;
         this.setProperties({
           returnedAddress: results.candidates[0].address,
           geocodedLocation: [results.candidates[0].location.x, results.candidates[0].location.y]
         });
+        debugger;
         this.get('appSettings').set('geometry', {});
         this.get('appSettings').set('geometry.returnedAddress', results.candidates[0].address);
         this.get('appSettings').set('geometry.geocodedLocation', [results.candidates[0].location.x, results.candidates[0].location.y]);

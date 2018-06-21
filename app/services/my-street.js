@@ -31,7 +31,6 @@ export default Service.extend({
       // TODO
       // .then((results) => {
         // manipulate raw response into what is needed in MyStreet
-
       // })
       // handling of empty response object
 
