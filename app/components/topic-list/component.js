@@ -80,7 +80,6 @@ export default Component.extend({
       "geometryType": "esriGeometryPoint",
       "geometry": [],
       "inSR": 4326,
-      // "address": this.get('appSettings.geometry.address')
     }
 
     if(layerTitle.indexOf('Nearby') !== -1) {
