@@ -12,7 +12,7 @@ export default Service.extend({
    */
   findLocationAddress (inputString, options) {
     // if passed in extent is an array, turn it into an object that geocode-service will be able to read
-    if (options.bbox[0]) {
+    if (options.bbox && options.bbox[0]) {
       options.bbox = {
         "xmin": options.bbox[0][0],
         "ymin": options.bbox[0][1],
@@ -31,7 +31,6 @@ export default Service.extend({
       // TODO
       // .then((results) => {
         // manipulate raw response into what is needed in MyStreet
-
       // })
       // handling of empty response object
 

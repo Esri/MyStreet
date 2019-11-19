@@ -111,13 +111,8 @@ export default Route.extend({
       // mixin any missing params from enviornment config
       const params = processConfigParams(results.data.values); // may remove this if config based entirely on item
       this.set('appSettings.settings.data.values', Object.assign(config, params));
-      // ENV.APP.geocodeUrl = params.geocodeUrl; bring in once geocoding is ready
+      ENV.APP.geocodeUrl = params.geocodeUrl;
       this.get('appSettings').set('errStatus', null);
-    //   return this.get('itemsService').getDataById(results.data.values.webmap)
-    // })
-    // .then((webmap) => {
-    //   this.get('appSettings').set('settings.webmap', webmap);
-    // })
       return hash({
           item: this.get('itemsService').getById(results.data.values.webmap),
           itemData: this.get('itemsService').getDataById(results.data.values.webmap)

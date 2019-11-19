@@ -3,7 +3,7 @@ import Component from '@ember/component';
 
 export default Component.extend({
   classNames: ['address-search'],
-  
+
   minLength: 2,
 
   limit: 4,
