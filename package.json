@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
-    "calcite-bootstrap": "^0.3.3",
+    "calcite-bootstrap": "^0.4.4",
     "ember-ajax": "^3.0.0",
     "ember-arcgis-portal-services": "0.8.4",
     "ember-arcgis-server-services": "0.1.1",
